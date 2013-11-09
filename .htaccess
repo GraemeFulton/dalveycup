@@ -4,6 +4,9 @@
 RewriteEngine On
 RewriteBase /dalveycup/
 RewriteRule ^index\.php$ - [L]
+RewriteCond %{QUERY_STRING} !lp-variation-id
+RewriteRule ^go/([^/]*)? /dalveycup/wp-content/plugins/landing-pages/modules/module.redirect-ab-testing.php?permalink_name=$1  [QSA,L]
+RewriteRule ^landing-page=([^/]*)? /dalveycup/wp-content/plugins/landing-pages/modules/module.redirect-ab-testing.php?permalink_name=$1 [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /dalveycup/index.php [L]

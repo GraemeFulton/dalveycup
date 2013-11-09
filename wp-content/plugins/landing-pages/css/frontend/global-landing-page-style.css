@@ -1,0 +1,99 @@
+/**
+ * WordPress required styles
+ * Needed for editor media floats
+ */
+/* ---------------------------------------------- */
+.wp-caption{
+    background:#FBFBFB;
+    border:1px solid #EEE;
+    padding:10px;
+    max-width: 100%;
+}
+.wp-caption img{
+    display:block;
+    margin-bottom:5px;
+}
+.wp-caption-text,
+.gallery-caption{
+    margin:0;
+    font-size:12px;
+    font-style:italic
+}
+.alignright{
+    float:right;
+    margin: 10px 0px 10px 20px;
+}
+.alignleft{
+    float:left;
+    margin: 10px 20px 10px 0px;
+}
+.aligncenter{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+.alignnone{
+    display:block;
+    margin: 10px 0px;
+}
+.bypostauthor{}
+/* ---------------------------------------------- */
+#wpadminbar {
+display:none;
+}
+#wp-admin-bar-wp-logo{display:none}
+#wp-admin-bar-site-name{display:none}
+#demo-hide{display:none; !important}
+
+/*
+ENTER BUTTON
+*/
+.enter {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2e2b25), color-stop(1, #1f1e18) );
+	background:-moz-linear-gradient( center top, #2e2b25 5%, #1f1e18 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e2b25', endColorstr='#1f1e18');
+	background-color:#2e2b25;
+	-webkit-border-top-left-radius:11px;
+	-moz-border-radius-topleft:11px;
+	border-top-left-radius:11px;
+	-webkit-border-top-right-radius:11px;
+	-moz-border-radius-topright:11px;
+	border-top-right-radius:11px;
+	-webkit-border-bottom-right-radius:11px;
+	-moz-border-radius-bottomright:11px;
+	border-bottom-right-radius:11px;
+	-webkit-border-bottom-left-radius:11px;
+	-moz-border-radius-bottomleft:11px;
+	border-bottom-left-radius:11px;
+	text-indent:0px;
+	border:1px solid #4f4f4f;
+	display:inline-block;
+	color:#cfcfcf;
+	font-family:Arial;
+	font-size:19px;
+	font-weight:normal;
+	font-style:normal;
+	height:46px;
+	line-height:46px;
+	width:94px;
+	text-decoration:none;
+	text-align:center;
+}
+.enter:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1f1e18), color-stop(1, #2e2b25) );
+	background:-moz-linear-gradient( center top, #1f1e18 5%, #2e2b25 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f1e18', endColorstr='#2e2b25');
+	background-color:#1f1e18;
+}.enter:active {
+	position:relative;
+	top:1px;
+}
+.enter a:hover, a:focus {
+color: #ffffff !important;
+text-decoration: none !important;
+}
+.enter a {
+color: #eaeaea;
+text-decoration: none;
+}
+h1{color:#eaeaea;}
