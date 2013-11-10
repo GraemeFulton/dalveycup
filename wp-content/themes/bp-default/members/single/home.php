@@ -20,6 +20,8 @@ get_header( 'buddypress' ); ?>
 
 			</div><!-- #item-header -->
 
+			<div id="item-body">
+
 			<div id="item-nav">
 				<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
 					<ul>
@@ -31,9 +33,7 @@ get_header( 'buddypress' ); ?>
 					</ul>
 				</div>
 			</div><!-- #item-nav -->
-
-			<div id="item-body">
-
+			
 				<?php do_action( 'bp_before_member_body' );
 
 				if ( bp_is_user_activity() || !bp_current_component() ) :

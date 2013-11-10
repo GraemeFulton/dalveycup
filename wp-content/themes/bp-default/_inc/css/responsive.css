@@ -36,6 +36,7 @@ Hello, this is the BuddyPress Responsive theme stylesheet
 		float: none;
 		margin: 2em 0 0 0;
 		border: none;
+		display:none;
 	}
 	ul#nav {
 		padding-bottom: 1em;
@@ -127,9 +128,43 @@ Hello, this is the BuddyPress Responsive theme stylesheet
 		width: 100%;
 		margin: 0;
 	}
+	#my-profile-button{display:inline; margin-bottom:20px;}
+	
+	#search-bar{margin-top: 25px;margin-left:-5px;}
+	#login-widget{
+	float:left;
+	background:#eaeaea;
+	color:#222;
+	padding:20px;
+	border-radius:5px;
+	margin-bottom:8px;
+}
+	
+	.activity-content{
+	width:95% !important;
+	border-radius:6px;
+	margin-top:10px;
+	margin-bottom:20px;
+	margin-left:7px;
+	margin-right:5px;
+	}
+	
+	ul.item-list.activity-list li {
+padding-bottom: 0;
+margin-left: -60px;
+}
+	
 	#container {
 		border: none;
+		width:94%;
 	}
+	.homepage_activity{
+	width:100%;
+	}
+	div#content{
+	width:94%;
+	}
+	div#container{width:100%}
 	div.item-list-tabs ul li {
 		float: none;
 		margin: 0.3em 0.6em;
@@ -201,6 +236,60 @@ Hello, this is the BuddyPress Responsive theme stylesheet
 	#footer-widgets {
 		padding: 19px 10px;
 	}
+	/*********
+BUDDY MEMBERS
+**********/
+#members-dir-list img.avatar {
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+-ms-border-radius: 50%;
+-o-border-radius: 50%;
+border-radius: 50%;
+-webkit-box-shadow: 0 1px 0 #fff;
+-moz-box-shadow: 0 1px 0 #fff;
+box-shadow: 0 1px 0 #fff;
+  margin-left:26%;
+  margin-right:40px;
+  margin-bottom:5px;
+}
+#members-dir-list a:hover img.avatar {
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+filter: grayscale(100%);
+-webkit-transition: -webkit-filter 0.2s ease-in-out;
+-moz-transition: -moz-filter 0.2s ease-in-out;
+transition: filter 0.2s ease-in-out;
+}
+.members-loop li {
+overflow: auto;
+list-style: none;
+float: left;
+width: 100%;
+margin: 0 0px 0px 0;
+border: 0;
+}
+.member-meta, .item-title a
+ {
+width: 100%;
+text-align: center;
+}
+.members-loop .item>.item-title{width:100% !important; text-align:center}
+
+.member-meta, .members-loop .item>.item-title a {
+font-size: 110%;
+text-transform: uppercase;
+color: beige;
+font-weight: bold;
+}
+
+.member-meta {
+text-transform: uppercase;
+font-size: 80%;
+}
+
+.member-meta {
+margin-bottom: 8px;
+}
 }
 
 

@@ -81,15 +81,12 @@ body {
 	padding: 19px;
 }
 div#container {
-	background: #fff;
-	border-right: 1px solid #e0e0e0;
-	border-bottom: 1px solid #e0e0e0;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
 	overflow: hidden;
 	position: relative;
-	width: 85%;
+	width: 82%;
         max-width: 1250px;
         margin: 0 auto;
 margin-top:50px;
@@ -118,8 +115,12 @@ width: 70%;
 position: relative;
 margin-bottom:100px;
 }
+.activity-content{
+	background:#fff !important;
+	width:68% !important;
+}
+
 div#content .padder {
-	border-right: 1px solid #ddd;
 	-moz-border-radius-topleft: 6px;
 	-webkit-border-top-left-radius: 6px;
 	-moz-border-radius-bottomleft: 6px;
@@ -251,6 +252,13 @@ margin: 35px auto;
     
 }
 
+#search-bar{
+	margin-top: -26px;
+margin-bottom: -20px;
+padding-top: 8px;
+
+}
+
 #header #search-bar {
 text-align: center;
 
@@ -338,20 +346,25 @@ div#fourth ul.xoxo { margin-right: 0; }
 2.4 - Sidebar
 --------------------------------------------------------------*/
 div#sidebar {
-border-left: 1px solid #ddd;
--moz-border-radius-topright: 3px;
--webkit-border-top-right-radius: 3px;
-border-top-right-radius: 3px;
+background:#fff;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
 float: right;
 position: relative;
 width:30%;
 }
 div#sidebar div#sidebar-me {
 	margin-bottom: 15px;
+background: blue;
+padding: 20px;
+border-radius: 10px
 }
 div#sidebar div#sidebar-me img.avatar {
 	float: left;
 	margin: 0 10px 15px 0;
+	height: 50px;
+width: 50px;
 }
 div#sidebar div#sidebar-me h4 {
 	font-size: 16px;
@@ -1184,6 +1197,12 @@ span.sticky-post {
 	margin: 20px 0 10px;
 	padding-bottom: 20px;
 }
+
+#item-body{
+	background:#fff;
+	padding:25px;
+	}
+
 .home-page form#whats-new-form {
 	border-bottom: none;
 	padding-bottom: 0;
@@ -2286,7 +2305,6 @@ ul.item-list {
 	width: 100%;
 }
 ul.item-list li {
-	border-bottom: 1px solid #eaeaea;
 	padding: 15px 0;
 	position: relative;
 }
@@ -2557,4 +2575,92 @@ br + br { display: none; }
     margin-top:13px;
     margin-left:5px;
     
+}
+
+#login-widget{
+	float:left;
+	background:#eaeaea;
+	color:#222;
+	padding:20px;
+	border-radius:5px;
+	margin-bottom:8px;
+}
+/*********
+BUDDY MEMBERS
+**********/
+
+#members-dir-list img.avatar {
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+-ms-border-radius: 50%;
+-o-border-radius: 50%;
+border-radius: 50%;
+-webkit-box-shadow: 0 1px 0 #fff;
+-moz-box-shadow: 0 1px 0 #fff;
+box-shadow: 0 1px 0 #fff;
+  margin-left:11%;
+  margin-bottom:5px;
+}
+#my-profile-button{display:none;visibility:hidden;}
+
+#members-dir-list a:hover img.avatar {
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+filter: grayscale(100%);
+-webkit-transition: -webkit-filter 0.2s ease-in-out;
+-moz-transition: -moz-filter 0.2s ease-in-out;
+transition: filter 0.2s ease-in-out;
+}
+.members-loop li {
+overflow: auto;
+list-style: none;
+float: left;
+width: 20%;
+margin: 0 20px 28px 0;
+border: 0;
+}
+.member-meta, .item-title a
+ {
+width: 100%;
+text-align: center;
+}
+.members-loop .item>.item-title{width:100% !important; text-align:center}
+
+.member-meta, .members-loop .item>.item-title a {
+font-size: 110%;
+text-transform: uppercase;
+color: beige;
+font-weight: bold;
+}
+
+.member-meta {
+text-transform: uppercase;
+font-size: 80%;
+}
+
+.member-meta {
+margin-bottom: 8px;
+}
+
+/***SITE WIDE ACTIVITY****/
+.swa-rss{display:none;}
+
+.homepage_activity{
+width:30%;
+position:relative;
+float:left;
+background:#C0AB8C;
+padding:20px;
+border-radius:5px;
+color:#fff
+}
+
+.homepage_activity p, .homepage_activity a{color:#fff}
+.homepage_activity .swa-activity-list .swa-activity-content span.time-since {
+color: #fff;
+}
+
+#Homepage_Activity li{
+list-style: none;
+padding-left: -20px; margin-left: -20px;
 }

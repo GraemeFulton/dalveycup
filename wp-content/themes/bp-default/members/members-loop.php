@@ -33,29 +33,31 @@
 
 	<?php do_action( 'bp_before_directory_members_list' ); ?>
 
-	<ul id="members-list" class="item-list" role="main">
+	<ul id="members-list" class="members-loop item-list" role="main">
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
 		<li>
 			<div class="item-avatar">
-				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
-			</div>
+<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar('type=full&width=115&height=115'); ?></a>
+						</div>
 
 			<div class="item">
 				<div class="item-title">
 					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
 
-					<?php if ( bp_get_member_latest_update() ) : ?>
-
-						<span class="update"> <?php bp_member_latest_update(); ?></span>
-
-					<?php endif; ?>
+					
 
 				</div>
 
-				<div class="item-meta"><span class="activity"><?php bp_member_last_active(); ?></span></div>
-
+				<div class="member-meta meta-holder">
+				Cup Holder: 
+				<?php echo bp_member_profile_data('field=Cup Holder'); ?>
+				</div>
+				<div class="member-meta meta-member-id">
+				Membership Number: 
+				<?php echo  bp_get_member_user_id()  ?>
+				</div>
 				<?php do_action( 'bp_directory_members_item' ); ?>
 
 				<?php

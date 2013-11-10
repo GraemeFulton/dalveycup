@@ -14,6 +14,7 @@ class BP_SWA_Widget extends WP_Widget {
 		$pagename = get_query_var('pagename');
 		if ($pagename=="activity"){echo "" ;return;}
 		
+		
 		global $bp;
                 if($instance['is_personal']=='yes'&&!is_user_logged_in())
                     return;//do  not show anything

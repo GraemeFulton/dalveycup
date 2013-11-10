@@ -11,7 +11,7 @@ get_header( 'buddypress' ); ?>
 
 	<?php do_action( 'bp_before_directory_activity_page' ); ?>
 
-	<div id="content">
+	<div id="content" class="activity-content">
 		<div class="padder">
 
 			<?php do_action( 'bp_before_directory_activity' ); ?>

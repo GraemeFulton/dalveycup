@@ -12,11 +12,11 @@
 		<div id="sidebar-me">
 			<a href="<?php echo bp_loggedin_user_domain(); ?>">
 				<?php bp_loggedin_user_avatar( 'type=thumb&width=40&height=40' ); ?>
-			</a>
-
+			</a>			
 			<h4><?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?></h4>
+			<?php echo '<a class="button" href="'.bp_loggedin_user_domain().'profile">My Profile</a>' ?>
 			<a class="button logout" href="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e( 'Log Out', 'buddypress' ); ?></a>
-
+			
 			<?php do_action( 'bp_sidebar_me' ); ?>
 		</div>
 

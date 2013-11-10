@@ -36,7 +36,14 @@
         'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
         'walker'            => new wp_bootstrap_navwalker())
     );
-
+if ( bp_loggedin_user_id() ) : 
+    echo '<a id="my-profile-button"class="button" href="'.bp_loggedin_user_domain().'profile">My Profile</a>';
+	echo '&nbsp;&nbsp;<a id="my-profile-button"class="button" href="'.home_url().'/log-out">Log Out</a>';
+	else:
+	echo '<a id="my-profile-button"class="button" href="'.home_url().'/login">Member Login</a>';
+	echo '&nbsp;&nbsp;<a id="my-profile-button"class="button" href="'.home_url().'/register">Register</a>';
+	
+	endif;
 ?>
           
 			<div id="search-bar" role="search">
@@ -44,6 +51,7 @@
                             <?php get_search_form(); ?>
                             </div>
 			</div><!-- #search-bar -->
+			<br>
 			
         </div><!--/.nav-collapse -->
       </div>
