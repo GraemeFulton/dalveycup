@@ -11,7 +11,7 @@
 
 get_header(); ?>
 
-	<div id="content">
+	<div id="content" class="one-col">
 		<div class="padder one-column">
 
 		<?php do_action( 'bp_before_blog_page' ); ?>
