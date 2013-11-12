@@ -14,6 +14,7 @@
 <?php do_action( 'bp_before_members_loop' ); ?>
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
+<div class="clear_both"></div>
 
 	<div id="pag-top" class="pagination">
 
@@ -28,6 +29,7 @@
 			<?php bp_members_pagination_links(); ?>
 
 		</div>
+<div class="clear_both"></div>
 
 	</div>
 
@@ -40,8 +42,8 @@
 		<li>
 			<div class="item-avatar">
 <a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar('type=full&width=115&height=115'); ?></a>
-						</div>
-
+			</div>
+                    <div class="clear_both"></div>
 			<div class="item">
 				<div class="item-title">
 					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
@@ -87,7 +89,7 @@
 	<?php do_action( 'bp_after_directory_members_list' ); ?>
 
 	<?php bp_member_hidden_fields(); ?>
-
+<div class="clear_both"></div>
 	<div id="pag-bottom" class="pagination">
 
 		<div class="pag-count" id="member-dir-count-bottom">

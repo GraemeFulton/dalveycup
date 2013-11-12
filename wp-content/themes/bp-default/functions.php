@@ -833,6 +833,12 @@ function checkAccessed(){
 }
 add_action("init", "checkAccessed");
 
+function url_shortcode()
+{
+  return get_bloginfo('url');
+}
+add_shortcode('url','url_shortcode');
+
 ?>
 
 

@@ -15,19 +15,19 @@
 
 	<div id="whats-new-avatar">
 		<a href="<?php echo bp_loggedin_user_domain(); ?>">
-			<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
+			<?php bp_loggedin_user_avatar( 'width=80&height=80 ') ?>
 		</a>
 	</div>
 
-	<h5><?php if ( bp_is_group() )
+	<h3 id="whats-new-title"><?php if ( bp_is_group() )
 			printf( __( "What's new in %s, %s?", 'buddypress' ), bp_get_group_name(), bp_get_user_firstname() );
 		else
 			printf( __( "What's new, %s?", 'buddypress' ), bp_get_user_firstname() );
-	?></h5>
+	?></h3>
 
 	<div id="whats-new-content">
 		<div id="whats-new-textarea">
-			<textarea name="whats-new" id="whats-new" cols="50" rows="10"><?php if ( isset( $_GET['r'] ) ) : ?>@<?php echo esc_attr( $_GET['r'] ); ?> <?php endif; ?></textarea>
+			<textarea name="whats-new" id="whats-new" cols="50" rows="20" style="height:35px;"><?php if ( isset( $_GET['r'] ) ) : ?>@<?php echo esc_attr( $_GET['r'] ); ?> <?php endif; ?></textarea>
 		</div>
 
 		<div id="whats-new-options">

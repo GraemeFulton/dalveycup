@@ -13,14 +13,18 @@
 				<h4><?php bp_the_profile_group_name(); ?></h4>
 
 				<table class="profile-fields">
-
-					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
+                                    
+                                    <td class="table-label member-lable">Membership Number</td>
+                                    <?php global $bp;$the_user_id = $bp->displayed_user->userdata->ID;?>
+                                    <td class="data member-lable"><?php echo $the_user_id?></td>
+					
+                                        <?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 
 						<?php if ( bp_field_has_data() ) : ?>
 
 							<tr<?php bp_field_css_class(); ?>>
 
-								<td class="label"><?php bp_the_profile_field_name(); ?></td>
+								<td class="table-label"><?php bp_the_profile_field_name(); ?></td>
 
 								<td class="data"><?php bp_the_profile_field_value(); ?></td>
 

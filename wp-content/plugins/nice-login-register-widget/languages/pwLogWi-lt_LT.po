@@ -1,0 +1,286 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Nice Login Widget 1.3\n"
+"POT-Creation-Date: 2013-05-20 15:23+0200\n"
+"PO-Revision-Date: 2013-07-03 17:40+0200\n"
+"Last-Translator: Justas <justas6666@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\website\\wp-content\\plugins\\nice-login-register-widget\n"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:25
+msgid "Sorry, register to this site is disabled at this moment."
+msgstr "Atleiskite, registracija šiuo metu yra išjungta."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:35
+msgid "Register successfull, Please check your email."
+msgstr "Registracija beveik baigta, prašome pasitikrinti savo el. paštą."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:50
+msgid "Check your e-mail for the confirmation link."
+msgstr "Patikrinkite savo el. paštą, kad atktyvuotumete paskyrą."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:92
+msgid "<strong>ERROR</strong>: Invalid username or incorrect password."
+msgstr "<strong>Klaida</strong>: Netinkamas vartotojo vardas arba slaptažodis."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:126
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>Klaida</strong>: Įveskite vartotojo vardą."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:128
+msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr "<strong>Klaida</strong>: Šis vartotojo vardas netinkamas, sugalvokite kitokį vartotojo vardą."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:131
+msgid "<strong>ERROR</strong>: This username is already registered. Please choose another one."
+msgstr "<strong>Klaida</strong>: Šis vartotojo vardas jau užimtas, sugalvokite kitokį vartotojo vardą."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:136
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr "<strong>Klaida</strong>: Įveskite savo el. pašto adresą. "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:138
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr "<strong>Klaida</strong>: Šis el. pašto adresas netinkamas."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:141
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr "<strong>Klaida</strong>: Šis el. pašto adresas jau užregistruotas."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:154
+#, php-format
+msgid "<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href=\"mailto:%s\">webmaster</a> !"
+msgstr "<strong>Klaida</strong>: Negalime užregistruoti... Susisiekite su <a href=\"mailto:%s\">webmaster</a> !"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:178
+msgid "<strong>ERROR</strong>: Enter a username or e-mail address."
+msgstr "<strong>Klaida</strong>: Įveskite vartotojo vardą ar slaptažodį."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:182
+msgid "<strong>ERROR</strong>: There is no user registered with that email address."
+msgstr "<strong>Klaida</strong>: Nėra vartotojo registruotu šiuo el. pašto adresu."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:194
+msgid "<strong>ERROR</strong>: Invalid username or e-mail."
+msgstr "<strong>Klaida</strong>: Netinkamas vartotojo vardas ar el. pašto adresas."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:208
+msgid "Password reset is not allowed for this user"
+msgstr "Slaptažodžio atkurimas neleidžiamas šiam vartotojui"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:220
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "Kažkas paprašė, kad slaptažodis būtų atkurtas šiam vartotojui:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:222
+#, php-format
+msgid "Username: %s"
+msgstr "Vartotojo vardas: %s"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:223
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Jeigu tai klaida, prašome ignoruoti šį el. laišką."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:224
+msgid "To reset your password, visit the following address:"
+msgstr "Norėdami atkurti slaptažodį, keliaukite šiuo adresu:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:234
+#, php-format
+msgid "[%s] Password Reset"
+msgstr "[%s] Slaptažodžio atkurimas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:240
+msgid "The e-mail could not be sent."
+msgstr "El. laiškas neišsiustas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:240
+msgid "Possible reason: your host may have disabled the mail() function..."
+msgstr "Galima priežastis: jūsų puslapio talpintojas išjungęs mail() funkciją..."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:31
+msgid "This sidebar does not act as a normal sidebar. It is a stand-in used to make the shortcode for Nice Login Widget available. Just drag the Nice Login Widget into the sidebar, then you can use the [sp_login_widget] shortcode in any page or post."
+msgstr "Šis valdiklis nėra paprastas.Jis leidžia padaryti „ Nice Login Widget” trumpajį kodą prieinamą jūsų puslapyje. Tiesiog nutemkite „ Nice Login Widget”  valdiklį į šią valdiklių grupę, kad galėtumete naudoti [sp_login_widget] trumpajį kodą, jūsų įrašuose ar puslapiuose."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:140
+msgid "Add, build and manage login-register widget"
+msgstr "Pridėti, kurti ir tvarkyti prisijungimo - registracijos valdiklį"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:196
+msgid "Widget Options"
+msgstr "Valdiklio nustatymai"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:198
+msgid "CSS class name: "
+msgstr "CSS klasės pavadinimas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:203
+msgid "Logged Out"
+msgstr "Atsijungęs"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:204
+msgid "Logged In"
+msgstr "Prisijungęs"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:211
+msgid "Default Form: "
+msgstr "Numatyta forma:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:213
+msgid "Login Form"
+msgstr "Prisijungimo forma"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:214
+msgid "Register Form"
+msgstr "Registracijos forma"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:218
+msgid "Float: "
+msgstr "Lygiuotė:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:220
+msgid "Horizontal"
+msgstr "Horizontalus"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:221
+msgid "Vertical"
+msgstr "Vertikalus"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:225
+msgid "Include \"Remember-Me\""
+msgstr "Pridėti \"Prisiminti mane\""
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:227
+msgid "Uncheck by default "
+msgstr "Atžymėtas(pagal nutylėjimą)"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:228
+msgid "Check by default "
+msgstr "Pažymėtas(pagal nutylėjimą)"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:233
+msgid "Ajax Authentication"
+msgstr "Ajax prisijungimas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:234
+msgid "Regular WP Authentication"
+msgstr "Paprastas WP prisijungimas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:237
+msgid "Add widget border"
+msgstr "Pridėti valdiklio kraštelius"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:238
+msgid "Widget Border"
+msgstr "Valdiklio apvadas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:240
+msgid "Enter border color"
+msgstr "Įveskite apvado spalvą"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:250
+msgid "Add Logged-In message"
+msgstr "Pridėti prsijungimo pranešimą"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:266
+msgid "Insert Merge Tag"
+msgstr "Įterpti perėjimo žymą"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:267
+msgid "User display name"
+msgstr "Vartotojo rodomas vardas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:268
+msgid "User nice name"
+msgstr "Vartotojo tikras vardas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:269
+msgid "User login"
+msgstr "Prisijungimas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:270
+msgid "User email"
+msgstr "Vartotojo el. paštas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:271
+msgid "Log-out link"
+msgstr "Atsijungim"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:272
+msgid "Profile link"
+msgstr "Profilio adresas"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:333
+msgid "Log-Out"
+msgstr "Atsijungti"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:336
+msgid "Profile"
+msgstr "Profilis"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:388
+msgid "Welcome Back "
+msgstr "Sveiki sugrįžę"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:412
+msgid "Username: "
+msgstr "Vartotojo vardas:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:414
+msgid "Password: "
+msgstr "Slaptažodis:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:417
+msgid " Remember me"
+msgstr "Prisiminti mane"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:419
+msgid "Login"
+msgstr "Prisijungti"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:431
+msgid "Don't have an account?"
+msgstr "Neužsiregistravęs?"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:433
+msgid "Lost your password?"
+msgstr "Pamiršote slaptažodį?"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:442
+msgid "Choose username: "
+msgstr "Pasirinkite vartotojo vardą:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:444
+msgid "Your Email: "
+msgstr "El. pašto adresas:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:455
+msgid "Have an account?"
+msgstr "Norite užsiregistruoti?"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:462
+msgid "Enter your username or email: "
+msgstr "Įveskite vartotojo vardą ar el. pašto adresą:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:465
+msgid "Reset my password"
+msgstr "Atjurti slaptažodį"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:473
+msgid "Back to login"
+msgstr "Grįžti į prisijungimą"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:478
+msgid "A message was sent to your email address"
+msgstr "Pranešimas išsiustas į jūsų el. paštą"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:479
+msgid "Check your email for the password!"
+msgstr "Patikrinkite el. paštą, jame yra slaptažodis!"
+

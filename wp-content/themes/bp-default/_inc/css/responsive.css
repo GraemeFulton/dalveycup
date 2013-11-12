@@ -120,11 +120,12 @@ Hello, this is the BuddyPress Responsive theme stylesheet
 2.0 - Smartphone (any)
 --------------------------------------------------------------*/
 @media screen and (max-device-width: 480px), screen and (-webkit-min-device-pixel-ratio: 2) {
-	-webkit-text-size-adjust: none;
+	
 }
 
 @media only screen and (max-width: 480px) {
-	body {
+	body 
+        {
 		width: 100%;
 		margin: 0;
 	}
@@ -140,20 +141,7 @@ Hello, this is the BuddyPress Responsive theme stylesheet
 	margin-bottom:8px;
 }
 	
-	.activity-content{
-	width:95% !important;
-	border-radius:6px;
-	margin-top:10px;
-	margin-bottom:20px;
-	margin-left:7px;
-	margin-right:5px;
-	}
-	
-	ul.item-list.activity-list li {
-padding-bottom: 0;
-margin-left: -60px;
-}
-	
+
 	#container {
 		border: none;
 		width:94%;
@@ -185,9 +173,6 @@ margin-left: -60px;
 	div.item-list-tabs ul li.current a {
 		background: #eee;
 		font-weight: bold;
-	}
-	div.item-list-tabs {
-		background: none;
 	}
 	div.item-list-tabs ul li:first-child {
 		margin: 0.6em 0.6em 0.5em 0.6em;
@@ -290,6 +275,118 @@ font-size: 80%;
 .member-meta {
 margin-bottom: 8px;
 }
+
+/*****Homepage Slider******/
+.homepage_slider{position:relative;clear:both;float:left;}
+.rslides, .flexslider, .nivoSlider, .metaslider-coin{max-height:150px !important;max-width:100%!important;min-height: 150px!important;min-width: 100%!important;}
+.clear_both{clear:both;}
+a.cs-active{background:#222 !important; box-shadow: grey !important; border-color: grey !important; }
+.flex-control-nav{display:none;}
+.homepage_slider{margin-bottom:-60px;}
+.homepage_signup{display:none;}
+.homepage_members{display:none;}
+
+/*********Homepage Feed****************/
+.homepage_feed{width:104.75%;}
+
+/***********Activity Page*********************/
+
+.activity-content{
+    width:98% !important;
+    border-radius:6px;
+    margin-top:10px;
+    margin-bottom:20px;
+    margin-left:3px !important;
+    margin-left:5px;
+    margin-right:5px;
+}
+.activity{padding:5px !important;}
+
+.activity-list li .activity-content {
+    position: relative;
+    width: 80% !important;
+    border-radius:5px;
+    padding:10px;
+    margin-left: 45px !important;
+}
+
+.activity-list .activity-content .activity-inner, .activity-list .activity-content blockquote {
+    margin: 10px 0px 5px 0 !important;
+    overflow: hidden;
+}
+
+ul.item-list.activity-list li {
+    padding-bottom: 0;
+    width: 95%;
+
+}
+.activity-list .activity-content:after{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 20px 15px 0;
+    border-color: transparent #E2E1E1;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -20px;
+    top: 30px;
+}
+ul#activity-stream.item-list li div.activity-avatar {
+    margin-top: 45px;
+}
+.activity-content iframe{
+    width:98%;
+    height:210px;
+    
+}
+.button{margin-bottom:8px}
+div.activity-comments {
+    margin: 0 0 0 0px;
+}
+.feed{display:none;}
+
+.activity-type-tabs{line-height:12px}
+
+.bpfb_actions_container {
+margin-left: 0px;
+}
+/****Pages***********/
+.page_feed {
+width: 104.75% !important;
+padding: 0;
+margin-left: -10px;
+}
+div.page, div.post, div.attachment {
+margin: 0 0 15px 0;
+overflow: visible;
+}
+
+
+#respond {
+width: 104%;
+}
+#my-profile-button{display:inline; visibility: visible;}
+
+#main_search {
+margin-top: -14px;
+margin-left: 5px;
+margin-bottom: 14px;
+}
+textarea.invite-anyone-email-addresses {
+width: 150px !important;
+height: 100px !important;
+}
+
+#invite-anyone-custom-subject {
+width: 150px !important;
+height: 80px !important;
+}
+#invite-anyone-custom-message {
+width: 150px !important;
+height: 100px !important;
+}
+
 }
 
 
@@ -336,9 +433,7 @@ margin-bottom: 8px;
 		margin-left: 0px;
 		padding-left: 0px;
 	}
-	ul#activity-stream.item-list li div.activity-avatar {
-		display: none;
-	}
+	
 	body.activity-permalink .activity-list li .activity-content {
 		margin-left: 0;
 	}

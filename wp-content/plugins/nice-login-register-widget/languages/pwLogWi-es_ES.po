@@ -1,0 +1,277 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: NiceLoginWidget\n"
+"Language: es\n"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:25
+msgid "Sorry, register to this site is disabled at this moment."
+msgstr "El registro de usuarios ha sido desactivado temporalmente."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:35
+msgid "Register successfull, Please check your email."
+msgstr "Registro correcto. Por favor, comprueba tu email."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:50
+msgid "Check your e-mail for the confirmation link."
+msgstr "Comprueba tu email para obtener el enlace de confirmación"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:92
+msgid "<strong>ERROR</strong>: Invalid username or incorrect password."
+msgstr "<strong>ERROR</strong>: Nombre de usuario o contraseña no válidos."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:126
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr "<strong>ERROR</strong>: Introduce el nombre."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:128
+msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr "<strong>ERROR</strong>: Este nombre de usuario contiene carácteres no válidos. Por favor, introduce un nombre de usuario válido."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:131
+msgid "<strong>ERROR</strong>: This username is already registered. Please choose another one."
+msgstr "<strong>ERROR</strong>: Nombre de usuario ya utilizado. Por favor, escoge otro."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:136
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr "<strong>ERROR</strong>: Introduce tu dirección de email."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:138
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr "<strong>ERROR</strong>: La dirección de email no es correcta."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:141
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr "<strong>ERROR</strong>: El email ya se encuentra registrado. Por favor, introduce otro."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:154
+msgid "<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href=\"mailto:%s\">webmaster</a> !"
+msgstr "<strong>ERROR</strong>: El registro no se ha completado. Por favor, contactanos aquí: <a href=\"mailto:%s\">webmaster</a> !"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:178
+msgid "<strong>ERROR</strong>: Enter a username or e-mail address."
+msgstr "<strong>ERROR</strong>: Introduce un nombre de usuario o un email."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:182
+msgid "<strong>ERROR</strong>: There is no user registered with that email address."
+msgstr "<strong>ERROR</strong>: No existe ningún usuario registrado con el email proporcionado."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:194
+msgid "<strong>ERROR</strong>: Invalid username or e-mail."
+msgstr "<strong>ERROR</strong>: Nombre de usuario o email no válidos."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:208
+msgid "Password reset is not allowed for this user"
+msgstr "El reseteo de contraseña no está habilitado para este usuario."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:220
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "Se ha solicitado un reseteo de contraseña para la siguiente cuenta:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:222
+msgid "Username: %s"
+msgstr "Nombre de usuario: %s"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:223
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Si es un error, simplemente ignora el mensaje y no pasará nada."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:224
+msgid "To reset your password, visit the following address:"
+msgstr "Para resetar tu contraseña, visita la siguiente dirección:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:234
+msgid "[%s] Password Reset"
+msgstr "[%s] Reseteo de contraseña"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:240
+msgid "The e-mail could not be sent."
+msgstr "El email no se ha podido enviar."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:240
+msgid "Possible reason: your host may have disabled the mail() function..."
+msgstr "Posible razón: tu host debe haber deshabilitado la función mail()."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:31
+msgid "This sidebar does not act as a normal sidebar. It is a stand-in used to make the shortcode for Nice Login Widget available. Just drag the Nice Login Widget into the sidebar, then you can use the [sp_login_widget] shortcode in any page or post."
+msgstr "This sidebar does not act as a normal sidebar. It is a stand-in used to make the shortcode for Nice Login Widget available. Just drag the Nice Login Widget into the sidebar, then you can use the [sp_login_widget] shortcode in any page or post."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:140
+msgid "Add, build and manage login-register widget"
+msgstr "Añade, crea y configura el widget de loguear-registrar"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:196
+msgid "Widget Options"
+msgstr "Opciones del widget"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:198
+msgid "CSS class name: "
+msgstr "Nombre de la clase CSS: "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:203
+msgid "Logged Out"
+msgstr "No logueado"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:204
+msgid "Logged In"
+msgstr "Logueado"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:211
+msgid "Default Form: "
+msgstr "Formulario por defecto: "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:213
+msgid "Login Form"
+msgstr "Formulario de login"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:214
+msgid "Register Form"
+msgstr "Formulario de registro"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:218
+msgid "Float: "
+msgstr "Layout: "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:220
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:221
+msgid "Vertical"
+msgstr "Vertical"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:225
+msgid "Include \"Remember-Me\""
+msgstr "Incluir \"Recuérdame\"."
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:227
+msgid "Uncheck by default "
+msgstr "No seleccionado por defecto "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:228
+msgid "Check by default "
+msgstr "Seleccionado por defecto "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:233
+msgid "Ajax Authentication"
+msgstr "Autenticación Ajax"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:234
+msgid "Regular WP Authentication"
+msgstr "Autenticación normal WP"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:237
+msgid "Add widget border"
+msgstr "Añadir borde al widget"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:238
+msgid "Widget Border"
+msgstr "Borde del widget"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:240
+msgid "Enter border color"
+msgstr "Introduce color de borde"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:250
+msgid "Add Logged-In message"
+msgstr "Añade mensaje si logueado"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:266
+msgid "Insert Merge Tag"
+msgstr "Insertar etiqueta"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:267
+msgid "User display name"
+msgstr "Nombre de usuario mostrado"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:268
+msgid "User nice name"
+msgstr "Nombre de usuario bonito"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:269
+msgid "User login"
+msgstr "Loguin del usuario"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:270
+msgid "User email"
+msgstr "Email del usuario"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:271
+msgid "Log-out link"
+msgstr "Link de log out"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:272
+msgid "Profile link"
+msgstr "Link al perfil"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:333
+msgid "Log-Out"
+msgstr "Log-out"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:336
+msgid "Profile"
+msgstr "Perfil"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:388
+msgid "Welcome Back "
+msgstr "Bienvenido de nuevo "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:412
+msgid "Username: "
+msgstr "Usuario: "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:414
+msgid "Password: "
+msgstr "Password:"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:417
+msgid " Remember me"
+msgstr " Recuérdame"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:419
+msgid "Login"
+msgstr "Login"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:431
+msgid "Don't have an account?"
+msgstr "¿Aún no estás registrado?"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:433
+msgid "Lost your password?"
+msgstr "¿Has perdido la contraseña?"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:442
+msgid "Choose username: "
+msgstr "Nombre: "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:444
+msgid "Your Email: "
+msgstr "Tu email: "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:455
+msgid "Have an account?"
+msgstr "¿Ya tienes una cuenta?"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:462
+msgid "Enter your username or email: "
+msgstr "Introduce nombre de usuario o email: "
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:465
+msgid "Reset my password"
+msgstr "Resetea la contraseña"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:473
+msgid "Back to login"
+msgstr "Volver al login"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:478
+msgid "A message was sent to your email address"
+msgstr "Se ha enviado un mensaje a tu email"
+
+#: C:\wamp\www\website\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:479
+msgid "Check your email for the password!"
+msgstr "¡Comprueba tu email para obtener la contraseña!"
+

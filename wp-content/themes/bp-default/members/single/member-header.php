@@ -25,9 +25,8 @@
 		<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>
 	</h2>
 
-	<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
-		<span class="user-nicename">@<?php bp_displayed_user_username(); ?></span>
-	<?php endif; ?>
+                <?php global $bp;$the_user_id = $bp->displayed_user->userdata->ID;?>
+                  <h4 class="header-membernumber">Membership Number: <?php echo $the_user_id?></h4>
 
 	<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
@@ -37,11 +36,6 @@
 
 		<?php if ( bp_is_active( 'activity' ) ) : ?>
 
-			<div id="latest-update">
-
-				<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
-
-			</div>
 
 		<?php endif; ?>
 
@@ -65,5 +59,6 @@
 </div><!-- #item-header-content -->
 
 <?php do_action( 'bp_after_member_header' ); ?>
-
+<?php if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) )
+	locate_template( array( 'activity/post-form.php'), true );?>
 <?php do_action( 'template_notices' ); ?>

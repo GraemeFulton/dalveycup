@@ -10,15 +10,26 @@
 		<?php do_action( 'bp_before_sidebar_me' ); ?>
 
 		<div id="sidebar-me">
-			<a href="<?php echo bp_loggedin_user_domain(); ?>">
+
+			<a id="provatar" href="<?php echo bp_loggedin_user_domain(); ?>">
 				<?php bp_loggedin_user_avatar( 'type=thumb&width=40&height=40' ); ?>
-			</a>			
+			</a>	
+                                <div class="clear_both"></div>
+
+                         <div class="profile-buttons">
+
 			<h4><?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?></h4>
-			<?php echo '<a class="button" href="'.bp_loggedin_user_domain().'profile">My Profile</a>' ?>
-			<a class="button logout" href="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e( 'Log Out', 'buddypress' ); ?></a>
-			
+                        <?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'profile">My Profile</a>' ?>
+               <br>    <?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'activity">My Activity</a>' ?>
+               <br>	<?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'profile/edit">Edit Profile</a>' ?>
+                <br>  <?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'profile/change-avatar">Change Avatar</a>' ?>
+                <br>	<?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'invite-anyone">Invite Friends</a>' ?>
+
+                   <br>     <a class="button profile-button" href="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e( 'Log Out', 'buddypress' ); ?></a>
+                    </div>
 			<?php do_action( 'bp_sidebar_me' ); ?>
 		</div>
+            <div class="clear_both"></div>
 
 		<?php do_action( 'bp_after_sidebar_me' ); ?>
 

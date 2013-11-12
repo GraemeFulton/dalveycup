@@ -116,9 +116,10 @@ position: relative;
 margin-bottom:100px;
 }
 .activity-content{
-	background:#fff !important;
 	width:68% !important;
+        background:#fff;
 }
+.activity-content .padder{padding:0px;}
 
 div#content .padder {
 	-moz-border-radius-topleft: 6px;
@@ -146,6 +147,29 @@ textarea {
 /*--------------------------------
 ADMIN BAR - BOOTSTRAP/WP MERGE
 ----------------------------------*/
+@media (min-width: 600px) {
+.navbar-fixed-top { top: 0px; background:rgba(0, 0, 0, 0.73)}
+.container {
+width: 100%;
+color:#fff;
+}
+
+#wpadminbar {
+direction: ltr;
+color: #ccc;
+font: 400 13px/28px sans-serif;
+height: 28px;
+position: fixed;
+top: 0;
+left: 78%!important;
+right: 0 !important;
+
+width: 18%;
+min-width: 450px;
+z-index: 99999;
+background: rgba(0, 0, 0, 0.87) !important;
+}
+}
 .navbar-fixed-top { top: 0px; }
 .container {
 width: 100%;
@@ -166,11 +190,6 @@ width: 18%;
 min-width: 450px;
 z-index: 99999;
 background: #222;
-background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#222),color-stop(18%,#222));
-background-image: -webkit-linear-gradient(bottom,#222 0,#333 5px);
-background-image: -moz-linear-gradient(bottom,#222 0,#222 5px);
-background-image: -o-linear-gradient(bottom,#222 0,#222 5px);
-background-image: linear-gradient(to top,#222 0,#222 5px);
 }
 #wp-admin-bar-wp-logo{display:none}
 #wp-admin-bar-site-name{display:none}
@@ -221,36 +240,7 @@ margin: 35px auto;
 	position: relative;
 	z-index: 1000;
 }
-#header_bg{
-      /*  
- background-image:url('http://www.sfc.com/sites/default/files/header_1600_karriere_1.jpg');
- background-image:url('http://www.nilai.edu.my/sites/default/files/styles/banner-inner_1600x300/public/department/banner/banner-graduate_0.jpg');
-      background-image:url('http://mythicafashion.com/images/about.jpg');
-            background-image:url('http://amitusexports.com/slid-images/101.jpg');
-            background-image:url('http://jeditrainers.com/jetr/wp-content/uploads/2013/05/JeTrCropMore.png');
-            background-image:url('http://jeditrainers.com/jetr/wp-content/uploads/2013/05/JeTrCropMore.png');
-                  background-image:url('http://jeffpiersall.com/wp-content/uploads/2013/01/hero_sunset.jpg');
-                  background-image:url('http://www.nodavare.com/wp-content/themes/nodavare/images/banner_leadership.jpg');
-                  background-image:url('http://www.nilai.edu.my/sites/default/files/banner-admission.jpg');
-                  background-image:url('http://www.nilai.edu.my/sites/default/files/banner-corporate-inform.jpg');
 
-                        background-image:url('http://www.interbrand.com/app/controls/BGGB/BGGB2013/images/articles/images/participation.jpg');
-                  background-image:url('http://www.olympus.co.uk/site/rmt/media/consumer/stages/oly_inspiration-flickr_300x1600.jpg');
-                  background-image:url('http://www.olympus.co.uk/site/rmt/media/consumer/stages/oly_inspiration-start_300x1600_2.jpg');
-
-      */
-                  background-image:url('http://www.olympus.co.uk/site/rmt/media/consumer/stages/oly_inspiration-flickr_300x1600.jpg');
-
-       background-repeat:no-repeat;
-        background-size: 100% 100%;
-        background-position:left;
-	height: 300px;
-	margin-bottom: 20px;
-	padding-top: 25px;
-	position: relative;
-	z-index: 1001;
-    
-}
 
 #search-bar{
 	margin-top: -26px;
@@ -346,17 +336,18 @@ div#fourth ul.xoxo { margin-right: 0; }
 2.4 - Sidebar
 --------------------------------------------------------------*/
 div#sidebar {
-background:#fff;
+background:#eaeaea;
 -moz-border-radius: 6px;
 -webkit-border-radius: 6px;
 border-radius: 6px;
 float: right;
-position: relative;
-width:30%;
+position: fixed;
+width: 14%;
+right:20%;
 }
+
 div#sidebar div#sidebar-me {
 	margin-bottom: 15px;
-background: blue;
 padding: 20px;
 border-radius: 10px
 }
@@ -379,10 +370,9 @@ div#sidebar ul#bp-nav li {
 	padding: 10px 15px;
 }
 div#sidebar h3.widgettitle {
-	background: #eaeaea;
+	background: #dedede;
 	clear: left;
 	font-size: 12px;
-	margin: 25px -20px 10px -19px;
 	padding: 5px 15px;
 }
 #footer-widget-area .widget_search,
@@ -396,9 +386,9 @@ div#sidebar .widget_search input[type=text] {
 }
 #footer-widget-area ul.item-list img.avatar,
 div#sidebar ul.item-list img.avatar {
-	height: 20px;
-	margin-right: 10px;
-	width: 20px;
+	height: 43px;
+margin-right: 3px;
+width: 43px;
 }
 #footer-widget-area div.item-avatar img,
 div#sidebar div.item-avatar img {
@@ -418,7 +408,6 @@ div#sidebar ul.item-list div.item-title {
 div#sidebar div.item-options {
 	background: #f5f5f5;
 	font-size: 11px;
-	margin: -10px -20px 0 -19px;
 	padding: 5px 15px;
 }
 #footer-widget-area div.item-content {
@@ -768,13 +757,13 @@ margin-left: 16%;
 --------------------------------------------------------------*/
 div.pagination {
 	background: #f4f4f4;
-	border: none;
-	color: #888;
-	font-size: 11px;
-	height: 19px;
-	margin: -20px -19px 0px -19px;
-	padding: 8px 20px;
-	position: relative;
+border: none;
+color: #888;
+font-size: 11px;
+margin: -35px 0px 20px 0px;
+padding: 8px 18px;
+position: relative;
+width: 100%;
 }
 div.pagination .pag-count {
 	float: left;
@@ -795,6 +784,7 @@ noscript div.pagination {
 }
 div#pag-bottom {
 	margin-top: -1px;
+        
 }
 #nav-above {
 	display: none;
@@ -1200,7 +1190,8 @@ span.sticky-post {
 
 #item-body{
 	background:#fff;
-	padding:25px;
+	padding:0;
+        border-radius:5px;
 	}
 
 .home-page form#whats-new-form {
@@ -1217,6 +1208,8 @@ form#whats-new-form h5 {
 }
 form#whats-new-form #whats-new-avatar {
 	float: left;
+        margin-right: 20px;
+        margin-left:0px;
 }
 form#whats-new-form #whats-new-content {
 	margin-left: 54px;
@@ -1231,12 +1224,12 @@ form#whats-new-form textarea {
 	color: #555;
 	font-family: inherit;
 	font-size: 14px;
-	height: 35px;
+	height: 35px ;
 	padding: 6px;
-	width: 98%;
+	width: 90%;
 }
 body.no-js form#whats-new-form textarea {
-	height: 50px;
+	height: 50px ;
 }
 form#whats-new-form #whats-new-options select {
 	max-width: 200px;
@@ -1270,6 +1263,7 @@ ul.activity-list li {
 }
 .activity-list .activity-avatar {
 	float: left;
+        margin-top:40px;
 }
 ul.activity-list > li:first-child {
 	padding-top: 5px;
@@ -1338,6 +1332,22 @@ body.activity-permalink li.mini .activity-meta {
 .activity-list .activity-content {
 	margin-left: 70px;
 	margin-bottom: 15px;
+        background: #E2E1E1;
+border-radius: 5px;
+padding: 0px 15px 15px 15px;
+}
+.activity-list .activity-content:after{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 29px 53px 29px 0;
+border-color: transparent #E2E1E1;
+display: block;
+width: 0;
+z-index: 1;
+left: -48px;
+top: 20px;
+    
 }
 body.activity-permalink .activity-list li .activity-content {
 	background: #fff;
@@ -1388,7 +1398,8 @@ span.highlight {
 .activity-list .activity-content .activity-inner,
 .activity-list .activity-content blockquote {
 	margin: 10px 10px 5px 0;
-	overflow: hidden;
+overflow: hidden;
+
 }
 .activity-list li.new_forum_post .activity-content .activity-inner,
 .activity-list li.new_forum_topic .activity-content .activity-inner {
@@ -2067,7 +2078,7 @@ table tr th {
 	padding: 8px;
 	vertical-align: middle;
 }
-table tr td.label {
+table tr td.table-label{
 	border-right: 1px solid #eaeaea;
 	font-weight: bold;
 	width: 25%;
@@ -2199,7 +2210,7 @@ div#message p {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	font-weight: normal;
-	margin-top: 3px;
+        margin-left:-0px;
 	text-decoration: none;
 	background: #ffeaa6;
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
@@ -2213,7 +2224,7 @@ div#item-header {
 	overflow: hidden;
 }
 div#item-header div#item-header-content {
-	margin-left: 170px;
+	margin-left: 15px;
 }
 div#item-header h2 {
 	font-size: 28px;
@@ -2221,7 +2232,7 @@ div#item-header h2 {
 	margin: 0 0 15px 0;
 }
 div#item-header h2 a {
-	color: #777;
+	color: #eaeaea;
 	text-decoration: none;
 }
 div#item-header img.avatar {
@@ -2262,7 +2273,7 @@ div#item-header div#item-meta {
 	font-size: 14px;
 	color: #aaa;
 	overflow: hidden;
-	margin: 15px 0 5px 0;
+	margin: 5px 0 15px -10px;
 	padding-bottom: 10px;
 }
 div#item-header div#item-actions {
@@ -2354,8 +2365,9 @@ ul.item-list li h5 span.small {
 div.item-list-tabs {
 	background: #eaeaea;
 	clear: left;
-	margin: 25px -19px 20px -19px;
+	margin: 1px -19px 15px 0px;
 	overflow: hidden;
+        width:100%;
 }
 div.item-list-tabs ul li a {
 	text-decoration: none;
@@ -2387,7 +2399,7 @@ div.item-list-tabs ul li.last select {
 div.item-list-tabs ul li a,
 div.item-list-tabs ul li span {
 	display: block;
-	padding: 5px 10px;
+	padding: 0px 10px;
 	text-decoration: none;
 }
 div.item-list-tabs ul li a span {
@@ -2432,14 +2444,17 @@ div#item-nav ul li.loading a {
 	background-position: 88% 50%;
 }
 div.item-list-tabs#object-nav {
-	margin-top: 0;
+        border-radius: 5px;
+        margin-top:-5px;
 }
 div.item-list-tabs#subnav {
-	background: #fff;
-	border-bottom: 1px solid #eaeaea;
-	margin: -15px -19px 15px -19px;
-	min-height: 35px;
-	overflow: hidden;
+background: #fff;
+border-bottom: 1px solid #eaeaea;
+margin: -15px 0px 5px 0px;
+min-height: 35px;
+overflow: hidden;
+border-bottom-left-radius: 6px;
+border-bottom-right-radius: 6px;
 }
 div.item-list-tabs ul li.feed a {
 	background: url( ../images/rss.png ) center left no-repeat;
@@ -2525,7 +2540,13 @@ div.message-search {
 /*--------------------------------------------------------------
 6.9 - Extended Profiles
 --------------------------------------------------------------*/
-
+.profile{
+    padding:25px;
+    
+}
+.profile #subnav{
+    margin-bottom:-25px !important;
+}
 div.profile h4 {
 	margin-bottom: auto;
 	margin-top: 15px;
@@ -2585,6 +2606,30 @@ br + br { display: none; }
 	border-radius:5px;
 	margin-bottom:8px;
 }
+
+.dalvey-cup-member-profile h4{
+    color:#222;
+    padding:15px;
+    background: #FDF7AC;
+}
+
+#invite-anyone-by-email{
+    padding:25px;
+    margin-top:-20px;
+}
+
+.profile-buttons{
+    float:left;
+    position:relative;
+    margin-bottom:5px;
+    
+}
+#provatar{
+    position:relative;
+    float:left;
+    margin-left:-5px;
+    margin-bottom:-10px;
+}
 /*********
 BUDDY MEMBERS
 **********/
@@ -2598,7 +2643,7 @@ border-radius: 50%;
 -webkit-box-shadow: 0 1px 0 #fff;
 -moz-box-shadow: 0 1px 0 #fff;
 box-shadow: 0 1px 0 #fff;
-  margin-left:11%;
+  margin-left:15%;
   margin-bottom:5px;
 }
 #my-profile-button{display:none;visibility:hidden;}
@@ -2646,7 +2691,11 @@ margin-bottom: 8px;
 
 /***HOMEPAGE: sitewide activity****/
 .swa-rss{display:none;}
-
+.swa-activity-inner iframe{
+    width:98%;
+    height:210px;
+    
+}
 .homepage_activity{
 width:32%;
 position:relative;
@@ -2730,12 +2779,12 @@ margin: 0px 6px 10px -7px;
 }
 .homepage_news .listing-item{
     
-    background: rgba(34, 34, 34, 0.87);
+    background: rgba(0, 0, 0, 0.5);
     color: #999999;
 
 }
 .homepage_news h1{
-       background: rgba(34, 34, 34, 0.6);
+       background: rgba(0, 0, 0, 0.5);
     color: #B9B9B9;
     padding:5px;
     border-radius:2px;
@@ -2744,21 +2793,154 @@ margin: 0px 6px 10px -7px;
 /**hompage_event**/
 .homepage_event .listing-item{
     
-    background: rgba(77, 77, 77, 0.49);
-    color: #eaeaea;
+    background: rgba(27, 20, 13, 0.55);
+    color: #fff;
 }
 
 .homepage_event{
     width:32%;   
 }
 .homepage_event h1{
-        background: rgba(77, 77, 77, 0.49);
+        background: rgba(27, 20, 13, 0.55);
         padding:5px;
         border-radius:2px;
     color: #ccc}
 
 /*****Homepage Slider******/
 .homepage_slider{position:relative;clear:both;float:left;}
-.rslides, .flexslider, .nivoSlider{max-height:300px;max-width:625px;min-height: 300px;min-width: 600px;}
+.rslides, .flexslider, .nivoSlider, .metaslider-coin{max-height:300px;max-width:625px;min-height: 300px;min-width: 600px;}
 .clear_both{clear:both;}
 a.cs-active{background:#222 !important; box-shadow: grey !important; border-color: grey !important; }
+
+/*******Homepage Members*************/
+.homepage_members{
+    float:left;
+    position:relative;
+    height:300px;
+    width: 18%;
+    margin-left:20px;
+}
+.homepage_members .avatar{
+    width:50px !important;
+    height:50px !important;
+    
+}
+.homepage_members .vcard{
+    float:left;
+    
+}
+.homepage_members .activity, .homepage_members .fn{
+    display:none;
+}
+.homepage_members #members-list{
+    
+    margin-left:0px
+}
+.homepage_members .widgettitle{
+  width: 114%;
+  margin-left:-2px;
+margin-bottom: 10px;
+    
+}
+/*******Homepage Signup***************/
+.homepage_signup{
+      float:left;
+    position:relative;
+    height:300px;
+    width: 19%;
+    margin-left:20px;
+    
+}
+#home_login{
+    margin-top:12px;
+    
+}
+#signup_button{
+    height: 50px;
+width: 149px;
+border: none;
+background: rgba(20, 20, 20, 0.5);
+font-size: 25px;
+color: #fff;
+}
+
+.home_signup_box {
+    width:150px;
+    height:50px;
+    margin-top:20px;
+    background:rgba(20, 20, 20, 0.5);
+    position:relative;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+margin-bottom:-10px;
+}
+.home_signup_box:after {
+    content:'\A';
+ position:absolute;
+    right:-30px;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 30px solid rgba(18, 121, 34, 0.75);
+}
+.home_signup_box:before {
+content: '\A';
+position: absolute;
+right:-20px;
+width: 0;
+height: 0;
+border-top: 25px solid transparent;
+border-bottom: 25px solid transparent;
+border-left: 30px solid rgba(20, 20, 20, 0.5);
+    z-index:10;
+}
+.sp-widget-login-div, .sp-widget-register-div, .sp-widget-lost_pass-div{color:#fff}
+#lost{margin-left:6px}
+#logout_btn a{color:#666}
+
+/****events page*********/
+.page_feed{width:100% !important;padding:0; margin-left:-8px;}
+.page_feed .listing-item{color:#fff}
+.page_feed a.title{
+    font-size:18px;
+    color: #fff;
+}
+
+#respond{
+    background:rgba(250,250,250,0.12);
+    color:#fff;
+    border:none;
+    width:97%;
+}
+
+.form-allowed-tags{display:none;}
+#submit {
+background: #111 !important;
+}
+
+/*****ACTIVITY POST FORM************/
+h3#whats-new-title {color:#222; margin:5px 0 8px 0}
+.bpfb_form_container{
+    background-color:#eaeaea !important;
+    padding:15px !important;
+    border-top-right-radius:5px;
+    border-top-left-radius:5px;
+    margin-bottom:-4px;
+}
+.bpfb_actions_container{margin-left:30px;}
+.bpfb_toolbar_container, .bpfb_controls_container {
+margin-bottom: 20px;
+}
+#activity_sidebar{
+ 
+margin-top: 6%;
+margin-right:5%
+}
+.profile-button{margin-bottom:8px; margin-left:-5px;margin-right:7px;}
+.activity{padding:25px;}
+#avatar-upload input{margin-bottom:8px;}
+
+.member-lable{background:#f5f5f5}
+#members-dir-list .pagination{margin:-12px 0px 20px 0px !important;}
+h4.header-membernumber {color: #eaeaea; font-weight:bolder}

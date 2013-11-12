@@ -61,7 +61,7 @@ jq(document).ready( function() {
 				height:'40px'
 			});
 			jq("form#whats-new-form textarea").animate({
-				height:'20px'
+				height:'42px'
 			});
 			jq("#aw-whats-new-submit").prop("disabled", true);
 		}
