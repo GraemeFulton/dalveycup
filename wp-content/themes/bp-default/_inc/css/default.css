@@ -336,14 +336,14 @@ div#fourth ul.xoxo { margin-right: 0; }
 2.4 - Sidebar
 --------------------------------------------------------------*/
 div#sidebar {
-background:#eaeaea;
+background: #eaeaea;
 -moz-border-radius: 6px;
 -webkit-border-radius: 6px;
 border-radius: 6px;
 float: right;
-position: fixed;
-width: 14%;
-right:20%;
+position: relative;
+width: 20%;
+right: 6%;
 }
 
 div#sidebar div#sidebar-me {
