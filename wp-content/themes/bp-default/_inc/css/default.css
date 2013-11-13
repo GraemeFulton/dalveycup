@@ -170,6 +170,8 @@ z-index: 99999;
 background: rgba(0, 0, 0, 0.87) !important;
 }
 }
+
+
 .navbar-fixed-top { top: 0px; }
 .container {
 width: 100%;
@@ -2193,6 +2195,7 @@ table.forum p.topic-meta {
 }
 span.activity {
 	display: inline-block;
+        width:100px;
 	font-size: 11px;
 	opacity: 0.8;
 	padding: 1px 8px;
@@ -2808,9 +2811,91 @@ margin: 0px 6px 10px -7px;
 
 /*****Homepage Slider******/
 .homepage_slider{position:relative;clear:both;float:left;}
-.rslides, .flexslider, .nivoSlider, .metaslider-coin{max-height:300px;max-width:625px;min-height: 300px;min-width: 600px;}
 .clear_both{clear:both;}
 a.cs-active{background:#222 !important; box-shadow: grey !important; border-color: grey !important; }
+
+/*****Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) and (max-width:1815px) {
+    .rslides, .flexslider, .nivoSlider, .metaslider-coin{min-width:85%;max-width:85%;}
+
+    .metaslider {
+        max-width: 520px !important;
+        margin: 0;
+        margin-right: 0;
+        float: left;
+    }
+    .homepage_members {
+        width: 20% !important;
+        margin-left: -30px !important;
+    }
+}
+/***********************/
+/*****Square monitors, rotated tablets----------- */
+@media (min-width: 790px) and (max-width: 850px),(min-width: 840px) and (max-width: 858px),(min-height: 590px) and (max-height: 770px)   {
+        .rslides, .flexslider, .nivoSlider, .metaslider-coin{min-width:85%;max-width:85%;}
+
+    .metaslider {
+        max-width: 400px !important;
+        margin: 0;
+        margin-right: 0;
+        padding:0;
+        margin-left:-100px;
+        float: left;
+    }
+    .homepage_members {
+        
+       width: 30% !important;
+        margin-left: -40px !important;
+        
+    }
+    .homepage_slider{
+        margin-left:-19px;
+        margin-top:7.5%;
+    }
+        .homepage_signup {
+   width: 20% !important;
+margin-left: -15px!important;
+margin-top: -0px;
+    }
+    .home_signup_box:after {
+  display:none!important;
+}.home_signup_box:before {
+  display:none!important;
+}
+.home_signup_box{background:rgba(3, 71, 8, 0.5)!important;border-radius:5px;}
+    .homepage_activity {
+    width: 50%!important;
+    }
+    .homepage_event{
+    width: 50%!important;
+    }
+     .homepage_news{
+    width: 100%!important;
+    }
+    #container{width:100%!important;}
+    .swa-activity-inner iframe{
+    width:200px!important;  
+}
+.homepage_signup img.avatar{width:100px!important;height:100px!important;}
+#logout_btn{margin-top:8px;}
+#sidebar{width:26%!important;right:2%!important;}
+#sidebar .padder{padding:5px!important;}
+.activity-content {
+width: 69% !important;
+}
+#activity-stream .activity-content{width:80%!important;}
+#activity-stream .activity-content iframe{
+    width:350px;
+    height:250px;
+    
+}
+.members-loop li {
+width: 33%!important;
+margin: 0 0px 28px 0!important;
+}
+}
+/***********************/
 
 /*******Homepage Members*************/
 .homepage_members{
