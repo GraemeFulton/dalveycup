@@ -2829,10 +2829,17 @@ and (min-width : 1224px) and (max-width:1815px) {
         width: 20% !important;
         margin-left: -30px !important;
     }
+    #members-dir-list img.avatar {
+
+margin-left: 23%!important;
+
 }
-/***********************/
+.members-loop li {width:30% !important;}
+}
+
 /*****Square monitors, rotated tablets----------- */
-@media (min-width: 790px) and (max-width: 850px),(min-width: 840px) and (max-width: 858px),(min-height: 590px) and (max-height: 770px)   {
+@media (min-width: 790px) and (max-width: 850px),(min-width: 840px) and (max-width: 858px),
+(min-height: 590px) and (max-height: 770px), (width:768px)   {
         .rslides, .flexslider, .nivoSlider, .metaslider-coin{min-width:85%;max-width:85%;}
 
     .metaslider {
@@ -2894,8 +2901,18 @@ width: 69% !important;
 width: 33%!important;
 margin: 0 0px 28px 0!important;
 }
+
+
+
 }
-/***********************/
+
+@media (min-height: 310px) and (max-height: 330px){
+         .homepage_slider {
+margin-bottom: -0px !important;
+}
+    
+}
+
 
 /*******Homepage Members*************/
 .homepage_members{

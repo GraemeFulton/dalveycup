@@ -129,6 +129,10 @@ Hello, this is the BuddyPress Responsive theme stylesheet
 		width: 100%;
 		margin: 0;
 	}
+     
+       h3 {
+margin: 5px 0 52px 0 !important;
+}
 	#my-profile-button{display:inline; margin-bottom:20px;}
 	
 	#search-bar{margin-top: 25px;margin-left:-5px;}
@@ -465,3 +469,12 @@ height: 100px !important;
 		padding: 19px 10px;
 	}
 }
+/**********Tablet Avatars**************/
+@media (min-width: 530px) and (max-width: 608px){
+#members-dir-list img.avatar {
+
+margin-left: 37%!important;
+
+}
+}
+/**********************/
