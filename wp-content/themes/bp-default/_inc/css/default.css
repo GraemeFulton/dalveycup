@@ -1332,10 +1332,11 @@ body.activity-permalink li.mini .activity-meta {
 	padding: 0;
 }
 .activity-list .activity-content {
-	margin-left: 70px;
+	margin-left: 100px;
 	margin-bottom: 15px;
         background: #E2E1E1;
 border-radius: 5px;
+min-height: 84px;
 padding: 0px 15px 15px 15px;
 }
 .activity-list .activity-content:after{
