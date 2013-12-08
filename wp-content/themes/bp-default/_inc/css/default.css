@@ -2709,6 +2709,10 @@ border-radius:5px;
 color:#fff
 }
 
+.swa-wrap ul#activity-filter-links {
+display:none;
+}
+
 .homepage_activity p, .homepage_activity a{color:#fff}
 .homepage_activity .swa-activity-list .swa-activity-content span.time-since {
 color: #fff;
