@@ -400,7 +400,7 @@ class Pw_Login_Widget extends WP_Widget
 				?>
         <div class="item-avatar">'
      	<a href="<?php echo bp_loggedin_user_domain(); ?>">
-				<?php bp_loggedin_user_avatar( 'type=thumb&width=190&height=190' ); ?>
+				<?php bp_loggedin_user_avatar( 'type=large&width=190&height=190' ); ?>
 			</a>	
         <a id="home_login"class="button" href="<?php echo bp_loggedin_user_domain().'profile'?>">My Profile</a>&nbsp;
         <a id="home_login"class="button" href="<?php echo bp_loggedin_user_domain().'profile/change-avatar'?>">Change Avatar</a>
