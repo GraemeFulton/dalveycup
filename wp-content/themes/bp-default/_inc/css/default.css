@@ -2814,7 +2814,7 @@ homepage_members {
         overflow:hidden;
     }
 /*****Homepage Slider******/
-.homepage_slider{position:relative;clear:both;}
+.homepage_slider{position:relative;clear:both;float:left;}
 .clear_both{clear:both;}
 a.cs-active{background:#222 !important; box-shadow: grey !important; border-color: grey !important; }
 
