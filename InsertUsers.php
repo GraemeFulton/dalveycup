@@ -60,9 +60,9 @@ $user_email='change@email.com';
 $user_url='';
 
 echo "<b>Member ID</b>: ".$user_id."<br><b>Login ID</b>: ".$user_login."<br> ";
-echo "<br>dn: ".$display_name." userid: ".$user_id." nicename: ".$user_nicename." loginwith: ".$user_login." <br>";
+//echo "<br>dn: ".$display_name." userid: ".$user_id." nicename: ".$user_nicename." loginwith: ".$user_login." <br>";
 
-insertUser($wpdb,$user_id,$user_login ,$user_pass ,$user_email ,$user_url ,$user_nicename,$display_name  );
+//insertUser($wpdb,$user_id,$user_login ,$user_pass ,$user_email ,$user_url ,$user_nicename,$display_name  );
 }
 
 
