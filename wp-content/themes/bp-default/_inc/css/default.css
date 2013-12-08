@@ -2925,6 +2925,7 @@ margin-bottom: -0px !important;
     height:300px;
     width: 18%;
     margin-left:20px;
+    overflow:hidden !important;
 }
 .homepage_members .avatar{
     width:50px !important;
