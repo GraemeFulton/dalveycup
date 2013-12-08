@@ -2809,10 +2809,6 @@ margin: 0px 6px 10px -7px;
         border-radius:2px;
     color: #ccc}
 
-homepage_members {
-       
-        overflow:hidden;
-    }
 /*****Homepage Slider******/
 .homepage_slider{position:relative;clear:both;float:left;}
 .clear_both{clear:both;}
@@ -2832,6 +2828,7 @@ and (min-width : 1224px) and (max-width:1815px), (height:768px) {
     .homepage_members {
         width: 20% !important;
         margin-left: -30px !important;
+        overflow:hidden;
     }
     #members-dir-list img.avatar {
 
