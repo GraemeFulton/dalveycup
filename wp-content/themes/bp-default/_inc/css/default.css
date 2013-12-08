@@ -2724,7 +2724,12 @@ color:#fff;
 background: rgba(250, 250, 250, 0.15);
 padding:10px;
     border-radius:5px;
-    
+}
+div.swa-activity-comments {
+
+background: rgba(250, 250, 250, 0.15);
+padding:10px;
+    border-radius:5px;
 }
 
 #Homepage_Activity li{
