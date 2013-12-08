@@ -847,6 +847,8 @@ div#pag-bottom {
 #comments ol.commentlist {
 	border-bottom: 1px solid #e4e4e4;
 	margin: 0 0 30px 0;
+        background: #eaeaea;
+padding: 10px;
 }
 #comments ol.commentlist ol {
 	list-style-type: decimal;
