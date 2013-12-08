@@ -307,11 +307,11 @@ a.cs-active{background:#222 !important; box-shadow: grey !important; border-colo
 .activity{padding:5px !important;}
 
 .activity-list li .activity-content {
-    position: relative;
-    width: 80% !important;
-    border-radius:5px;
-    padding:10px;
-    margin-left: 45px !important;
+   position: relative;
+width: 72% !important;
+border-radius: 5px;
+padding: 10px;
+margin-left: 72px !important;
 }
 
 .activity-list .activity-content .activity-inner, .activity-list .activity-content blockquote {
