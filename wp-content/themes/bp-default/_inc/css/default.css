@@ -2727,10 +2727,16 @@ padding:10px;
 }
 div.swa-activity-comments {
 
-background: rgba(250, 250, 250, 0.15);
 padding:10px;
     border-radius:5px;
 }
+
+div.swa-activity-comments ul li {
+background: rgba(250, 250, 250, 0.15);
+padding: 5px 5px 5px 5px;
+margin-right: -20px;
+}
+
 div.swa-activity-comments > ul {
     background:transparent !important;
     
