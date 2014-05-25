@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Pixel Jar BuddyPress Honeypot
-Plugin URI: http://pixeljar.net/buddypress-honeypot
-Description: Simple plugin to add a honeypot to the BuddyPress registration form to prevent spam registrations.
+Plugin Name: Secret Passcode
+Plugin URI: http://gfulton.me.uk
+Description: Simple plugin to add a honeypot passcode to the BuddyPress registration form to prevent spam registrations.
 Version: 1.1
-Author: Pixel Jar
-Author URI: http://pixeljar.net
+Author: Gray
+Author URI: http://gfulton.me.uk
 */
 
 /**
@@ -35,13 +35,6 @@ load_plugin_textdomain( 'pj-buddypress-honeypot', null, basename( dirname( __FIL
 
 class secret_passcode {
 
-	/**
-	 * default values for the honeypot
-	 * change these via filters if you
-	 * start getting spam registrations
-	 */
-	CONST BPPJ_HONEYPOT_NAME	= 'oh_no_you_dint';
-	CONST BPPJ_HONEYPOT_ID		= 'sucka';
 	
 	define('SECRET_PASSCODE', 'est1897');
 
