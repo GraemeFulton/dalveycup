@@ -839,6 +839,7 @@ function url_shortcode()
 }
 add_shortcode('url','url_shortcode');
 
+			do_action( 'bp_secret_reg_code_errors' );
 ?>
 
 
