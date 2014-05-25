@@ -1258,9 +1258,7 @@ body.no-js #whats-new-options {
 	-webkit-box-shadow: 0 0 7px rgba(31, 179, 221, 0.7);
 }
 
-/*--------------------------------------------------------------
-6.1.1 - Activity Listing
---------------------------------------------------------------*/
+
 ul.activity-list li {
 	overflow: hidden;
 	padding: 15px 0 0;
@@ -2865,7 +2863,7 @@ and (min-width : 1224px) and (max-width:1815px), (height:768px) {
 #mods-list li,
 #members-list li {
 	overflow: auto;
-	width:25%;
+	width:25% !important;
 }	
 	
 }
