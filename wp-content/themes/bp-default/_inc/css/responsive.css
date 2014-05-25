@@ -136,6 +136,11 @@ Hello, this is the BuddyPress Responsive theme stylesheet
 	width:100%;
 
 }
+.members-loop#members-list li {
+	overflow: auto;
+	width:100% !important;
+
+}
        h3 {
 margin: 5px 0 52px 0 !important;
 }
