@@ -57,8 +57,10 @@ class secret_passcode {
 		<p>What's the secret answer? If you don't know it, ask an existing Dalvey Cup Member</p>
 
     <label for="secret_reg_code">Secret Code</label>
-    <?php do_action( 'bp_secret_reg_code_errors' ) ?>
-    <input type="text" name="secret_reg_code" id="secret_reg_code" class="input" value="" size="15" />
+    <?php do_action( 'bp_secret_reg_code_errors' );
+    $secret="";
+    if($_POST['secret_reg_code']){$secret= $_POST['secret_reg_code']} ;?>
+    <input type="text" name="secret_reg_code" id="secret_reg_code" class="input" value="$secret" size="15" />
 
     </div>
     <?php
