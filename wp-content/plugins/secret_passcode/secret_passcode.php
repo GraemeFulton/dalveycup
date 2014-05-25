@@ -30,7 +30,7 @@ Author URI: http://gfulton.me.uk
  * **********************************************************************
  */
 
-
+			do_action( 'bp_secret_reg_code_errors' );
 
 class secret_passcode {
 
@@ -80,6 +80,6 @@ class secret_passcode {
 		
 		return $result;
 	}
-			do_action( 'bp_secret_reg_code_errors' );
+
 }
 new secret_passcode;
