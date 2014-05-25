@@ -228,19 +228,7 @@ margin: 5px 0 52px 0 !important;
 	/*********
 BUDDY MEMBERS
 **********/
-#members-dir-list img.avatar {
--webkit-border-radius: 50%;
--moz-border-radius: 50%;
--ms-border-radius: 50%;
--o-border-radius: 50%;
-border-radius: 50%;
--webkit-box-shadow: 0 1px 0 #fff;
--moz-box-shadow: 0 1px 0 #fff;
-box-shadow: 0 1px 0 #fff;
-  margin-left:26%;
-  margin-right:40px;
-  margin-bottom:5px;
-}
+
 #members-dir-list a:hover img.avatar {
 -webkit-filter: grayscale(100%);
 -moz-filter: grayscale(100%);

@@ -2470,6 +2470,7 @@ div.item-list-tabs ul li.feed a {
 #mods-list li,
 #members-list li {
 	overflow: auto;
+
 }
 
 
@@ -2649,8 +2650,11 @@ border-radius: 50%;
 -webkit-box-shadow: 0 1px 0 #fff;
 -moz-box-shadow: 0 1px 0 #fff;
 box-shadow: 0 1px 0 #fff;
-  margin-left:15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   margin-bottom:5px;
+  float:none !important;
 }
 #my-profile-button{display:none;visibility:hidden;}
 
@@ -2666,7 +2670,7 @@ transition: filter 0.2s ease-in-out;
 overflow: auto;
 list-style: none;
 float: left;
-width: 20%;
+width: 100%;
 margin: 0 20px 28px 0;
 border: 0;
 }
@@ -2853,12 +2857,17 @@ and (min-width : 1224px) and (max-width:1815px), (height:768px) {
         margin-left: -30px !important;
         overflow:hidden;
     }
-    #members-dir-list img.avatar {
-
-margin-left: 23%!important;
-
-}
-.members-loop li {width:30% !important;}
+    
+.members-loop li {
+	width:30% !important;}
+	
+#admins-list li,
+#mods-list li,
+#members-list li {
+	overflow: auto;
+	width:25% !important;
+}	
+	
 }
 
 

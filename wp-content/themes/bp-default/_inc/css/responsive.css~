@@ -1,0 +1,497 @@
+/*--------------------------------------------------------------
+Hello, this is the BuddyPress Responsive theme stylesheet
+
+----------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 - iPad
+	1.1 - Landscape
+	1.2 - Portrait
+2.0 - Smartphone
+3.0 - iPhone
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.1 - iPad Landscape
+--------------------------------------------------------------*/
+@media only screen and (max-width: 768px) {
+	html {
+		background-color: #eaeaea;
+	}
+	body {
+		margin-top: -28px !important;
+		background: #eaeaea;
+	}
+	#wpadminbar {
+		display: none;
+	}
+	div#content .padder {
+		margin-right: 0;
+		width: auto;
+		float: none;
+		border: none;
+	}
+	div#sidebar {
+		width: auto;
+		float: none;
+		margin: 2em 0 0 0;
+		border: none;
+		display:none;
+	}
+	ul#nav {
+		padding-bottom: 1em;
+	}
+	ul#nav li {
+		width: 46%;
+		margin-bottom: 1em;
+		margin-right: 0;
+	}
+	ul#nav li:nth-child(even) {
+		margin-left: 3%;
+		margin-right: 0;
+	}
+	ul#nav li a {
+		-moz-border-radius: 0.25em;
+		-webkit-border-radius: 0.25em;
+		border-radius: 0.25em;
+		margin-bottom: 0;
+	}
+	.wp-caption {
+		width: 99% !important;
+	}
+	.entry {
+		width: 100%;
+	}
+	.entry img {
+		max-width: 100%;
+		height: auto;
+	}
+	.wp-caption img {
+		max-width: 99%;
+		height: auto;
+	}
+	#footer-widgets {
+		padding: 19px 10px;
+	}
+}
+
+
+/*--------------------------------------------------------------
+1.2 - iPad Portrait
+--------------------------------------------------------------*/
+/*@media only screen and (max-width: 640px) {
+	div.dir-search {
+		float: none;
+		margin: 1.25em 0 0;
+	}
+	ul.item-list li div.action {
+		padding-left: 64px;
+		position: relative;
+		right: auto;
+		text-align: left;
+		top: 1em;
+		margin-bottom: 1.25em;
+	}
+	.wp-caption {
+		width: 99% !important;
+	}
+	.entry {
+		width: 100%;
+	}
+	.entry img {
+		max-width: 100%;
+		height: auto;
+	}
+	.wp-caption img {
+		max-width: 99%;
+		height: auto;
+	}
+	#footer-widget-area div.widget-area > ul {
+		float: left;
+		width: 100%;
+	}
+	#footer-widgets {
+		padding: 19px 10px;
+	}
+}*/
+
+
+/*--------------------------------------------------------------
+2.0 - Smartphone (any)
+--------------------------------------------------------------*/
+@media screen and (max-device-width: 480px), screen and (-webkit-min-device-pixel-ratio: 2) {
+	
+}
+
+@media only screen and (max-width: 640px) {
+	body 
+        {
+		width: 100%;
+		margin: 0;
+	}
+   
+       h3 {
+margin: 5px 0 52px 0 !important;
+}
+	#my-profile-button{display:inline; margin-bottom:20px;}
+	
+	#search-bar{margin-top: 25px;margin-left:-5px;}
+	#login-widget{
+	float:left;
+	background:#eaeaea;
+	color:#222;
+	padding:20px;
+	border-radius:5px;
+	margin-bottom:8px;
+}
+	
+
+	#container {
+		border: none;
+		width:94%;
+	}
+	.homepage_activity{
+	width:100%;
+	}
+	div#content{
+	width:94%;
+	}
+	div#container{width:100%}
+	div.item-list-tabs ul li {
+		float: none;
+		margin: 0.3em 0.6em;
+		background:none;
+	}
+	div.item-list-tabs ul li.last {
+		float: none;
+		margin: 0.3em 0.6em;
+	}
+	div#subnav.item-list-tabs ul li.last {
+		margin-top: 1em;
+	}
+	div.item-list-tabs ul li.selected,
+	div.item-list-tabs ul li.current {
+		margin: 0.3em 0.6em;
+	}
+	div.item-list-tabs ul li.selected a,
+	div.item-list-tabs ul li.current a {
+		background: #eee;
+		font-weight: bold;
+	}
+	div.item-list-tabs ul li:first-child {
+		margin: 0.6em 0.6em 0.5em 0.6em;
+	}
+	div.item-list-tabs ul li a,
+	div.item-list-tabs ul li span {
+		padding: 0.3em;
+	}
+	div#subnav ul {
+		padding-top: 0.6em;
+	}
+	div.pagination {
+		padding: 0.6em;
+	}
+	div.item-list-tabs ul {
+		border-top: 1px solid #EAEAEA;
+		padding-top: 0;
+	}
+	div.item-list-tabs ul li {
+		margin-top: 0;
+	}
+	form.standard-form #basic-details-section,
+	form.standard-form #blog-details-section,
+	form.standard-form #profile-details-section {
+		float: none;
+		width: 100%;
+	}
+ 	.wp-caption {
+		width: 99% !important;
+ 	}
+ 	.entry {
+		width: 100%;
+ 	}
+ 	.entry img {
+		max-width: 100%;
+		height: auto;
+ 	}
+ 	.wp-caption img {
+		max-width: 99%;
+		height: auto;
+ 	}
+	#footer-widget-area div.widget-area > ul {
+		float: left;
+		width: 100%;
+	}
+	#footer-widgets {
+		padding: 19px 10px;
+	}
+	/*********
+BUDDY MEMBERS
+**********/
+#members-dir-list img.avatar {
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+-ms-border-radius: 50%;
+-o-border-radius: 50%;
+border-radius: 50%;
+-webkit-box-shadow: 0 1px 0 #fff;
+-moz-box-shadow: 0 1px 0 #fff;
+box-shadow: 0 1px 0 #fff;
+
+  margin-right:40px;
+  margin-bottom:5px;
+}
+#members-dir-list a:hover img.avatar {
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+filter: grayscale(100%);
+-webkit-transition: -webkit-filter 0.2s ease-in-out;
+-moz-transition: -moz-filter 0.2s ease-in-out;
+transition: filter 0.2s ease-in-out;
+}
+.members-loop li {
+overflow: auto;
+list-style: none;
+float: left;
+width: 100%;
+margin: 0 0px 0px 0;
+border: 0;
+}
+.member-meta, .item-title a
+ {
+width: 100%;
+text-align: center;
+}
+.members-loop .item>.item-title{width:100% !important; text-align:center}
+
+.member-meta, .members-loop .item>.item-title a {
+font-size: 110%;
+text-transform: uppercase;
+color: beige;
+font-weight: bold;
+}
+
+.member-meta {
+text-transform: uppercase;
+font-size: 80%;
+}
+
+.member-meta {
+margin-bottom: 8px;
+}
+
+/*****Homepage Slider******/
+.homepage_slider{position:relative;clear:both;float:left;}
+.rslides, .flexslider, .nivoSlider, .metaslider-coin{max-height:150px !important;max-width:100%!important;min-height: 150px!important;min-width: 100%!important;}
+.clear_both{clear:both;}
+a.cs-active{background:#222 !important; box-shadow: grey !important; border-color: grey !important; }
+.flex-control-nav{display:none;}
+.homepage_slider{margin-bottom:-60px;}
+.homepage_signup{display:none;}
+.homepage_members{display:none;}
+
+/*********Homepage Feed****************/
+.homepage_feed{width:104.75%;}
+
+/***********Activity Page*********************/
+
+.activity-content{
+    width:98% !important;
+    border-radius:6px;
+    margin-top:10px;
+    margin-bottom:20px;
+    margin-left:3px !important;
+    margin-left:5px;
+    margin-right:5px;
+}
+.activity{padding:5px !important;}
+
+.activity-list li .activity-content {
+   position: relative;
+width: 72% !important;
+border-radius: 5px;
+padding: 10px;
+margin-left: 72px !important;
+}
+
+.activity-list .activity-content .activity-inner, .activity-list .activity-content blockquote {
+    margin: 10px 0px 5px 0 !important;
+    overflow: hidden;
+}
+
+ul.item-list.activity-list li {
+    padding-bottom: 0;
+    width: 95%;
+
+}
+div.swa-activity-comments {
+
+position: relative;
+margin: 0 0 0 25px;
+width: auto;
+overflow: hidden;
+
+}
+.activity-list .activity-content:after{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 20px 15px 0;
+    border-color: transparent #E2E1E1;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -20px;
+    top: 30px;
+}
+ul#activity-stream.item-list li div.activity-avatar {
+    margin-top: 45px;
+}
+.activity-content iframe{
+    width:98%;
+    height:210px;
+    
+}
+.button{margin-bottom:8px}
+div.activity-comments {
+    margin: 0 0 0 0px;
+}
+.feed{display:none;}
+
+.activity-type-tabs{line-height:12px}
+
+.bpfb_actions_container {
+margin-left: 0px;
+}
+/****Pages***********/
+.page_feed {
+width: 104.75% !important;
+padding: 0;
+margin-left: -10px;
+}
+div.page, div.post, div.attachment {
+margin: 0 0 15px 0;
+overflow: visible;
+}
+
+
+#respond {
+width: 104%;
+}
+#my-profile-button{display:inline; visibility: visible;}
+
+#main_search {
+margin-top: -14px;
+margin-left: 5px;
+margin-bottom: 14px;
+}
+textarea.invite-anyone-email-addresses {
+width: 150px !important;
+height: 100px !important;
+}
+
+#invite-anyone-custom-subject {
+width: 150px !important;
+height: 80px !important;
+}
+#invite-anyone-custom-message {
+width: 150px !important;
+height: 100px !important;
+}
+
+}
+
+
+/*--------------------------------------------------------------
+3.0 - iPhone
+--------------------------------------------------------------*/
+@media only screen and (max-width: 320px) {
+	ul#nav li {
+		float: none;
+		width: 100%;
+		margin-bottom: 0.6em;
+		margin-right: 0;
+		margin-left: 0;
+	}
+	ul#nav li:nth-child(even) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	ul#nav li a {
+		-moz-border-radius: 0.25em;
+		-webkit-border-radius: 0.25em;
+		border-radius: 0.25em;
+		margin-bottom: 0;
+	}
+	form#groups-directory-form h3 a {
+		display: block;
+		margin-top: 0.6em;
+	}
+	div.post div.author-box,
+	div.comment-avatar-box {
+		display: none;
+	}
+	div.post div.post-content,
+	div.comment-content {
+		margin-left: 0px;
+	}
+	form#whats-new-form div#whats-new-avatar {
+		display:none;
+	}
+	form#whats-new-form h5 {
+		margin: 0 0 0 0px;
+	}
+	form#whats-new-form #whats-new-content {
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+	
+	body.activity-permalink .activity-list li .activity-content {
+		margin-left: 0;
+	}
+	body.activity-permalink .activity-list li.mini .activity-meta {
+		left: 0;
+	}
+ 	div.post .entry {
+		width: 100%;
+ 	}
+ 	.wp-caption {
+		width: 99%!important;
+ 	}
+ 	.entry {
+		width: 100%;
+ 	}
+ 	.entry img {
+		width: 100%;
+		height: auto;
+ 	}
+ 	.wp-caption img {
+		width: 99%;
+		height: auto;
+ 	}
+ 	#footer-widget-area div.widget-area > ul {
+		float: left;
+		width: 100%;
+ 	}
+ 	#footer-widgets {
+		padding: 19px 10px;
+	}
+}
+/**********Tablet Avatars**************/
+@media (min-width: 530px) and (max-width: 608px){
+#members-dir-list img.avatar {
+
+margin-left: 37%!important;
+
+}
+}
+/**********************/
+
+/* ipad Mini Portrait */
+@media only screen and (width:768px) and (resolution: 163dpi) {
+ 
+}
+/* ipad Mini Landscape */
+@media only screen and (width:1024px) and (resolution: 163dpi) {
+ 
+}
