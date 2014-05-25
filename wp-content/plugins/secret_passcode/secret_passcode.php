@@ -75,11 +75,11 @@ class secret_passcode {
 		if(($_POST['secret_reg_code']) != 'est1897'){
 			$result['errors']->add( 'secret_reg_code', apply_filters( 'secret_passcode_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
 			$bp->signup->errors['secret_reg_code'] = __( 'The Dalvey Cup Secret Passcode you entered is incorrect.', 'buddypress' );
-			do_action( 'bp_secret_reg_code_errors' );
+
 		}
 		
 		return $result;
 	}
-
+			do_action( 'bp_secret_reg_code_errors' );
 }
 new secret_passcode;
