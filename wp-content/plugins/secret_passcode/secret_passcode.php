@@ -55,10 +55,10 @@ class secret_passcode {
 		<div class="register-section" id="profile-details-section" style="float:left">
 		<h2>Enter Dalvey Cup Secret Code</h2>
 		<p>What's the secret answer? If you don't know it, ask an existing Dalvey Cup Member</p>
-    <p>
+
     <label for="secret_reg_code">Secret Code</label>
     <input type="text" name="secret_reg_code" id="secret_reg_code" class="input" value="" size="15" />
-    </p>
+
     </div>
     <?php
 	}
@@ -73,7 +73,7 @@ class secret_passcode {
 	function check_secret_passcode( $result = array() ) {
 		global $bp;
 		if(($_POST['secret_reg_code']) != 'est1897'){
-			$result['errors']->add( 'secret_passcode', apply_filters( 'secret_passcode_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
+			$result['errors']->add( 'secret_reg_code', apply_filters( 'secret_passcode_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
 			$bp->signup->errors['secret_reg_code'] = __( 'The Dalvey Cup Secret Passcode you entered is incorrect.', 'buddypress' );
 		}
 		
