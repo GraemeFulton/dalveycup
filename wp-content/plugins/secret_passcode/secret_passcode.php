@@ -30,8 +30,6 @@ Author URI: http://gfulton.me.uk
  * **********************************************************************
  */
 
-			do_action( 'bp_secret_reg_code_errors' );
-
 class secret_passcode {
 
 	
@@ -52,11 +50,12 @@ class secret_passcode {
 	 */
 	function add_secret_passcode() {
 		?>
-		<div class="register-section" id="profile-details-section" style="float:left">
+		<div style="float:left">
 		<h2>Enter Dalvey Cup Secret Code</h2>
 		<p>What's the secret answer? If you don't know it, ask an existing Dalvey Cup Member</p>
 
     <label for="secret_reg_code">Secret Code</label>
+    <?php do_action( 'bp_secret_reg_code_errors' ) ?>
     <input type="text" name="secret_reg_code" id="secret_reg_code" class="input" value="" size="15" />
 
     </div>
