@@ -73,8 +73,8 @@ class secret_passcode {
 	function check_secret_passcode( $result = array() ) {
 		global $bp;
 		echo "<h1>gjeiao</h1>";
-		if(trim($_POST['secret_reg_code']) != 'est1897'){
-
+		if(($_POST['secret_reg_code']) != 'est1897'){
+		echo "<h1>nope!</h1>";
 			$result['errors']->add( 'secret_passcode', apply_filters( 'secret_passcode_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
 
 		}
