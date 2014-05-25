@@ -1,5 +1,19 @@
 <?php
 
+function printOptionsPageHeader( $insSection = '' ) {
+	$sLinkedIcwp = '<a href="http://icwp.io/3a" target="_blank">iControlWP</a>';
+	echo '<div class="page-header">';
+	echo '<h2><a id="pluginlogo_32" class="header-icon32" href="http://icwp.io/2k" target="_blank"></a>';
+	$sBaseTitle = sprintf( 'Twitter Bootstrap Plugin (from %s)', $sLinkedIcwp );
+	if ( !empty($insSection) ) {
+		echo sprintf( '%s :: %s', $insSection, $sBaseTitle );
+	}
+	else {
+		echo $sBaseTitle;
+	}
+	echo '</h2></div>';
+}
+
 function getIsHexColour($insColour) {
 	return preg_match( '/^#[a-fA-F0-9]{3,6}$/', $insColour );
 }
@@ -12,8 +26,7 @@ function printAllPluginOptionsForm( $inaAllPluginOptions, $insVarPrefix = '', $i
 
 	$iRowWidth = 8; //8 spans.
 	$iOptionWidth = $iRowWidth / $iOptionsPerRow;
-	$sOptionValue;
-	
+
 	//Take each Options Section in turn
 	foreach ( $inaAllPluginOptions as $sOptionSection ) {
 		
@@ -74,7 +87,7 @@ function printAllPluginOptionsForm( $inaAllPluginOptions, $insVarPrefix = '', $i
 
 function getPluginOptionSpan( $inaOption, $iSpanSize, $insVarPrefix = '' ) {
 	
-	list( $sOptionKey, $sOptionSaved, $sOptionDefault, $mOptionType, $sOptionHumanName, $sOptionTitle, $sOptionHelpText ) = $inaOption;
+	list( $sOptionKey, $sOptionSaved, $sOptionDefault, $mOptionType, $sOptionHumanName, $sOptionTitle, $sOptionHelpText ) = array_pad( $inaOption, 7, 0 );
 	
 	if ( $sOptionKey == 'spacer' ) {
 		$sHtml = '

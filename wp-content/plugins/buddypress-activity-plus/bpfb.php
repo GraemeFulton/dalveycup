@@ -3,13 +3,14 @@
 Plugin Name: BuddyPress Activity Plus
 Plugin URI: http://premium.wpmudev.org/project/media-embeds-for-buddypress-activity
 Description: A Facebook-style media sharing improvement for the activity box.
-Version: 1.5
-Author: Ve Bailovity (Incsub), designed by Brett Sirianni (The Edge)
+Version: 1.6
+Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 WDP ID: 232
 
 Copyright 2009-2011 Incsub (http://incsub.com)
-
+Author - Ve Bailovity (Incsub)
+Designed by Brett Sirianni (The Edge)
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
 the Free Software Foundation.
@@ -53,11 +54,9 @@ if (is_multisite() && defined('WPMU_PLUGIN_URL') && defined('WPMU_PLUGIN_DIR') &
 $textdomain_handler('bpfb', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/');
 
 // Override oEmbed width in wp-config.php
-if (!defined('BPFB_OEMBED_WIDTH')) define('BPFB_OEMBED_WIDTH', 450, true);
-
+//if (!defined('BPFB_OEMBED_WIDTH')) define('BPFB_OEMBED_WIDTH', 450, true); // Don't define by default
 // Override image limit in wp-config.php
 if (!defined('BPFB_IMAGE_LIMIT')) define('BPFB_IMAGE_LIMIT', 5, true);
-
 // Override link target preference in wp-config.php
 if (!defined('BPFB_LINKS_TARGET')) define('BPFB_LINKS_TARGET', false, true);
 
@@ -74,6 +73,9 @@ define('BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/', true);
 require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_installer.php';
 register_activation_hook(__FILE__, array('BpfbInstaller', 'install'));
 BpfbInstaller::check();
+
+// Require the data wrapper
+require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_data.php';
 
 if (file_exists(BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php')) require_once BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php';
 
@@ -108,6 +110,10 @@ function bpfb_plugin_init () {
 	// Group Documents integration
 	if (defined('BP_GROUP_DOCUMENTS_IS_INSTALLED') && BP_GROUP_DOCUMENTS_IS_INSTALLED) {
 		require_once(BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php');
+	}
+	if (is_admin()) {
+		require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_admin_pages.php';
+		Bpfb_Admin::serve();
 	}
 	do_action('bpfb_init');
 	BpfbBinder::serve();

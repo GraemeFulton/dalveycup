@@ -2,8 +2,8 @@
 Contributors: printfriendly,joostdevalk, jrf
 Tags: print, pdf, printer, printing, printable, widget, plugin
 Requires at least: 2.8
-Tested up to: 3.7
-Stable tag: 3.3.4
+Tested up to: 3.9
+Stable tag: 3.3.8
 
 
 The #1 Print and PDF button for your WordPress site. Printer Friendly pages without coding, css, or print.css. Fast, easy, and professional.
@@ -67,6 +67,47 @@ PrintFriendly and PDF is the #1 print optimization technology, **as featured in 
 
 **Give PrintFriendly & PDF a test drive at [PrintFriendly.com](http://www.printfriendly.com "PrintFriendly & PDF")**
 
+
+= Free - Ad Supported = 
+
+This highly polished, professional plugin is free to use and fully functional. We maintain, improve, and offer support to all users. 
+
+You get all this for free, and in return tasteful ads are displayed in a non-interfering way.
+
+Ads are only shown in the email confirmation window. No other ads are displayed or embedded in the content, or snuck in anywhere else.
+
+For example, [click here to see image](http://www.printfriendly.com/images/pf-free-ad-supported.gif)
+
+
+= Purchase an Ad-Free Subscription = 
+
+Get a quality product for reasonable price. Remove the ads by purchasing an ad-free subscription. It’s cheap, easy, and straightforward. 
+
+Your ad-free subscription applies to this email plugin, and our popular PrintFriendly & PDF plugin. 
+
+Purchase now at [PrintFriendly.com/pro](http://printfriendly.com/pro)
+
+= Privacy & Data = 
+
+PDFs are generated on our server; ** this plugin “phones home” **.  Also if the end-user shares the page via email, the email is sent by our server. 
+
+Our Fundamental Principles: 
+
+* **We do not sell data.** Period.
+* **We do not share data,** unless compelled by the law.
+* **We do not ask for personal information,** unless it's needed to provide a service.
+* **We don’t store personal information,**  unless required for the on-going operation of service.
+
+Specifically, here’s what we do with the data and information:
+
+**Page content is not sent or stored on server,** except to generate the PDF. After the PDF is generated, we temporarily store the PDF to allow the end-user time to download. After this time has expired, the PDF is permanently deleted.
+
+If you’re using the non-JavaScript option in the plugin, then the preview is generated on our server and temporarily stored in cache for a few minutes. After that time it is permanently deleted.
+
+**Email Address & Content get permanently deleted** In order to send the email, we need to store the email address and message on our server. After the email has been sent and found not to be a spammer, the email address is permanently deleted. 
+
+**Server log files get created and deleted.** Browsers and Servers pass non-personally-identifying information, such as the browser type, language, referrer, and the date/time. We may use this data to analyze how the service is being used. Non-personally-identifying aggregate data may get published, e.g., by a report on trends in the usage of the service.
+
 == Installation ==
 
 1. Search for PrintFriendly in your WordPress backend and click install, or download the printfriendly.zip file and unzip it.
@@ -98,6 +139,19 @@ If you have any other issues with the plugin or the PrintFriendly widget, please
 3. Localization example: Spanish
 
 == Changelog ==
+
+= 3.3.8 =
+* Shortcode bug fix
+* Urlencoded button href to produce valid html
+
+= 3.3.7 = 
+* Readme.txt update
+
+= 3.3.6 =
+* Fixed JS optimization Bug
+
+= 3.3.5 =
+* Wordpress 3.8 support
 
 = 3.3.4 =
 * Provided Algorithm Options

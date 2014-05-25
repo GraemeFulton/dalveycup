@@ -113,11 +113,15 @@ class ICWP_WptbProcessor {
 			$this->addCustomCssLink( $aIncludesList );
 			return $aIncludesList;
 		}
+		
+		// Clears the CSS Includes cache if necessary. This accounts for the time where CDNJS library isn't available for
+		// new releases and we work with local copies until then.
+		$this->m_oWptbOptions->maybeClearIncludesCache();
+		
 		// We save the inclusions list so we don't work it out every page load.
 		$aIncludesList = $this->m_oWptbOptions->getOpt( 'includes_list' );
 
-		if ( !is_array($aIncludesList) ) { //process the list of CSS to be included
-
+		if ( !is_array( $aIncludesList ) ) { //process the list of CSS to be included
 			$aIncludesList = array();
 
 			// 'twitter', 'twitter-legacy', 'yahoo-reset', 'yahoo-reset-3', 'normalize'
@@ -125,11 +129,13 @@ class ICWP_WptbProcessor {
 				case 'normalize':
 					if ( $this->m_oWptbOptions->getOpt( 'use_cdnjs' ) == 'Y' ) {
 						// cdnjs.cloudflare.com/ajax/libs/normalize/2.0.1/normalize.css
-						$aIncludesList = array( 'normalize' => self::CdnjsStem.'normalize/'.ICWP_OptionsHandler_Wptb::NormalizeVersion.'/normalize.css' );
+						$sCdnUrl = self::CdnjsStem.'normalize/'.ICWP_OptionsHandler_Wptb::NormalizeVersion.'/normalize.css';
+						if ( $this->isUrlResourceValid( 'http:'.$sCdnUrl ) ) {
+							$aIncludesList = array( 'normalize' => $sCdnUrl );
+							break;
+						}
 					}
-					else {
-						$aIncludesList = array( 'normalize' => $this->getCssURL( 'normalize.css' ) . '?ver='.ICWP_OptionsHandler_Wptb::NormalizeVersion );
-					}
+					$aIncludesList = array( 'normalize' => $this->getCssURL( 'normalize.css' ) . '?ver='.ICWP_OptionsHandler_Wptb::NormalizeVersion );
 					break;
 				case 'yahoo-reset':
 					$aIncludesList = array( 'yahoo-reset-290' => $this->getCssURL( 'yahoo-2.9.0.min.css' ) );
@@ -152,6 +158,7 @@ class ICWP_WptbProcessor {
 	
 	public function updateIncludesCache( $inaIncludesList = false ) {
 		$this->m_oWptbOptions->setOpt( 'includes_list', $inaIncludesList ); //update our cached list
+		$this->m_oWptbOptions->setOpt( 'css_cache_expire', time() );
 	}
 	
 	/**
@@ -174,33 +181,34 @@ class ICWP_WptbProcessor {
 			}
 		}
 
+		$sTwitterStem = $this->getBootstrapUrl( 'css/bootstrap' ).$sCssFileExtension; // default is to serve it "local"
 		// Determine the Twitter URL stem based on local or if CDNJS selected
 		if ( $this->m_oWptbOptions->getOpt( 'use_cdnjs' ) == 'Y' ) {
-			$sTwitterStem = self::CdnjsStem.'twitter-bootstrap/%s/css/bootstrap';
-			$sTwitterStem = sprintf( $sTwitterStem, $this->getTwitterBootstrapVersion() );
+			$sTwitterCdnStem = '%stwitter-bootstrap/%s/css/bootstrap%s';
+			$sTwitterCdnStem = sprintf( $sTwitterCdnStem, self::CdnjsStem, $this->getTwitterBootstrapVersion(), $sCssFileExtension );
+			if ( $this->isUrlResourceValid( 'http:'.$sTwitterCdnStem ) ) {
+				$sTwitterStem = $sTwitterCdnStem;
+			}
 		}
-		else {
-			$sTwitterStem = $this->getBootstrapUrl( 'css/bootstrap' ); // default is to serve it "local"
-		}
-		$aUrls[ 'twitter-bootstrap' ] = $sTwitterStem.$sCssFileExtension;
+		$aUrls[ 'twitter-bootstrap' ] = $sTwitterStem;
 		
 		if ( $this->m_oWptbOptions->getOpt( 'inc_responsive_css' ) == 'Y' && $this->m_oWptbOptions->getOpt( 'option' ) == 'twitter-legacy' ) {
-			
+
+			$sTwitterStem = $this->getBootstrapUrl( 'css/bootstrap-responsive' ).$sCssFileExtension; // default is to serve it "local"
 			if ( $this->m_oWptbOptions->getOpt( 'use_cdnjs' ) == 'Y' ) {
-				$sTwitterStem = self::CdnjsStem.'twitter-bootstrap/%s/css/bootstrap-responsive';
-				$sTwitterStem = sprintf( $sTwitterStem, $this->getTwitterBootstrapVersion() );
+				$sTwitterCdnStem = '%stwitter-bootstrap/%s/css/bootstrap-responsive%s';
+				$sTwitterCdnStem = sprintf( $sTwitterCdnStem, self::CdnjsStem, $this->getTwitterBootstrapVersion(), $sCssFileExtension );
+				if ( $this->isUrlResourceValid( 'http:'.$sTwitterCdnStem ) ) {
+					$sTwitterStem = $sTwitterCdnStem;
+				}
 			}
-			else {
-				$sTwitterStem = $this->getBootstrapUrl( 'css/bootstrap-responsive' ); // default is to serve it "local"
-			}
-			$aUrls[ 'twitter-bootstrap-responsive' ] = $sTwitterStem.$sCssFileExtension;
+			$aUrls[ 'twitter-bootstrap-responsive' ] = $sTwitterStem;
 		}
 		
 		return $aUrls;
 	}
 	
 	protected function addCustomCssLink( &$inaCssList = array() ) {
-
 		if ( $this->m_oWptbOptions->getOpt( 'customcss' ) == 'Y' ) {
 			$sCustomCssUrl = $this->m_oWptbOptions->getOpt( 'customcss_url' );
 			if ( !empty( $sCustomCssUrl ) ) {
@@ -249,6 +257,18 @@ class ICWP_WptbProcessor {
 			wp_register_script( 'prettify_script', $sUrl, false, $this->m_oWptbOptions->getVersion(), $fJsInFooter );
 			wp_enqueue_script( 'prettify_script' );
 		}
+	}
+	
+	/**
+	 * Given a URL will test whether it's valid
+	 * @param string $insUrl
+	 * @return boolean
+	 */
+	protected function isUrlResourceValid( $insUrl ) {
+		require_once( dirname(__FILE__).'/icwp-wpfunctions.php' );
+		$oWpFunctions = new ICWP_WpFunctions_WPTB();
+		$insUrl = ( strpos( $insUrl, 'http' ) !== 0 )? 'http://'.$insUrl : $insUrl; 
+		return $oWpFunctions->isUrlValid( $insUrl );
 	}
 	
 	/**

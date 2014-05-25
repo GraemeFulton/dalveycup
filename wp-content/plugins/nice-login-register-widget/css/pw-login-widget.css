@@ -112,7 +112,38 @@ div.sp-main-div p{
 div.sp-main-div li{
 	display: inline-block;
 	margin-right: 4px;
+	margin-left: 0;
+}
+div.sp-main-div label{
+	display: inline;
 }
 
+.nlw-widget-back-end-div .nav-tab{
+	font-size: 13px;
+	line-height: 18px;
+}
+.nav-tab-linked{
+	display: none;
+}
+.nav-tab-linked.active{
+	display: block;
+}
+.nlw-widget-back-end-div .nav-tab-active{
+	border-bottom-color: #fff;
+}
+.nlw-widget-back-end-div h3.nav-tab-wrapper{
+	margin-bottom: 0;
+}
+.nlw-widget-back-end-div .nav-tab-linked{
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
 
-
+.widgets-php #widget-list .widget[id*="_pw_login_widget-"] .widget-top .widget-title h4:before{
+	content: url("../images/NLW25x23.png");
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0 5px;
+}

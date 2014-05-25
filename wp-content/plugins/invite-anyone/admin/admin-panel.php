@@ -89,6 +89,7 @@ function invite_anyone_admin_panel() {
 				'bypass_registration_lock',
 				'default_invitation_subject',
 				'default_invitation_message',
+				'group_invites_enable_create_step',
 				'addl_invitation_message',
 				'subject_is_customizable',
 				'message_is_customizable',
@@ -210,6 +211,8 @@ function invite_anyone_settings_setup() {
 
 			add_settings_field('invite_anyone_settings_bypass_registration_lock', __('Allow email invitations to be accepted even when site registration is disabled', 'bp-invite-anyone'), 'invite_anyone_settings_bypass_registration_lock', 'invite_anyone', 'invite_anyone_general_settings');
 
+			add_settings_field( 'invite_anyone_settings_group_invites_enable_create_step', __( 'Enable the Send Invites step during group creation', 'bp-invite-anyone' ), 'invite_anyone_settings_group_invites_enable_create_step', 'invite_anyone', 'invite_anyone_general_settings' );
+
 			break;
 	}
 }
@@ -258,6 +261,19 @@ function invite_anyone_settings_bypass_registration_lock() {
 ?>
 	<input type="checkbox" name="invite_anyone[bypass_registration_lock]" value="yes" <?php checked( $options['bypass_registration_lock'], 'yes' ) ?> />
 <?php
+}
+
+/**
+ * Markup callback for "Enable group creation step" setting
+ *
+ * @since 1.2
+ */
+function invite_anyone_settings_group_invites_enable_create_step() {
+	$options = invite_anyone_options();
+	$enabled = ! empty( $options['group_invites_enable_create_step'] ) && 'yes' === $options['group_invites_enable_create_step'];
+	?>
+	<input type="checkbox" name="invite_anyone[group_invites_enable_create_step]" value="yes" <?php checked( $enabled ) ?> />
+	<?php
 }
 
 function invite_anyone_settings_default_invitation_subject() {
@@ -423,17 +439,17 @@ function invite_anyone_settings_mi_content() {
 	$cols = array(
 		array(
 			'name'		=> 'author',
-			'title'		=> 'Inviter',
+			'title'		=> __( 'Inviter', 'bp-invite-anyone' ),
 			'css_class'	=> 'ia-inviter'
 		),
 		array(
 			'name'		=> 'ia_invitees',
-			'title'		=> 'Invited Email',
+			'title'		=> __( 'Invited Email', 'bp-invite-anyone' ),
 			'css_class'	=> 'ia-invited-email'
 		),
 		array(
 			'name'		=> 'sent',
-			'title'		=> 'Sent',
+			'title'		=> __( 'Sent', 'bp-invite-anyone' ),
 			'css_class'	=> 'ia-sent',
 			'default_order'	=> 'desc',
 			'posts_column'	=> 'post_date',
@@ -441,13 +457,13 @@ function invite_anyone_settings_mi_content() {
 		),
 		array(
 			'name'		=> 'accepted',
-			'title'		=> 'Accepted',
+			'title'		=> __( 'Accepted', 'bp-invite-anyone' ),
 			'css_class'	=> 'ia-accepted',
 			'default_order'	=> 'desc'
 		),
 		array(
 			'name'		=> 'cloudsponge',
-			'title'		=> 'CloudSponge',
+			'title'		=> __( 'CloudSponge', 'bp-invite-anyone' ),
 			'css_class'	=> 'ia-cloudsponge'
 		),
 	);
@@ -516,7 +532,9 @@ function invite_anyone_settings_mi_content() {
 					$emails = wp_get_post_terms( get_the_ID(), invite_anyone_get_invitee_tax_name() );
 
 					foreach( $emails as $email ) {
-						echo esc_html( $email->name );
+						// Before storing taxonomy terms in the db, we replace "+" with ".PLUSSIGN.", so we need to reverse that before displaying the email address.
+						$email_address	= str_replace( '.PLUSSIGN.', '+', $email->name );
+						echo esc_html( $email_address );
 					}
 					?>
 				</td>
@@ -547,7 +565,7 @@ function invite_anyone_settings_mi_content() {
 					$is_cloudsponge = get_post_meta( get_the_ID(), 'bp_ia_is_cloudsponge', true );
 
 					if ( !$is_cloudsponge )
-						$is_cloudsponge = __( '(no data)', 'ia-invite-anyone' );
+						$is_cloudsponge = __( '(no data)', 'bp-invite-anyone' );
 					?>
 					<?php echo esc_html( $is_cloudsponge ) ?>
 				</td>

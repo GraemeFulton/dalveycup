@@ -43,9 +43,18 @@ class HLT_BootstrapLess_Base {
 	protected $m_aAllBootstrapLessOptions;
 	
 	/**
-	 * @var strings
+	 * @var string
 	 */
 	protected $m_sVariableLessFile;
+
+	/**
+	 * @var string
+	 */
+	protected $m_sLessSourceDir;
+	/**
+	 * @var string
+	 */
+	protected $m_sCssBaseDir;
 	
 	/**
 	 * @param string $insBsDir
@@ -54,7 +63,9 @@ class HLT_BootstrapLess_Base {
 	public function __construct( $insBsDir, $insKey ) {
 		$this->m_sOptionsKey = $insKey;
 		$this->m_sBsDir = $insBsDir;
-		$this->m_sVariableLessFile = $this->m_sBsDir.'less'.ICWP_DS.'variables.less.orig';
+		$this->m_sLessSourceDir		= $this->m_sBsDir.'less'.ICWP_DS;
+		$this->m_sCssBaseDir		= $this->m_sBsDir.'css'.ICWP_DS;
+		$this->m_sVariableLessFile	= $this->m_sLessSourceDir.'variables.less';
 		$this->writeVariableOrig();
 	}
 	
@@ -355,91 +366,15 @@ class HLT_BootstrapLess_Base {
 		}
 		$this->compileLess( 'bootstrap' );
 	}
-	
+
 	/**
-	 * 
-	 * @param $insBootstrapDir
 	 * @param $insCompileTarget - currently only 'bootstrap'
+	 * @return boolean
 	 */
 	public function compileLess( $insCompileTarget = 'bootstrap' ) {
-		
-		if ( empty($this->m_sBsDir) ) {
-			return false;
-		}
-		
-		$sFilePathToLess = $this->m_sBsDir.'less'.ICWP_DS.$insCompileTarget.'.less';
-		
-		//parse LESS
-		$this->includeLess();
-		if ( lessc::$VERSION != 'v0.4.0' ) { //not running a supported version of the less compiler for bootstrap
-			return false;
-		}
-		
-		// New method
-		$oLessCompiler = new lessc();
-		
-		// Original method
-		//$oLessCompiler = new lessc( $sFilePathToLess );
-		
-		$sCompiledCss = '';
-		
-		try {
-			/**
-			 * New Method (to use new lessphp interface)
-			 * 
-			 * 1. Determine target filename(s)
-			 * 2. Compile + write to disk
-			 * 3. Compile + compress + write to disk
-			 */
-			
-			//Remove 'responsive' as an option since 3.0.0 as it's not necessary
-			if ( $insCompileTarget == 'bootstrap' ) {
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap.less';
-			}
-			else { //Are there others?
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap.less';
-			}
-			
-			// Write normal CSS
-			$oLessCompiler->compileFile( $sFilePathToLess, $sLessFile.'.css' );
-			
-			// Write compress CSS
-			$oLessCompiler = new lessc(); //as of version 0.4.0 I have to recreate the object.
-			$oLessCompiler->setFormatter( "compressed" );
-			$oLessCompiler->compileFile( $sFilePathToLess, $sLessFile.'.min.css' );
-			
-			/**
-			 * Original method
-			 * 
-			 * 1. Compile
-			 * 2. Determine target filename(s)
-			 * 3. Write to disk
-			 * 4. Compress/Minify
-			 * 5. Write to disk
-			 */
-			/*
-			$sCompiledCss = $oLessCompiler->parse();
-			
-			if ($insCompileTarget == 'responsive') {
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap-responsive.less';
-			} else if ($insCompileTarget == 'bootstrap') {
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap.less';
-			} else { //Are there others?
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap.less';
-			}
-			
-			file_put_contents( $sLessFile.'.css', $sCompiledCss );
-		
-			//Basic Minify
-			$sCompiledCss = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $sCompiledCss);
-			file_put_contents( $sLessFile.'.min.css', $sCompiledCss );
-			*/
-		}
-		catch ( Exception $oE ) {
-			echo "lessphp fatal error: ".$oE->getMessage();
-		}
+		return true;
 	}
-
+	
 	public function handleUpgrade( $insCurrentVersion ) { }
 	
 	protected function includeLess() {

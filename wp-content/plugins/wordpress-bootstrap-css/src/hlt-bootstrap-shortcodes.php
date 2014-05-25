@@ -325,13 +325,14 @@ class HLT_BootstrapShortcodes {
 	/**
 	 * Avoid code repetition of labels, badges, panel etc.
 	 * @param string $sComponent
+	 * @param array $inaOptions
 	 * @param array $inaAtts
 	 * @param string $insContent
 	 * @return string
 	 */
 	protected function simpleComponentHelper( $sComponent, $inaOptions, $inaAtts = array(), $insContent = '' ) {
 		
-		$inaAtts = $this->processOptions( $inaAtts, $aOptions );
+		$inaAtts = $this->processOptions( $inaAtts, $inaOptions );
 		if ( !is_array( $inaAtts ) ) { // it was a help request
 			return $inaAtts;
 		}
@@ -344,7 +345,7 @@ class HLT_BootstrapShortcodes {
 		
 		//prefix the first class with "label-" to ensure correctly class name for Twitter
 		if ( empty( $inaAtts['class'] ) ) {
-			$inaAtts['class'] = $aOptions['color'][0];
+			$inaAtts['class'] = $inaOptions['color'][0];
 		}
 		if ( !preg_match( '/^'.$sComponent.'-/', $inaAtts['class'] ) ) {
 			$inaAtts['class'] = $sComponent.'-'.$inaAtts['class'];
@@ -1007,6 +1008,7 @@ class HLT_BootstrapShortcodes {
 	 * 
 	 * @param $inaAtts
 	 * @param $inaOptions
+	 * @return array
 	 */
 	protected function processOptions( $inaAtts, $inaOptions ) {
 
@@ -1023,6 +1025,9 @@ class HLT_BootstrapShortcodes {
 		}
 		
 		foreach ($aOptions as $sOption => $aOptionData) {
+			if ( !is_array( $aOptionData ) ) {
+				continue;
+			}
 			list( $sDefault, $sDescription ) = $aOptionData;
 			$this->def( $inaAtts, $sOption, $sDefault );
 		}

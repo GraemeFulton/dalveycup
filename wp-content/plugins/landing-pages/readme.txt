@@ -1,13 +1,13 @@
 === WordPress Landing Pages ===
 
 Contributors: David Wells, adbox
-Donate link: mailto:Hudson.Atwell@gmail.com
+Donate link: mailto:marketplace@inboundnow.com
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: landing pages, inbound marketing, conversion pages, split testing, a b test, a b testing, a/b test, a/b testing, coming soon page, email list, landing page, list building, maintenance page, squeeze page, inbound now, landing-pages, splash pages, cpa, click tracking, goal tracking, analytics, free landing page templates
-Requires at least: 3.4
-Tested up to: 3.5
-Stable Tag: 1.3.1
+Requires at least: 3.8
+Tested up to: 3.8
+Stable Tag: 1.5.5
 
 Create landing pages for your WordPress site. Monitor and improve conversion rates, run A/B split tests, customize your own templates and more.
 
@@ -19,7 +19,7 @@ This plugin creates landing pages (a.k.a. conversion or splash pages) for your W
 
 The landing page plugin was specifically designed with inbound marketing best practices in mind and will help you drive & convert more leads on your site.
 
-Landing pages are an ideal way to convert more of your passive website visitors into active leads or email list subscribers. 
+Landing pages are an ideal way to convert more of your passive website visitors into active leads or email list subscribers.
 
 = Highlights =
 
@@ -39,17 +39,21 @@ Recommended form plugins (Gravity forms, Ninja Forms or Contact form 7)
 
 = About the Plugin =
 
-http://www.youtube.com/watch?v=BzcD6PgvLP4
+http://www.youtube.com/watch?v=flEd0sRTFUo
 
-= Developers & Designers = 
+= Developers & Designers =
 
 We built the landing page plugin as a framework! Need A/B testing out of the box implemented for your existing designs? Use WordPress Landing Pages to quickly spin up new landing pages that have all the functionality your clients will need.
 
-You can quickly take your existing designs and implement them using our <a href="http://docs.inboundnow.com/landing-pages/dev">templating framework</a>.
+You can quickly take your existing designs and implement them using our <a href="http://docs.inboundnow.com/section/developer/">templating framework</a>.
 
-The plugin is also fully extendable and has a number of <a href='http://docs.inboundnow.com/landing-pages/dev/core-hooks-filters'>actions, filters</a>, and hooks available for use. If a hook doesn't exist, simply ask and we can implement custom changes.
+The plugin is also fully extendable and has a number of <a href='http://docs.inboundnow.com/guide/landing-page-core-hooks-filters/'>actions, filters</a>, and hooks available for use. If a hook doesn't exist, simply ask and we can implement custom changes.
 
-<b>You can also follow us on <a href="https://github.com/inboundnow/landing-pages/">GitHub</a></b>
+
+[Follow Development on GitHub ](https://github.com/inboundnow/landing-pages "Follow & Contribute to core development on GitHub")
+ |
+[Follow Development on Twitter ](https://twitter.com/gitlandingpages "See our latest development commits on Twitter")
+
 
 == Installation ==
 
@@ -58,7 +62,7 @@ The plugin is also fully extendable and has a number of <a href='http://docs.inb
 
 == Frequently Asked Questions ==
 *Can I create my own landing page designs?,
-*Yes! You can learn how to <a href="http://docs.inboundnow.com/landing-pages/dev/creating-templates">create your own landing page template here</a>.
+*Yes! You can learn how to <a href="http://docs.inboundnow.com/guide/creating-landing-page-templates/">create your own landing page template here</a>.
 
 == Screenshots ==
 
@@ -68,50 +72,139 @@ The plugin is also fully extendable and has a number of <a href='http://docs.inb
 4. Choose from a ton of pre-made templates, use your existing design, or design your own theme!
 
 == Changelog ==
+= 1.5.5 =
+* Added events to lead tracking
+* Bug Fix: Marketing Button
+* Optimized CTA Tracking JS.
+
+= 1.5.4 =
+* Impression tracking bug fix.
+* Bringing Inbound Tracking to All Posts/Pages
+
+= 1.5.3 =
+* Temporary fix for shortcodes disappearing from wordpress 3.8 to 3.9
+* Performance improvements on analytics and lead tracking
+
+= 1.5.1 =
+* Misc bug fixes
+
+= 1.5.0 =
+* fixed field mapping bug
+* Added better compability for js conflicts
+* Prepping for marketing automation
+
+= 1.4.9 =
+* Fixed and improved default landing page templates
+* Updates to work with V2 of the CTA plugins
+* Improved form compatibilty with contact form 7, gravity forms, and ninja forms
+* Numerous bug files and code improvements
+
+= 1.4.8 =
+* Added Google Analytics Custom Event Tracking for form submissions
+* Added Ability: automatically sort leads into lists on form completions
+* Added Ability: Send lead notification emails to multiple people. Use comma separated values
+* Improved Social Media Buttons called with lp_social_media() function
+* Fixed qTranslate plugin bug
+* Fixed Genesis Title tag conflict
+* Added improved asset loader
+* Updated main docs.inboundnow.com site. Check it out!
+
+= 1.4.7 =
+* GPL fix with js library
+
+= 1.4.6 =
+* New Feature: Bulk Lead management with leads plugin wordpress.org/plugins/leads/
+* Added tags to lead profiles for improved management/categorization
+* Added new compatibility options to fix third party plugin conflicts!
+* Added new debugging javascript debugging tools for users
+* Fixed Email Sending Error on forms
+* Improved support for master license keys
+
+= 1.4.5 =
+* Added New HTML Lead Email Template with clickable links for faster lead management
+* Added Button Shortcodes!
+* Added HTML field option to form tool
+* Added Divider Option to Form tool
+* Added multi column support to icon list shortcode
+* Added Font Awesome Icons option to Inbound Form Submit buttons
+* Added Social Sharing Shortcode
+* Bug fix - emails not sending after form conversion fixed
+
+= 1.4.1 =
+* Bug fix - missing trackingObj
+
+= 1.4.0 =
+* Added feature request form to all plugin admin pages. Submit your feature requests today! =)
+
+= 1.3.9 =
+* Bug fixes for form creation issues
+* Bug fixes for safari page tracking not firing
+* Added quick menu to WP admin bar for quicker marketing!
+
+= 1.3.8 =
+* Updated styles to 3.8 wordpress
+* Streamlined form creation
+* fixed rogue PHP errors
+
+= 1.3.7 =
+* Added: Shortcode now automatically render in landing page option echos in templates
+* Updated: Visual Editor tool
+* Updated: Template selection interface
+* Updated: Major updates to core templates, CSS tweaks and fixes
+* Fixed: Shortcode insert into correct editor box
+* Fixed: editor always on HTML view
+
+= 1.3.6 =
+
+* Added: New Shortcodes! Fancy List and Column shortcodes
+* Added: Added email confirmation support to Inbound Forms tool
+* Added: Added New Welcome Page with Tutorial Video on Getting Started
+* Added: New Debug Tab for faster support requests/debugging
+* Fixed: CSS conflicts with button classes
 
 =  1.3.1 =
- 
+
 * Added: Added InboundNow form creation and management system (beta)
 * Added: Support for InboundNow cross plugin extensions
 * Added: 'Sticky Variations' to global settings.
 * Added: Easier way for extension developers to license their extensions.
 * Added: 'header' setting component to global settings.
 * Fixed: Security issues
-* Improvement: Improved data management for global settings, metaboxes, and extensions. 
+* Improvement: Improved data management for global settings, metaboxes, and extensions.
 
 =  1.2.3 =
- 
-* Fixed: Security issue with vulnerability to sql injection. 
+
+* Fixed: Security issue with vulnerability to sql injection.
 
 =  1.2.1 =
- 
-* Fixed: Issues with shortcodes rendering in wp-admin for variations. 
+
+* Fixed: Issues with shortcodes rendering in wp-admin for variations.
 
 =  1.1.9 =
- 
+
 * Fixed: Issues with navigation menu items breaking on landing pages with the default template selected.
 
 =  1.1.8 =
- 
+
 * Fixed: Issue with post_content not saving for variations.
 * Added: [lp_conversion_area] Shortcode. It renders form conversion area anywhere on landing page
 * Fixed: Restored the ability to delete custom templates from 'Templates' section.
 
 =  1.1.7 =
- 
+
 * Fixed: Issue with extension license keys not validating
 * Fixed: Issue with shortcodes not firing on select core templates
 * Improvement: Converted global settings data array to new easier to read format for development, added in legacy support.
 
 =  1.1.0.1 =
- 
-* Fixed: Variation saves for custom css and custom js. 
-* Fixed: jQuery error related to wysiwyg content formatting. 
+
+* Fixed: Variation saves for custom css and custom js.
+* Fixed: jQuery error related to wysiwyg content formatting.
 
 = 1.0.9.9 =
 * Improved extension metabox loading for quicker load times and optimized meta data storage.
 * Phased out more 'old method' split testing components.
-* Improved .htaccess parsing. 
+* Improved .htaccess parsing.
 * Addressed issue with line breaks being removed from WYSIWYG editors.
 
 = 1.0.9.4 =
@@ -136,7 +229,7 @@ The plugin is also fully extendable and has a number of <a href='http://docs.inb
 
 = 1.0.8.5 =
 
-Providing better conversion and impression tracking for landing pages that are set as homepage. 
+Providing better conversion and impression tracking for landing pages that are set as homepage.
 
 = 1.0.8.4 =
 
@@ -172,19 +265,19 @@ Introducing version control system for extensions.
 
 = 1.0.4.4 =
 
-Migrating store to new location.  Updating version control systems   
+Migrating store to new location.  Updating version control systems
 
 = 1.0.4.2 =
 
-Added new defitions to form standardization parser. Limited .htaccess rewrites to plugin activation to try and mitigate .htaccess corruptions. 
+Added new defitions to form standardization parser. Limited .htaccess rewrites to plugin activation to try and mitigate .htaccess corruptions.
 
 = 1.0.4.1 =
 
-Fixed issue with conversions not recording on some servers by forcing form submittal to wait until ajax has completely finnished loading before continuing to process form.  
+Fixed issue with conversions not recording on some servers by forcing form submittal to wait until ajax has completely finnished loading before continuing to process form.
 
 = 1.0.3.9 =
 
-Fixed issue with plugins and wp core refusing to update on some installations when landing page plugin is activated. 
+Fixed issue with plugins and wp core refusing to update on some installations when landing page plugin is activated.
 
 = 1.0.3.8 =
 

@@ -3,14 +3,15 @@
 Plugin Name: Nice Login Widget
 Plugin URI: http://www.superplug.in
 Description: Add, build and manage login-register widget
-Version: 1.3.4
+Version: 1.3.9
 Author: SuperPlugin Team
 Author URI: http://superplug.in/team/
 */
 
-add_action('init',  array('SP_Nice_Login_Widget', 'init'));
+add_action('init',  array('SP_Nice_Login_Widget', 'init'), 1);
 //add_action('widgets_init', create_function('', 'register_widget( "Pw_Login_Widget" );'));
 add_action('widgets_init', array('SP_Nice_Login_Widget', 'widgets_init'));
+register_activation_hook(__FILE__, array('SP_Nice_Login_Widget', 'activate') );
 
 class SP_Nice_Login_Widget
 {
@@ -18,8 +19,9 @@ class SP_Nice_Login_Widget
 	
 	//consts
 	
-	const ADMIN_STYLE_VERSION = "1.1.2";
-	const PLUGIN_SCRIPT_VERSION = "1.1.2";
+	const PLUGIN_VERSION =	'1.3.9';
+	const ADMIN_STYLE_VERSION = "1.3.9";
+	const PLUGIN_SCRIPT_VERSION = "1.3.9";
 	
 	public static function widgets_init(){
 		
@@ -32,8 +34,8 @@ class SP_Nice_Login_Widget
 				'class'         => 'sp-shortcode-sidebar',
 				'before_widget' => '<div id="%1$s" class="widget %2$s" style="display: inline-block">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h2 class="widgettitle">',
-				'after_title'   => '</h2>'
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>'
 				);
 		
 		$sidebar_id = register_sidebar($args);
@@ -42,8 +44,6 @@ class SP_Nice_Login_Widget
 	
 	
 	public static function init(){
-		
-		
 		
 		wp_register_style('pwLogWi_style', plugins_url('css/pw-login-widget.css' , __FILE__), null, self::ADMIN_STYLE_VERSION);
 		wp_register_script( 'pwLogWi_script', plugins_url('js/pw-login-widget.js', __FILE__), array("jquery"), self::PLUGIN_SCRIPT_VERSION);
@@ -56,6 +56,11 @@ class SP_Nice_Login_Widget
 		add_shortcode( 'sp_login_shortcode', array( 'SP_Nice_Login_Widget', 'sp_login_shortcode' ) );
 		
 		if (is_admin()){
+			
+			if ( !defined('DOING_AJAX') || !DOING_AJAX )
+				self::check_redirect_to_nlwteaser();
+			
+			add_action( 'admin_menu', array( 'SP_Nice_Login_Widget', 'admin_menus') );
 			
 			add_action('admin_enqueue_scripts', array('SP_Nice_Login_Widget', 'admin_enqueue_scripts') , 10 , 1);
 			
@@ -74,9 +79,42 @@ class SP_Nice_Login_Widget
 		
 	}
 	
+	public static function check_redirect_to_nlwteaser(){
+
+		//If network do it only in network admin pages
+		if ( is_multisite() && !is_network_admin() )		return;
+		
+		if ( get_transient('nlw_teaser_page_redirect') || get_option('nlw_version')!=self::PLUGIN_VERSION ){
+			if( get_option('nlw_version') != self::PLUGIN_VERSION ){
+				set_transient( 'nlw_teaser_page_redirect', 1, 60*60);
+				update_option('nlw_version', self::PLUGIN_VERSION);
+			}
+			$location = admin_url( 'index.php?page=nice-login-register-widget/nlw-about.php' ) ;
+			wp_safe_redirect($location);
+		}
+	}
+	
+	public static function admin_menus(){
+
+		// About
+		$dashboard_page_title = __('Upgrade To Login Widegt Pro', 'pwLogWi') ;
+		$about = add_submenu_page( null , $dashboard_page_title, null, 'manage_options', 'nice-login-register-widget/nlw-about.php');
+	}
+	
+	public static function activate(){
+		
+		if ( is_multisite() && !is_network_admin() )		return;
+		
+		//LWP teaser page
+		set_transient( 'nlw_teaser_page_redirect', 1, 60*60);
+		
+	}
+	
 	public static function sp_login_shortcode(){
 		ob_start();
+		?><div class="nlw-shortcode-wrapper"><?php
 		dynamic_sidebar('sp_login_shortcode');
+		?></div><!-- .nlw-shortcode-wrapper --><?php
 		return ob_get_clean();
 	}
 	
@@ -110,6 +148,12 @@ class SP_Nice_Login_Widget
 		wp_enqueue_script( 'pwLogWi_ajax_authentication' );
 		
 		wp_localize_script('pwLogWi_script', 'ajax_object', array('ajax_url' => admin_url( 'admin-ajax.php' )));
+		
+		$pwLogWi_messages = array(
+			'ajax_request_fails' => __( 'Ajax request fails', 'pwLogWi'),
+			'ajax_unknown_error' => __( 'An unknown error occurred while trying to connect to the server.<br>Please refresh the page and try again.', 'pwLogWi')
+		);
+		wp_localize_script( 'pwLogWi_script', 'pwLogWi_messages', $pwLogWi_messages );
 	
 	}
 	
@@ -136,7 +180,7 @@ class Pw_Login_Widget extends WP_Widget
 		$control_options = array();
 		parent::__construct(
 				'pw_login_widget',
-				'Nice Login/Register Widget',
+				'Nice Login Widget',
 				array('description' => __('Add, build and manage login-register widget', 'pwLogWi'))
 		);
 	
@@ -197,68 +241,69 @@ class Pw_Login_Widget extends WP_Widget
 			<p>  
     		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><strong><?php _e('Title:', 'pwLogWi'); ?></strong></label>  
     		<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-			<p>
-			<label for="<?php echo $this->get_field_id("css_class"); ?>"><strong><?php _e('CSS class name: ', 'pwLogWi') ?></strong></label>
+			</p>
+			<p><input type="checkbox" id="<?php echo $this->get_field_id('title_only_loggedout')?>" name="<?php echo $this->get_field_name('title_only_loggedout')?>" <?php checked('yes', $instance['title_only_loggedout'])?> />
+			<label for="<?php echo $this->get_field_id('title_only_loggedout')?>"><?php _e('Show title only in logged-out mode', 'pwLogWi') ?></label></p>
+			<p><label for="<?php echo $this->get_field_id("css_class"); ?>"><strong><?php _e('CSS class name: ', 'pwLogWi') ?></strong></label>
 			<input type="text" id="<?php echo $this->get_field_id("css_class"); ?>" name="<?php echo $this->get_field_name("css_class"); ?>" value="<?php echo $css_class; ?>" >
 			</p>
-			<div class="sp-widget-back-end-div">
-			<ul class="sp-tabs-menu">
-			<li class="sp-active" style="border-right: 1px solid #dfdfdf ;"><span class="sp_switch_logged_out" ><strong><?php _e('Logged Out', 'pwLogWi') ?></strong></span></li>
-			<li class=""><span class="sp_switch_logged_in" ><strong><?php _e('Logged In', 'pwLogWi') ?></strong></span></li>
-			</ul>
-			<div class="sp-options-content">
 			
-			<div  >
-			<ul>
-			<li>
-			<label for="<?php echo $this->get_field_id('default_form'); ?>" ><strong><?php _e('Default Form: ', 'pwLogWi') ?></strong></label>
-			<select id="<?php echo $this->get_field_id("default_form"); ?>" name="<?php echo $this->get_field_name("default_form"); ?>" >
-			<option value="login_form" <?php echo $login_form; ?>><?php _e('Login Form', 'pwLogWi') ?></option>
-			<option value="register_form" <?php echo $register_form; ?>><?php _e('Register Form', 'pwLogWi') ?></option>
-			</select>
-			</li>
-			<li>
-			<label for="<?php echo $this->get_field_id('float'); ?>" ><strong><?php _e('Float: ', 'pwLogWi') ?></strong></label>
-			<select id="<?php echo $this->get_field_id("float"); ?>" name="<?php echo $this->get_field_name("float"); ?>" >
-			<option value="horizontal" <?php echo $horizontal; ?>><?php _e('Horizontal', 'pwLogWi') ?></option>
-			<option value="vertical" <?php echo $vertical; ?>><?php _e('Vertical', 'pwLogWi') ?></option>
-			</select>
-			</li>
-			<li><input type="checkbox" id="<?php echo $this->get_field_id( 'include_remember_me' ); ?>" title="Include Remember-me"  name="<?php echo $this->get_field_name( 'include_remember_me' ); ?>" <?php echo $checked; ?> />
-			<label for="<?php echo $this->get_field_id( 'include_remember_me' ); ?>" >	<strong><?php _e('Include "Remember-Me"', 'pwLogWi') ?></strong></label>
-				<p style="margin-left: 10px; <?php if (empty($checked)) echo 'display:none;"';?>" >
-				<label><input type="radio" name="<?php echo $this->get_field_name("remember_me_def"); ?>" value="uncheck_by_default" <?php if ($instance['remember_me_def']=='uncheck_by_default') echo "checked='checked'"; ?>><?php _e('Uncheck by default ', 'pwLogWi') ?></label> <br>
-				<label><input type="radio" name="<?php echo $this->get_field_name("remember_me_def"); ?>" value="check_by_default" <?php if ($instance['remember_me_def']=='check_by_default') echo "checked='checked'";?>><?php _e('Check by default ', 'pwLogWi') ?></label> 
-				</p> 
-			</li>
-			
-			<li>
-			<label><input type="radio" name="<?php echo $this->get_field_name( 'ajax_authentication' ); ?>" value="1" <?php if (!empty($ajax_auth)) echo "checked='checked'";?>><strong><?php _e('Ajax Authentication', 'pwLogWi') ?></strong></label><br>
-			<label><input type="radio" name="<?php echo $this->get_field_name( 'ajax_authentication' ); ?>" value="0" <?php if (empty($ajax_auth)) echo "checked='checked'";?>><strong><?php _e('Regular WP Authentication', 'pwLogWi') ?></strong></label>
-			</li>
-			<li>
-				<input type="checkbox" id="<?php echo $this->get_field_id("border") ?>" name="<?php echo $this->get_field_name("border") ?>" title="<?php _e("Add widget border", "pwLogWi") ?>" <?php echo $border?>>
-				<label for="<?php echo $this->get_field_id("border") ?>"><strong> <?php _e("Widget Border", "pwLogWi") ?></strong></label>
-				<p style="margin-left: 10px; <?php if (empty($border)) echo "display:none;";?>">
-				<label><?php _e("Enter border color", "pwLogWi")?><br>
-				<?php global $is_opera, $is_chrome; ?>
-				<input type="<?php echo ($is_opera || $is_chrome) ? "color" : "text" ; ?>" id="<?php echo $this->get_field_id("border_color") ?>" name="<?php echo $this->get_field_name("border_color") ?>" value="<?php echo $border_color; ?>">
-				</label>
-				</p>
-			</li>
-			</ul>
+			<div class="nlw-widget-back-end-div">
+				<h3 class="nlw-widget-options-nav-tabs nav-tab-wrapper">
+					<a href="#logged-out-content-<?php echo $this->number ?>" class="nav-tab nav-tab-active"><?php _e('Logged Out', 'pwLogWi') ?></a>
+					<a href="#logged-in-content-<?php echo $this->number ?>" class="nav-tab"><?php _e('Logged In', 'pwLogWi') ?></a>
+				</h3>
+				<div id="logged-out-content-<?php echo $this->number ?>" class="nav-tab-linked active">
+					<ul>
+						<li>
+						<label for="<?php echo $this->get_field_id('default_form'); ?>" ><strong><?php _e('Default Form: ', 'pwLogWi') ?></strong></label>
+						<select id="<?php echo $this->get_field_id("default_form"); ?>" name="<?php echo $this->get_field_name("default_form"); ?>" >
+						<option value="login_form" <?php echo $login_form; ?>><?php _e('Login Form', 'pwLogWi') ?></option>
+						<option value="register_form" <?php echo $register_form; ?>><?php _e('Register Form', 'pwLogWi') ?></option>
+						</select>
+						</li>
+						<li>
+						<label for="<?php echo $this->get_field_id('float'); ?>" ><strong><?php _e('Float: ', 'pwLogWi') ?></strong></label>
+						<select id="<?php echo $this->get_field_id("float"); ?>" name="<?php echo $this->get_field_name("float"); ?>" >
+						<option value="horizontal" <?php echo $horizontal; ?>><?php _e('Horizontal', 'pwLogWi') ?></option>
+						<option value="vertical" <?php echo $vertical; ?>><?php _e('Vertical', 'pwLogWi') ?></option>
+						</select>
+						</li>
+						<li><input type="checkbox" id="<?php echo $this->get_field_id( 'include_remember_me' ); ?>" title="Include Remember-me"  name="<?php echo $this->get_field_name( 'include_remember_me' ); ?>" <?php echo $checked; ?> />
+						<label for="<?php echo $this->get_field_id( 'include_remember_me' ); ?>" >	<strong><?php _e('Include "Remember-Me"', 'pwLogWi') ?></strong></label>
+							<p style="margin-left: 10px; <?php if (empty($checked)) echo 'display:none;"';?>" >
+							<label><input type="radio" name="<?php echo $this->get_field_name("remember_me_def"); ?>" value="uncheck_by_default" <?php if ($instance['remember_me_def']=='uncheck_by_default') echo "checked='checked'"; ?>><?php _e('Uncheck by default ', 'pwLogWi') ?></label> <br>
+							<label><input type="radio" name="<?php echo $this->get_field_name("remember_me_def"); ?>" value="check_by_default" <?php if ($instance['remember_me_def']=='check_by_default') echo "checked='checked'";?>><?php _e('Check by default ', 'pwLogWi') ?></label> 
+							</p> 
+						</li>
+						
+						<li>
+						<label><input type="radio" name="<?php echo $this->get_field_name( 'ajax_authentication' ); ?>" value="1" <?php if (!empty($ajax_auth)) echo "checked='checked'";?>><strong><?php _e('Ajax Authentication', 'pwLogWi') ?></strong></label><br>
+						<label><input type="radio" name="<?php echo $this->get_field_name( 'ajax_authentication' ); ?>" value="0" <?php if (empty($ajax_auth)) echo "checked='checked'";?>><strong><?php _e('Regular WP Authentication', 'pwLogWi') ?></strong></label>
+						</li>
+						<li>
+							<input type="checkbox" id="<?php echo $this->get_field_id("border") ?>" name="<?php echo $this->get_field_name("border") ?>" title="<?php _e("Add widget border", "pwLogWi") ?>" <?php echo $border?>>
+							<label for="<?php echo $this->get_field_id("border") ?>"><strong> <?php _e("Widget Border", "pwLogWi") ?></strong></label>
+							<p style="margin-left: 10px; <?php if (empty($border)) echo "display:none;";?>">
+							<label><?php _e("Enter border color", "pwLogWi")?><br>
+							<?php global $is_opera, $is_chrome; ?>
+							<input type="<?php echo ($is_opera || $is_chrome) ? "color" : "text" ; ?>" id="<?php echo $this->get_field_id("border_color") ?>" name="<?php echo $this->get_field_name("border_color") ?>" value="<?php echo $border_color; ?>">
+							</label>
+							</p>
+						</li>
+					</ul>
+				</div>
+				<div id="logged-in-content-<?php echo $this->number ?>" class="nav-tab-linked">
+					<strong><?php _e('Add Logged-In message', 'pwLogWi') ?></strong><br>
+					<select class="merge-tags-select"><?php self::print_merge_tags_options(); ?> </select>
+					<textarea rows="" cols="" id="<?php echo $this->get_field_id("logged_in_text"); ?>" name="<?php echo $this->get_field_name("logged_in_text"); ?>" style="width: 90%;height: 100px;"><?php echo $logged_in_text; ?></textarea>
+				</div>
 			</div>
 			
-			<div  style="display:none;">
-			<strong><?php _e('Add Logged-In message', 'pwLogWi') ?></strong><br>
-			<select class="merge-tags-select"><?php self::print_merge_tags_options(); ?> </select>
-			<textarea rows="" cols="" id="<?php echo $this->get_field_id("logged_in_text"); ?>" name="<?php echo $this->get_field_name("logged_in_text"); ?>" style="width: 210px;height: 100px;"><?php echo $logged_in_text; ?></textarea>
+			<div class="lwp-banner" style="text-align: center;border: 1px #DFDFDF solid;border-radius: 4px;padding: 4px;margin: 4px 0 15px;">
+			<a href="http://superplug.in/login-widget-pro/?utm_source=nice_login_widget__inSidebars_links&utm_medium=banner&utm_campaign=Nice+Login+Widget" target="_blank">
+			<img src="<?php echo plugins_url("images/Banner.jpg", __FILE__) ?>" title="Login Widget Pro" style="width: 100%;max-width: 226px;height: auto;"></a>
 			</div>
-			</div>
-			
-			</div>
-			<a href="http://superplug.in/product/login-widget-pro/?utm_source=nice_login_widget__inSidebars_links&utm_medium=banner&utm_campaign=Nice+Login+Widget" target="_blank"><img src="<?php echo plugins_url("images/Banner.jpg", __FILE__) ?>" style="border: 1px #dfdfdf solid; border-radius: 4px;"></a>
-			
 			<?php 
 			wp_nonce_field(plugin_basename( __FILE__ ), 'pwLogWi_noncename');
 			
@@ -293,6 +338,7 @@ class Pw_Login_Widget extends WP_Widget
 				
 				$instance = array();
 				$instance['title'] = strip_tags( $new_instance['title'] );
+				$instance['title_only_loggedout'] = empty($new_instance['title_only_loggedout']) ? 'no' : 'yes' ;
 				$instance['css_class'] = strip_tags( $new_instance['css_class'] );
 				$instance['include_remember_me'] = strip_tags( $new_instance['include_remember_me'] );
 				$instance['default_form'] = strip_tags($new_instance['default_form']);
@@ -363,11 +409,10 @@ class Pw_Login_Widget extends WP_Widget
 			$before_widget = preg_replace('/class="/', 'class="'.$instance['css_class'].' ', $before_widget, 1);
 			echo $before_widget;
 			
-			if ( $title ){
-				echo $before_title . $title . $after_title;
-			}
-			if (isset($instance['title'])){
-				echo $before_title . $instance['title'] . $after_title;
+			if ( !is_user_logged_in() || $instance['title_only_loggedout']!='yes' ){
+				if (isset($instance['title'])){
+					echo $before_title . $instance['title'] . $after_title;
+				}	
 			}
 			
 			if (isset($instance['css_class'])){
@@ -392,23 +437,14 @@ class Pw_Login_Widget extends WP_Widget
 			if (is_user_logged_in()){
 				
 				$user = wp_get_current_user();
+				
 				if ( isset( $instance['logged_in_text'] ) && !empty( $instance['logged_in_text'] ) ) {
 					$logged_in_text = self::interapt_merge_tags($instance['logged_in_text'], $_SERVER['REQUEST_URI']);
 				}else{
 					$logged_in_text = self::interapt_merge_tags(__("Welcome Back ", "pwLogWi") . "{user_login}. {logout_link}" , $_SERVER['REQUEST_URI']);
 				}
-				?>
-        <div class="item-avatar">'
-     	<a href="<?php echo bp_loggedin_user_domain(); ?>">
-				<?php bp_loggedin_user_avatar( 'type=full&width=190&height=190' ); ?>
-			</a>	
-        <a id="home_login"class="button" href="<?php echo bp_loggedin_user_domain().'profile'?>">My Profile</a>&nbsp;
-        <a id="home_login"class="button" href="<?php echo bp_loggedin_user_domain().'profile/change-avatar'?>">Change Avatar</a>
-        <a id="home_login"class="button" href="<?php echo bp_loggedin_user_domain().'invite-anyone'?>">Invite Friends</a> &nbsp;
-
-            <?php
-            	echo $logged_in_text;
-
+				
+				echo $logged_in_text;
 				
 			}else{
 					$is_user_can_register = $this->check_user_can_register();
@@ -428,16 +464,17 @@ class Pw_Login_Widget extends WP_Widget
 					<?php endif;?>
 					</div>
 					<div class='sp-widget-login-div' <?php echo $hide_login_div; ?>>
-					<form method="post" action="<?php bloginfo('url') ?>/wp-login.php" class="wp-user-form">
-					<p><label for='user_login'><?php _e('Username: ', 'pwLogWi') ?></label></p>
-					<p ><input id='user_login' type='text' name='log' required='required' /></p>
-					<p ><label for='user_pass'><?php _e('Password: ', 'pwLogWi') ?></label></p>
-					<p ><input id='user_pass' type='password' name='pwd' required='required' /></p>
+					<form method="post" action="<?php echo wp_login_url() ?>" class="wp-user-form">
+					<p><label for='user_login-<?php echo $this->number;?>'><?php _e('Username: ', 'pwLogWi') ?></label></p>
+					<p><input id='user_login-<?php echo $this->number;?>' type='text' name='log' required='required' /></p>
+					<p><label for='user_pass-<?php echo $this->number;?>'><?php _e('Password: ', 'pwLogWi') ?></label></p>
+					<p><input id='user_pass-<?php echo $this->number;?>' type='password' name='pwd' required='required' /></p>
 					<?php if ($include_remember_me){?>
-					<p ><label for='rememberme1' ><input type='checkbox' name='rememberme' value='forever' <?php if ($instance['remember_me_def']=='check_by_default') echo "checked='checked'"; ?> id='rememberme1' /> <?php _e(' Remember me', 'pwLogWi') ?></label></p>
+					<p><input id='rememberme-<?php echo $this->number; ?>' type='checkbox' name='rememberme' value='forever' <?php checked($instance['remember_me_def'], 'check_by_default'); ?> />
+					<label for='rememberme-<?php echo $this->number; ?>' ><?php _e(' Remember me', 'pwLogWi') ?></label></p>
 					<?php }?>
-					<p ><input type="submit" name="user-submit" value="<?php _e('Login', 'pwLogWi')?>" /></p>
 					<?php do_action('login_form'); ?>
+					<p><input type="submit" name="user-submit" value="<?php _e('Login', 'pwLogWi')?>" /></p>
 					<p>
 					<input type="hidden" name="action" value="login">
 					<input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
@@ -446,27 +483,25 @@ class Pw_Login_Widget extends WP_Widget
 					<input type="hidden" name="security" value="<?php echo $ajax_nonce?>"/>
 					</p>
 					</form>
-				
+					<ul>
 					<?php if ($is_user_can_register) :?>
-                                            <div class="home_signup_box">
-                                                
-                                                <a class="sp-flipping-link" id="home_signup" href='<?php echo is_multisite() ? network_site_url('wp-signup.php') : '#sp-register' ; ?>'><button id="signup_button"><?php _e('Sign Up', 'pwLogWi') ?></button></a></div><br>
+						<li><a class="sp-flipping-link" href='<?php echo is_multisite() ? network_site_url('wp-signup.php') : '#sp-register' ; ?>'><?php _e('Don\'t have an account?', 'pwLogWi') ?></a></li>
 					<?php  endif; ?>
-					<a class="sp-flipping-link" id="lost" href='#lost-pass' ><?php _e('Lost your password?', 'pwLogWi') ?></a>
-					
+					<li><a class="sp-flipping-link" href='#lost-pass' ><?php _e('Lost your password?', 'pwLogWi') ?></a></li>
+					</ul>
 					
 					</div>
 					
 					<?php if ($is_user_can_register){?>
 					<div class='sp-widget-register-div' <?php echo $hide_register_div; ?>>
 				
-					<form method="post" action="<?php echo site_url('wp-login.php?action=register', 'login_post') ?>" class="wp-user-form">
-					<p ><label for='user_login'><?php _e('Choose username: ', 'pwLogWi') ?></label></p>
-					<p ><input id='user_login' type='text' name='user_login' required='required' /></p>
-					<p ><label for="user_email" ><?php _e('Your Email: ', 'pwLogWi') ?></label></p>
-					<p ><input id="user_email" type="email" name="user_email" required="required" /></p>
-					<p ><input type="submit" name="user-submit" value="Sign up!" /></p>
+					<form method="post" action="<?php echo add_query_arg( 'action' , 'register', wp_login_url() )  ?>" class="wp-user-form">
+					<p><label for='reg_user_login-<?php echo $this->number;?>'><?php _e('Choose username: ', 'pwLogWi') ?></label></p>
+					<p><input id='reg_user_login-<?php echo $this->number;?>' type='text' name='user_login' required='required' /></p>
+					<p><label for="user_email-<?php echo $this->number;?>" ><?php _e('Your Email: ', 'pwLogWi') ?></label></p>
+					<p><input id="user_email-<?php echo $this->number;?>" type="email" name="user_email" required="required" /></p>
 					<?php do_action('register_form'); ?>
+					<p><input type="submit" name="user-submit" value="Sign up!" /></p>
 					<p>
 					<input type="hidden" name="action" value="register">
 					<input type="hidden" name="redirect_to" value="<?php echo empty($_GET) ? $_SERVER['REQUEST_URI']."?register=true" : $_SERVER['REQUEST_URI']."&register=true" ; ?>" />
@@ -480,9 +515,9 @@ class Pw_Login_Widget extends WP_Widget
 					
 					<div class='sp-widget-lost_pass-div' style='display:none;'>
 			
-					<form method="post" action='<?php echo site_url('wp-login.php?action=lostpassword', 'login_post'); ?>'>
-					<p ><label for='user_login'><?php _e('Enter your username or email: ', 'pwLogWi') ?></label></p>
-					<p ><input type="text" name="user_login" value="" size="20" id="user_login" /></p>
+					<form method="post" action='<?php echo add_query_arg( 'action' , 'lostpassword', wp_login_url() ) ?>'>
+					<p ><label for='lost_user_login-<?php echo $this->number;?>'><?php _e('Enter your username or email: ', 'pwLogWi') ?></label></p>
+					<p ><input type="text" name="user_login" value="" size="20" id="lost_user_login-<?php echo $this->number;?>" /></p>
 					<?php do_action('login_form', 'resetpass')?>
 					<p><input type="submit" name="user-submit" value="<?php _e('Reset my password', 'pwLogWi') ?>"  /></p>
 					<p>

@@ -1,59 +1,67 @@
 === Plugin Name ===
 Contributors: matchalabs
-Tags: widget,wordpress slider,slideshow,wordpress slideshow,image slider,flexslider,flex slider,nivoslider,nivo slider,responsiveslides,responsive,responsive slides,coinslider,coin slider,slideshow,carousel,responsive slider,vertical slides,ml slider,image rotator,metaslider,meta,ajax,metaslider pro
+Tags: wordpress slideshow,seo,slideshow,slider,widget,wordpress slider,image slider,flexslider,flex slider,nivoslider,nivo slider,responsive,responsive slides,coinslider,coin slider,slideshow,carousel,responsive slider,vertical slides
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
-Tested up to: 3.7
-Stable tag: 2.4.1
+Tested up to: 3.9
+Stable tag: 2.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-4 sliders in 1! Choose from Nivo Slider, Flex Slider, Coin Slider or Responsive Slides.
+Easy to use WordPress slider plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
 
 == Description ==
 
 http://www.youtube.com/watch?v=I7IfkV6iLqo
 
-Meta Slider is a flexible, intuitive slideshow administration plugin that lets you choose between 4 jQuery sliders.
+The most popular WordPress slider plugin. Creating slideshows with [Meta Slider](http://www.metaslider.com/) is fast and easy. Simply select images from your WordPress Media Library, drag and drop them into place, set slide captions, links and SEO fields all from one page. You can choose from 4 different slideshow types (Flex Slider, Nivo Slider, Responsive Slides & Coin Slider) and use the provided shortcode or template include to easily embed slideshows in your blog.
 
-* **Nivo Slider** (Responsive, 16 transition effects, 4 themes)
-* **Coin Slider** (4 transition effects)
-* **Flex Slider 2** (Responsive, 2 transition effects, carousel mode)
-* **Responsive Slides** (Responsive, fade effect only, incredibly light weight!)
+**Includes**
 
-Features:
+* **Flex Slider 2** - Responsive, 2 transition effects, carousel mode
+* **Nivo Slider** - Responsive, 16 transition effects, 4 themes
+* **Responsive Slides** - Responsive & incredibly light weight
+* **Coin Slider** - 4 transition effects
 
-* Create unlimited fully featured image slideshows
-* Simple, easy to use interface
-* Choose from 4 slideshow types
-* Live admin preview
-* Built in Widget and Shortcode to easily embed your slideshows into Posts, Pages & Templates
-* Configure each slideshow individually *(speed, theme, hover pause, width, height, easing etc)*
-* Fully integrated with the new style WordPress Media Manager
-* Add captions (html supported) and URLs to slides
-* Drag and drop reordering
+**Features**
+
+* Simple, easy to use interface - perfect for individual users, developers & clients!
+* Create Responsive, SEO optimised slideshows in seconds
+* Unrestricted support for Image slides (supports caption, link, title text, alt text)
+* Full width slideshow support
+* Drag and drop slide reordering
+* Admin preview
 * Intelligent image cropping
+* Built in Widget and Shortcode
+* Loads of slideshow configuration options - transition effect, speed etc (per slideshow)
 * Fully localised
-* Multi Site compatible
-* Lightweight - only the minimum JavaScript/CSS is outputted to your page
-* Minimal upgrade nags(!)
-* Lots more!
+* WordPress Multi Site compatible
+* Compatible with translation plugins (WPML, PolyLang & qTranslate)
+* Extensive Developer API (hooks & filters)
+* Fast - only the minimum JavaScript/CSS is included on your page
+* Free, active, basic support (covering installation issues and theme/plugin conflicts)
 
-Want More? Get the **Meta Slider Pro** addon pack to add support for:
+Upgrade to [Meta Slider Pro](http://www.metaslider.com/upgrade) to add support for:
 
 * YouTube & Vimeo slides
 * HTML slides
 * Layer slides with CSS3 animations
 * Dynamic Post Feed/Featured Image Slides (content slider)
 * Custom Themes
-* Thumbnail Navigation (new!)
+* Thumbnail Navigation
+* Premium Support
 
-Meta Slider has been translated into the following languages:
+**Translations**
 
 * French (thanks to fb-graphiklab)
 * Spanish (thanks to eltipografico)
+* German (thanks to Rewolve44)
 * Polish (thanks to gordon34)
 * Chinese (thanks to 断青丝)
+* Taiwanese (thanks to 断青丝)
+* Norwegian (thanks to Dreamsoft)
+* Romanian (thanks to Octav Madalin Stanoaia)
+* Croatian
 
 Read more and thanks to:
 
@@ -70,7 +78,7 @@ The easy way:
 
 1. Go to the Plugins Menu in WordPress
 1. Search for "Meta Slider"
-1. Click 'Install'
+1. Click "Install"
 
 The not so easy way:
 
@@ -84,7 +92,11 @@ http://www.metaslider.com/documentation/
 
 = How do I include a slideshow in the header of my site? =
 
+Video Guide:
+
 http://www.youtube.com/watch?v=gSsWgd66Jjk
+
+Text Guide:
 
 You will need to paste the "Template Include" code into your theme (you can find this in the 'Usage' section underneath the slideshow settings)
 
@@ -93,41 +105,25 @@ You will need to paste the "Template Include" code into your theme (you can find
 * Find the correct place to add it (for example above or below the logo)
 * Paste in the code and save.
 
-If you want to include the slideshow on your homepage only, use this code:
+= I only want to show the slideshow on my homepage, how can I do that? =
 
-`<?php 
-if (is_front_page() || is_home()) {
-    echo do_shortcode("[metaslider id=123]"); //replace 123 with slider ID
-} 
-?>`
+Add the 'restrict_to' parameter to the shortcode, eg:
+
+`[metaslider id=XXX restrict_to=home]");`
+
+Theme specific instructions:
+
+http://www.metaslider.com/documentation/theme-integration/
 
 = It's not working - what can I do? =
 
-Check out the troubleshooting page here: 
+Check out the troubleshooting page here:
 
-http://www.metaslider.com/documentation/troubleshooting
-
-= Does Meta Slider work with translation plugins? =
-
-We have tested with qTranslate and Polylang. We're working with the WPML team to bring in WMPL compatibility.
-
-= Is it multi site compatible? =
-
-Yes!
+http://www.metaslider.com/documentation/troubleshooting/
 
 = Meta Slider is cropping my images in the wrong place - what can I do? =
 
-Meta Slider uses responsive slideshow libraries. This means images will always be stretched or squeezed to 100% of the *width* of the slideshow. If you're trying to mix landscape and portrait images, you'll probably find that the top and bottom of your portrait images are being cropped. This is because Meta Slider wants to keep the slideshow a consistent height for all slides, and to do this it needs to crop your portrait images down in height so they match your landscape images.
-
-The best way to fix this is to ensure your images are correctly sized before adding them into Meta Slider (or at least ensure they all have similar width:height ratios), then set the slideshow size to the same size as your images. In this case, Meta Slider will not crop your images. If you're looking for a gallery style slideshow then you might wish to 'pad' your portrait images with white bars to the left and right, to effectively turn your portrait images into landscape images.
-
-= What is Smart Crop? =
-
-Smart crop takes the largest, most central portion of an image that it can, whilst ensuring the width:height ratio of the image matches the width:height ratio of the slideshow itself. This is essential for ensuring your responsive slideshow height remains fixed when navigating between different sized images.
-
-= Why is Coin Slider tiling my images? =
-
-Coin Slider is not responsive. This means (unlike the other slideshows in Meta Slider) it will not stretch images to fill the slideshow - it will tile them instead. You need to ensure your source images are the same size (or larger) as your slideshow size.
+See www.metaslider.com/documentation/image-cropping/
 
 == Screenshots ==
 
@@ -139,6 +135,131 @@ Coin Slider is not responsive. This means (unlike the other slideshows in Meta S
 6. Administration panel - selecting slides
 
 == Changelog ==
+
+= 2.8.1 [28/04/14] =
+
+* Fix: All in One Events Calendar conflict fix (Advanced Settings not toggling)
+* Fix: CSS resets to avoid theme conflicts
+* Fix: Autoload visibility conflict (http://wordpress.org/support/topic/autoload-visibillity-conflict)
+* Fix: Layer Editor in IE11 - text fields not accessible in modal windows
+* Fix: FlexSlider IE11 Fade transition
+
+= 2.8 [28/04/14] =
+
+* New feature: Russian Language Pack added
+* Fix: Carousel image scaling in FireFox
+* Fix: wpautop issue with double ampersand
+* New feature: Shortcode parameter added to restrict slideshow to displaying on homepage only (see FAQ)
+* Improvement: Save slideshow after reordering slides
+* Fix: PHP Warning when no slideshows have been created
+
+= 2.8-beta [16/04/14] =
+
+* Improvement: Preview now uses admin-post action
+* Improvement: Classes are now auto loaded to reduce memory footprint
+(Thanks to Viktor Szépe for the above suggestions!)
+* Improvement: Slideshow initilisation time reduced
+* Improvement: HTML5 Compatibility: Alt tags always present on image tag - even if empty.
+* Improvement: Flex Slider slideshows should now 'reserve' a space for themselves while they fully load
+* Update: Flex Slider updated to v2.2.2
+* New feature: Romanian Language Pack added (Thanks to Octav Madalin Stanoaia)
+* New feature: Dutch Language Pack added
+* New feature: WP Super Cache compatibility - cache is cleared when saving slideshow
+* New feature: HTML5 Compatibility (Experimental). Set `define('METASLIDER_ENABLE_RESOURCE_MANAGER', true);` in wp-config.php to move Meta Slider link tags head of the page.
+
+= 2.7.2 [25/03/14] =
+
+* Fix: Only apply carousel margin to slides
+* Fix: Enqueue Easing library when carousel mode is enabled, regardless of effect selection
+* Fix: Thumbnail margin when theme has #content div
+
+= 2.7.1 [19/03/14] =
+
+* Fix: Remove easing parameter when effect is set to fade
+* Fix: Navigation options greyed out in IE
+* Fix: qTranslate captions not being processed (typo)
+
+= 2.7 [18/03/14] =
+
+* New feature: Crotatian Lang pack added
+* New feature: Carousel margin option added
+* New feature: Process shortcodes in captions
+* Improvement: Tab rename UX
+* Improvement: Admin save spinner functionality improved
+* Improvement: CSS Resets updated
+* Improvement: Use plugins_loaded action to initialise plugin
+* Fix: PHP Warnings when one slideshow exists
+* Fix: Smart Cropping sometimes not returning smart cropped image
+* Fix: Add z-index to meta slider, attempted conflict fix for themes with drop down menus.
+* Fix: Only include the easing library when transition effect is set to slide
+* Fix: White Label Branding plugin compatibility.
+* Change: "Responsive" option renamed to "R. Slides". The (old) "Responsive" option refers to the "Responsive Slides" jQuery library, but users were getting confused as the naming suggested it was the only responsive option. Flex Slider & Nivo Slider are also responsive.
+
+= 2.6.3 [23/01/14] =
+
+* Improvement: Various admin screen styling improvements
+* Fix: Add 'ms-' prefix to Advanced settings toggle boxes and Preview button (avoid theme conflicts)
+* Fix: RTL fixes
+* Improvement: Filters added for complete slideshow output
+* Improvement: Filter added for slide image label
+* Improvement: 'No Conflict' mode refactored
+* Improvement: 'slider' parameter added to flexslider before/start/after etc callbacks
+* Change: Renamed in admin menu from "Meta Slider Lite" to "Meta Slider"
+
+= 2.6.2 [02/01/14] =
+
+* Fix: Vantage background image tiling
+
+= 2.6.1 [31/12/13] =
+
+* Fix: Advanced settings arrow toggle
+* Fix: All in one SEO / Page builder / Meta Slider conflict
+* Fix: NextGen "Insert Gallery" conflict
+* New feature: Norwegian language pack added
+
+= 2.6 [19/12/13] =
+
+* Fix: Typo in metaslider_responsive_slide_image_attributes filter
+* Fix: Caption not working in Nivo Slider
+* Fix: Tab styling improved
+* Fix: New window styling improved in WP3.7 and below
+
+More info/Comments: http://www.metaslider.com/coming-soon-meta-slider-2-6-free/
+
+= 2.6-beta [15/12/13] =
+
+* New feature: Interface update for WordPress 3.8 admin redesign
+* New feature: 'Stretch' setting for full width slideshows
+* New feature: No conflict mode
+* New feature: 'Add slider' button for posts and pages
+* New feature: SEO options (add title & alt text to slides)
+* Change: CSS is now enqueued using wp_enqueue_style (Use a minification plugin or caching plugin to move styles to the <head> if HTML5 validity is required - eg W3 Total Cache)
+
+More info/Comments: http://www.metaslider.com/coming-soon-meta-slider-2-6-free/
+
+= 2.5 [25/11/13] =
+* Fix: JetPack Photon conflict
+* Improvement: German Language pack added (thanks to gordon34)
+* Improvement: Chinese language pack updated (thanks to 断青丝)
+* Improvement: MP6 styling fixes
+
+= 2.5-beta2 [14/11/13] =
+* Fix: Vantage theme backwards compatibility
+* Fix: Flexslider anchor attributes filter
+
+= 2.5-beta1 [12/11/13] =
+* Fix: Center align slideshow
+
+= 2.5-beta [12/11/13] =
+* New Feature: 'percentwidth' parameter added to shortcode to allow for 100% wide slideshows
+* Improvement: Generate resized images through multiple Ajax requests on save (blank screen fix)
+* Improvement: IE9 admin styling tidied up
+* Improvement: Filters added to add/change attributes in <img> and <a> tags
+* Improvement: Security - nonce checking added
+* Change: Remove bottom margin from flex slider when navigation is hidden (add a CSS Class of 'add-margin' if you need the margin)
+* Fix: Add slides to slideshow in the same order they're selected in the Media Library
+* Fix: Symlink path resolution
+* Fix: Do not try to resize/open images that are corrupt (missing metadata) (blank screen fix)
 
 = 2.4.2 [17/10/13] =
 * Fix: qTranslate caption & URL parsing for image slides
@@ -300,3 +421,5 @@ Coin Slider is not responsive. This means (unlike the other slideshows in Meta S
 * Initial version
 
 == Upgrade Notice ==
+
+

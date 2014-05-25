@@ -63,10 +63,16 @@ class ICWP_WpFunctions_WPTB {
 		);
 		return add_query_arg( $aQueryArgs, $sUrl );
 	}
-	
+
+	/**
+	 * @return boolean
+	 */
 	public function getWordpressUpdates() {
 		$oCurrent = $this->getTransient( 'update_plugins' );
-		return $oCurrent->response;
+		if ( is_object( $oCurrent ) && isset( $oCurrent->response ) ) {
+			return $oCurrent->response;
+		}
+		return false;
 	}
 	
 	/**
@@ -89,16 +95,15 @@ class ICWP_WpFunctions_WPTB {
 	 * @param string $insKey
 	 * @return object
 	 */
-	protected function getTransient( $insKey ) {
-	
+	public function getTransient( $insKey ) {
 		// TODO: Handle multisite
 	
 		if ( version_compare( $this->getWordPressVersion(), '2.7.9', '<=' ) ) {
 			return get_option( $insKey );
 		}
 	
-		if ( function_exists( 'get_site_transient' ) ) {
-			return get_site_transient( $insKey );
+		if ( function_exists( 'get_transient' ) ) {
+			return get_transient( $insKey );
 		}
 	
 		if ( version_compare( $this->getWordPressVersion(), '2.9.9', '<=' ) ) {
@@ -109,17 +114,44 @@ class ICWP_WpFunctions_WPTB {
 	}
 	
 	/**
+	 * @param string $insKey
+	 * @param mixed $inmData
+	 * @param integer $innExpires
+	 * @return boolean
+	 */
+	public function setTransient( $insKey, $inmData, $innExpires = 0 ) {
+		// TODO: Handle multisite
+		
+		if ( version_compare( $this->getWordPressVersion(), '2.7.9', '<=' ) ) {
+			update_option( $insKey, $inmData );
+		}
+
+		// @since 2.9.0
+		if ( function_exists( 'set_transient' ) ) {
+			return set_transient( $insKey, $inmData, $innExpires );
+		}
+		
+		if ( version_compare( $this->getWordPressVersion(), '2.9.9', '<=' ) ) {
+			return update_option( '_transient_'.$insKey, $inmData );
+		}
+		
+		return update_option( '_site_transient_'.$insKey, $inmData );
+	}
+	
+	/**
 	 * @return string
 	 */
 	public function getWordPressVersion() {
-		global $wp_version;
-		
 		if ( empty( $this->m_sWpVersion ) ) {
 			$sVersionFile = ABSPATH.WPINC.'/version.php';
 			$sVersionContents = file_get_contents( $sVersionFile );
 			
 			if ( preg_match( '/wp_version\s=\s\'([^(\'|")]+)\'/i', $sVersionContents, $aMatches ) ) {
 				$this->m_sWpVersion = $aMatches[1];
+			}
+			else {
+				global $wp_version;
+				$this->m_sWpVersion = $wp_version;
 			}
 		}
 		return $this->m_sWpVersion;

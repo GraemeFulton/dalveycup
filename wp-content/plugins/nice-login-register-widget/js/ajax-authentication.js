@@ -42,7 +42,7 @@ jQuery(document).ready(function($){
 					
 					//nonce check
 					if (data=='-1'){
-						login_header.html("<div id='login_error'>Security test failed.</div>");
+						login_header.html("<div id='login_error'>"+pwLogWi_messages.ajax_request_fails+"</div>");
 						return;
 					}
 					
@@ -51,7 +51,7 @@ jQuery(document).ready(function($){
 					try{
 						JSon = $.parseJSON(data);
 					}catch(e){
-						login_header.html("<div id='login_error'>An unknown error occurred while trying to connect to server.<br>Please refresh the page and try again.</div>");
+						login_header.html("<div id='login_error'>"+pwLogWi_messages.ajax_unknown_error+"</div>");
 						return;
 					}
 					

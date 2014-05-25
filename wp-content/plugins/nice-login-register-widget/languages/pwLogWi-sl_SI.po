@@ -1,0 +1,191 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Nice Login Widget\n"
+"POT-Creation-Date: 2013-12-09 10:43+0200\n"
+"PO-Revision-Date: 2013-12-09 18:03+0100\n"
+"Last-Translator: Tanja <tanja.kosec@gmail.com>\n"
+"Language-Team: SuperPlugin\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.1\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"Language: ar_AR\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\superplugin\\wp-content\\plugins\\nice-"
+"login-register-widget\n"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:25
+msgid "Žal se trenutno ne morete registrirati na to stran."
+msgstr "Žal se trenutno ne morete registrirati na to stran."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:35
+msgid "Registacija uspešna. Prosimo preglejte svojo e-pošto."
+msgstr "Registacija uspešna. Prosimo preglejte svojo e-pošto."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:50
+msgid "Poglejte v e-pošto za potrditev registracije."
+msgstr "Poglejte v e-pošto za potrditev registracije."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:92
+msgid "<strong>ERROR</strong>: Napačno uporabniško ime ali geslo."
+msgstr "<strong>ERROR</strong>: Napačno uporabniško ime ali geslo."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:124
+msgid "<strong>ERROR</strong>: Prosimo vtipkajte uporabniško ime."
+msgstr "<strong>ERROR</strong>: Prosimo vtipkajte uporabniško ime."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:126
+msgid ""
+"<strong>ERROR</strong>: To uporabniško ime je nedovoljeno zaradi zakonskih "
+"predpisov. characters. Prosimo, vnesite pravilno uporabniško ime."
+msgstr ""
+"<strong>ERROR</strong>: To uporabniško ime je nedovoljeno zaradi zakonskih "
+"predpisov. Prosimo, vnesite pravilno uporabniško ime."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:129
+msgid ""
+"<strong>ERROR</strong>: To uporabniško ime je že v rabi, prosimo izberite "
+"drugega. another one."
+msgstr ""
+"<strong>ERROR</strong>: To uporabniško ime je že v rabi, prosimo izberite "
+"drugega."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:134
+msgid "<strong>ERROR</strong>: Prosimo vtipkajte vaš e-poštni naslov."
+msgstr "<strong>ERROR</strong>: Prosimo vtipkajte vaš e-poštni naslov."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:136
+msgid "<strong>ERROR</strong>: E-poštni naslov je nepravilen."
+msgstr "<strong>ERROR</strong>: E-poštni naslov je nepravilen."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:139
+msgid ""
+"<strong>ERROR</strong>: Ta e-naslov je že v uporabi, prosimo izberite "
+"drugega."
+msgstr ""
+"<strong>ERROR</strong>: Ta e-naslov je že v uporabi, prosimo izberite "
+"drugega."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:152
+#, php-format
+msgid ""
+"<strong>ERROR</strong>: Nemogoča registracija, prosimo kontaktirajte <a href="
+"\"mailto:%s\">webmaster</a> !"
+msgstr ""
+"<strong>ERROR</strong>: Nemogoča registracija, prosimo kontaktirajte <a href="
+"\"mailto:%s\">webmaster</a> !"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:176
+msgid "<strong>ERROR</strong>: Vnesi uporabniško ime ali e-naslov."
+msgstr "<strong>ERROR</strong>: Vnesi uporabniško ime ali e-naslov."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:180
+msgid "<strong>ERROR</strong>: Uporabniško ime ni registrirano."
+msgstr "<strong>ERROR</strong>: Uporabniško ime ni registrirano."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:192
+msgid "<strong>ERROR</strong>: Neveljavno uporabniško ime ali e-naslovl."
+msgstr "<strong>ERROR</strong>: Neveljavno uporabniško ime ali e-naslov."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:206
+msgid "Ponastavitev gesla ni mogoča."
+msgstr "Ponastavitev gesla ni mogoča."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:218
+msgid "Nekdo je zahteval ponastavitev tesla za ta račun:"
+msgstr "Nekdo je zahteval ponastavitev tesla za ta račun:"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:220
+#, php-format
+msgid "Uporabniško ime: %s"
+msgstr "Uporabniško ime: %s"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:221
+msgid ""
+"Če je prišlo do napake, prosimo ignorirajtw to e-pošto in nič se ne bo "
+"spremenilo."
+msgstr ""
+"Če je prišlo do napake, prosimo ignorirajte to e-pošto in nič se ne bo "
+"spremenilo."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:222
+msgid "Za ponastavitev gesla obiščite naslednji naslov."
+msgstr "Za ponastavitev gesla obiščite naslednji naslov."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:232
+#, php-format
+msgid "[%s] Ponastavitev gesla"
+msgstr "[%s] Ponastavitev gesla"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:238
+msgid "E-pošte ni mogoče poslati."
+msgstr "E-pošte ni mogoče poslati."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/ajax-authenticate-users.php:238
+msgid ""
+"Vzrok je lahko, da inmate nastavjenega dovoljenja za pošto na gostovanju - "
+"disabled the mail() function..."
+msgstr ""
+"Vzrok je lahko, da nimate nastavjenega dovoljenja za pošto pri gostitelju - "
+"disabled the mail() function…"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:31
+msgid ""
+"This sidebar does not act as a normal sidebar. It is a stand-in used to make "
+"the shortcode for Nice Login Widget available. Just drag the Nice Login "
+"Widget into the sidebar, then you can use the [sp_login_shortcode] shortcode "
+"in any page or post."
+msgstr ""
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:140
+msgid "Dodaj in nastavi login-register widget"
+msgstr "Dodaj in nastavi login-register widget"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:269
+msgid "Vstavi spojeno oznako"
+msgstr "Vstavi spojeno oznako"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:270
+msgid "Pokaži uporabniško ime"
+msgstr "Pokaži uporabniško ime"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:271
+msgid "Uporabniško ime - lepše"
+msgstr "Uporabniško ime - lepo"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:272
+msgid "Vpis uporabnika"
+msgstr "Vpis uporabnika"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:273
+msgid "E-pošta uporabnika"
+msgstr "E-pošta uporabnika"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:274
+msgid "Povezva za izpis"
+msgstr "Povezva za izpis"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:275
+msgid "Profilna povezava"
+msgstr "Profilna povezava"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:337
+msgid "Log-Out"
+msgstr "Izpiši se"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:340
+msgid "Profile"
+msgstr "Profil"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:399
+msgid "Dobrodošli"
+msgstr "Dobrodošli"
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:489
+msgid "Sporočilo je bilo posredovano na vaš e-naslov."
+msgstr "Sporočilo je bilo posredovano na vaš e-naslov."
+
+#: C:\wamp\www\superplugin\wp-content\plugins\nice-login-register-widget/pw-login-widget.php:490
+msgid "Preverite e-pošto za geslo!"
+msgstr "Preverite e-pošto za geslo!"

@@ -1,14 +1,11 @@
-<?php 
-	include_once( dirname(__FILE__).'/widgets/bootstrapcss_widgets.php' );
+<?php
+include_once( dirname(__FILE__).ICWP_DS.'worpit_options_helper.php' );
+include_once( dirname(__FILE__).'/widgets/bootstrapcss_widgets.php' );
 ?>
 
 <div class="wrap">
 	<div class="bootstrap-wpadmin">
-
-		<div class="page-header">
-			<a href="http://icwp.io/t" target="_blank"><div class="icon32" id="icontrolwp-icon"><br /></div></a>
-			<h2><?php _hlt_e( 'Dashboard :: Twitter Bootstrap Plugin (from iControlWP)' ); ?></h2><?php _hlt_e( '' ); ?>
-		</div>
+		<?php echo printOptionsPageHeader( 'Dashboard' ); ?>
 
 		<?php include_once( dirname(__FILE__).'/widgets/bootstrapcss_common_widgets.php' ); ?>
 

@@ -54,6 +54,20 @@ jQuery(document).ready(function($){
 		return false;
 	});
 	
+	$("div.widgets-holder-wrap").on("click", '.nlw-widget-back-end-div a.nav-tab', function(){
+		
+		if (!$(this).hasClass('nav-tab-active')){
+			current_wrapper = $(this).parents('.nlw-widget-back-end-div');
+			current_wrapper.find('a.nav-tab').removeClass('nav-tab-active');
+			$(this).addClass('nav-tab-active');
+			
+			current_wrapper.children('.nav-tab-linked.active').removeClass('active');
+			$($(this).attr('href')).addClass("active");
+		}
+		
+		return false;
+	});
+	
 	
 	
 });

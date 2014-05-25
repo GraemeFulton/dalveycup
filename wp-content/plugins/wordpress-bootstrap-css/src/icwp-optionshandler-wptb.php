@@ -21,16 +21,31 @@ if ( !class_exists('ICWP_OptionsHandler_Wptb') ):
 
 class ICWP_OptionsHandler_Wptb extends ICWP_OptionsHandler_Base_WPTB {
 
-	const TwitterVersion			= '3.0.2'; //should reflect the Bootstrap version folder name
+	const TwitterVersion			= '3.1.1'; //should reflect the Bootstrap version folder name
 	const TwitterVersionLegacy		= '2.3.2'; //should reflect the Bootstrap version folder name
-	const NormalizeVersion			= '2.1.3';
+	const NormalizeVersion			= '3.0.0';
 	const YUI3Version				= '3.10.0';
+	
+	/**
+	 * How long the CSS cache will be maintained before it is automatically rebuilt (to ensure files and links work)
+	 * @var integer
+	 */
+	const CssCacheExpire			= 172800; // 48hours
 	
 	public function getTwitterBootstrapVersion() {
 		if ( $this->getOpt( 'option' ) == 'twitter-legacy' ) {
 			return self::TwitterVersionLegacy;
 		}
 		return self::TwitterVersion;
+	}
+
+	/**
+	 * Clears the CSS Includes cache if the time has expired.
+	 */
+	public function maybeClearIncludesCache( $infForce = false ) {
+		if ( $infForce || time() - $this->getOpt( 'css_cache_expire' ) > self::CssCacheExpire ) {
+			$this->setOpt( 'includes_list', false ); //clear the cached css list
+		}
 	}
 	
 	public function updatePluginOptionsFromSubmit( $insAllOptionsInput ) {
@@ -57,6 +72,7 @@ class ICWP_OptionsHandler_Wptb extends ICWP_OptionsHandler_Base_WPTB {
 		$aNonUiOptions = array(
 			'feedback_admin_notice',
 			'includes_list',
+			'css_cache_expire',
 			'inc_responsive_css'
 		);
 		$this->mergeNonUiOptions( $aNonUiOptions );

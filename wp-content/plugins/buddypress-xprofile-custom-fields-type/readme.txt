@@ -1,10 +1,10 @@
 === Buddypress Xprofile Custom Fields Type ===
-Contributors: donmik, romik jan, dabesa, Branco Radenovich, @per4mance
+Contributors: donmik, romik jan, dabesa, Branco Radenovich, @per4mance, Laszlo Espadas, Michael Yunat
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donmik%40gmail%2ecom&lc=GB&item_name=donmik%20%2d%20Plugin%20Buddypress%20Xprofile%20Custom%20Fields%20Type&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest
 Tags: buddypress, xprofile, fields
 Requires at least: 3.0
-Tested up to: 3.7.1
-Stable tag: 1.5.8
+Tested up to: 3.9
+Stable tag: 1.5.9.4
 
 Add more custom fields type to extended profiles in Buddypress: Birthdate, Email, Web, Datepicker, ...
 
@@ -15,6 +15,8 @@ Add more custom fields type to extended profiles in buddypress: Birthdate, Email
 We add now a new visibility setting 'Nobody' to create fields hidden to all members of buddypress.
 Works with <a href="http://wordpress.org/plugins/buddypress-xprofile-custom-fields-type/" title="BP Profile Search">BP Profile Search plugin</a> searching birthdate and age range.
 If you need more fields type, you are free to add them yourself or request me at miguel@donmik.com. I've moved this plugin to <a href="https://github.com/donmik/buddypress-xprofile-custom-fields-type">github</a>, you can contribute now.
+
+Tested with Buddypress 2.0!
 
 = Features =
 * Add Birthdate field.
@@ -55,7 +57,6 @@ function my_show_field($value_to_return, $type, $id, $value) {
     $value_to_return = $value;
     if ($value_to_return == '')
         return $value_to_return;
-    $value_to_return = $value;
     if ($type == 'birthdate') {
         $value = str_replace("<p>", "", $value);
         $value = str_replace("</p>", "", $value);
@@ -128,8 +129,49 @@ For image and file fields, I've added two filters for displaying the actual imag
 - bxcft_field_actual_image. The arguments are: id of field, type of field, name of input, value of field (url of image).
 - bxcft_field_actual_file. The arguments are: id of field, type of field, name of input, value of field (url of file).
  
-
 == Changelog ==
+
+= 1.5.9.4 =
+* Solving warning errors when uploading image in registration form.
+* Added Ukranian translation thanks to Michael Yunat, Ukranian <a href="http://getvoip.com/blog">http://getvoip.com</a>
+
+= 1.5.9.3 =
+* Resolving changelog issues.
+
+= 1.5.9.2 =
+* Nothing new!
+
+= 1.5.9.1 =
+* Solving error when rendering field values like birthdate, age or datepicker.
+* Solving error when more than one image field. https://github.com/donmik/buddypress-xprofile-custom-fields-type/issues/9
+
+= 1.5.9 =
+* Working with Buddypress 2.0!
+* Changed FAQ.
+* Rewritten validation and use of fields of type: file and image. This is working now when marked as required field in registration form.
+* Deleted p tags from values. You will get the value of field.
+* Added Brazilian translation. Thanks to https://github.com/espellcaste
+
+= 1.5.8.7 =
+* Remove the default description field in case the field is checkbox acceptance also in registration form.
+
+= 1.5.8.6 =
+* Remove the default description field in case the field is checkbox acceptance.
+
+= 1.5.8.5 =
+* Solving this issue https://github.com/donmik/buddypress-xprofile-custom-fields-type/issues/5
+
+= 1.5.8.4 =
+* Solving this issue https://github.com/donmik/buddypress-xprofile-custom-fields-type/issues/2#issuecomment-31181714
+
+= 1.5.8.3 =
+* Solving this issue https://github.com/donmik/buddypress-xprofile-custom-fields-type/issues/3
+
+= 1.5.8.2 =
+* Hungarian translation added thanks to Laszlo Espadas.
+
+= 1.5.8.1 =
+* Changed priority of my custom filter: bxcft_xprofile_get_hidden_fields_for_user.
 
 = 1.5.8 =
 * Added new filters for labels and inputs. See <a href="http://wordpress.org/plugins/buddypress-xprofile-custom-fields-type/faq/">FAQ</a> for more information.
@@ -196,100 +238,3 @@ For image and file fields, I've added two filters for displaying the actual imag
 
 = 1.5.5.5 =
 * Solved error when showing age instead of birthdate.
-
-= 1.5.5.4 =
-* Just added a FAQ section in readme to help with frequently asked questions.
-
-= 1.5.5.3 =
-* Solved the notice with array_merge.
-
-= 1.5.5.2 =
-* New visibility setting "nobody" was wrong. Now it should work.
-
-= 1.5.5.1 =
-* Solved an error with the new filter created in version 1.5.4, change the position value_to_return to first argument.
-
-= 1.5.5 =
-* Solved a problem while checking the hook "bp_custom_profile_edit_fields_pre_visibility". We check now for version of buddypress, if it's prior to 1.7, we load the fields in the other hook "bp_custom_profile_edit_fields". The description will still appear after the visibility settings. You need to change this manually in your templates.
-* Updated spanish translation.
-
-= 1.5.4 =
-* Created a new filter to show field value. Now you can add a filter in your functions.php and customize the way the field value will appear to the user.
-
-= 1.5.3 =
-* Changed the hook on bp_custom_profile_edit_fields to bp_custom_profile_edit_fields_pre_visibility because the fields will appear now before visibility settings. We check before the new tag exists because it's new to Buddypress 1.7. If it does not existe we will use then the other tag.
-* Changed the hook on bp_init to bp_setup_globals.
-
-= 1.5.2 = 
-* Removed default case in switch bxcft_admin_render_new_xprofile_field_type in case other plugins add more fields.
-
-= 1.5.1 =
-* Solved an error with WP_CONTENT_URL or WP_CONTENT_DIR when upload dir was customized.
-* Deleted http:// from the placeholder of Website field.
-
-= 1.5 =
-* Added checkbox acceptance for terms and conditions.
-* Added image field (jpg, jpeg, png, gif). Created a filter 'images_ext_allowed' you can use to accept more images types. User can delete the image.
-* Added file field (doc, docx, pdf). Created a filter 'files_ext_allowed' you can use to accept more files types. User can delete the file.
-* Added new visibility 'Nobody' which hide field to all members.
-
-= 1.4.9.3 =
-* Added Russian translation thanks to Romik Jan.
-* Class required added now and the "*" required asterisk is translatable. All this update is thanks to Romik Jan!
-
-= 1.4.9.2 =
-* Displaying all custom post type instead of only first ten in all cases...
-
-= 1.4.9.1 =
-* Displaying all custom post type instead of only first ten. Thanks to <a href="http://wordpress.org/support/topic/custom-post-type-multiselector?replies=3">dabesa</a>
-
-= 1.4.9 =
-* Added Slovak translation thanks to Branco Radenovich <a href="http://webhostinggeeks.com/user-reviews/">WebHostingGeeks.com</a>
-
-= 1.4.8 =
-* Added German translation thanks to @per4mance <a href="http://buddypress.org/community/members/per4mance/">http://buddypress.org/community/members/per4mance/</a>.
-
-= 1.4.7 =
-* Updated pot file.
-
-= 1.4.6 =
-* Updated Installation instructions.
-
-= 1.4.5 =
-* Solved bug with Wordpress 3.4
-
-= 1.4.4 =
-* Solved bug when using bp_get_profile_field_data in buddypress. Added new filter bxcft_get_field_data.
-
-= 1.4.3 =
-* Solved compatibility with Wordpress 3.5
-
-= 1.4.2 =
-* Trying to solve issue with bp profile search (there is no date field).
-
-= 1.4.1 =
-* Solved a bug with function is_plugin_active in previous Wordpress versions.
-
-= 1.4 =
-* Now works with BP Profile Search plugin.
-
-= 1.3 =
-* Solved bugs when deleting custom post type and multi custom post type.
-* Added option to show age instead of birthdate.
-
-= 1.2 =
-* Changed start year of birthdate to one year before now, for people who are not major.
-* Solved issue with buddypress searck links.
-* Solved issue with birthdate.
-
-= 1.1.1 =
-* Solved a bug with buddypress 1.5.7 when adding js file.
-* Solved a js error when adding a new field.
-
-= 1.1.0 =
-* Added Custom post type selector.
-* Added Custom post type multiselector.
-* Added donate link.
-
-= 1.0.0 =
-* Initial release version

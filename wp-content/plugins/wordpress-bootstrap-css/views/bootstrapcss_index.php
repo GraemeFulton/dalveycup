@@ -4,12 +4,8 @@ include_once( dirname(__FILE__).ICWP_DS.'widgets'.ICWP_DS.'bootstrapcss_widgets.
 ?>
 <div class="wrap">
 	<div class="bootstrap-wpadmin">
+		<?php echo printOptionsPageHeader( 'Bootstrap Options' ); ?>
 
-		<div class="page-header">
-			<a href="http://wwwicontrolwp.com/"><div class="icon32" id="icontrolwp-icon"><br /></div></a>
-			<h2><?php _hlt_e( 'Bootstrap Options :: Twitter Bootstrap Plugin (from iControlWP)' ); ?></h2><?php _hlt_e( '' ); ?>
-		</div>
-		
 		<div class="row">
 			<div class="<?php echo $worpit_fShowAds? 'span9' : 'span12'; ?>">
 			

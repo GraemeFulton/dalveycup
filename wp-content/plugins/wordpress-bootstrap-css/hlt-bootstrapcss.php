@@ -3,7 +3,7 @@
 Plugin Name: WordPress Twitter Bootstrap CSS
 Plugin URI: http://www.icontrolwp.com/wordpress-twitter-bootstrap-css-plugin-home/
 Description: Link Twitter Bootstrap CSS and Javascript files before all others regardless of your theme.
-Version: 3.0.2-1
+Version: 3.1.1-1
 Author: iControlWP
 Author URI: http://icwp.io/v
 */
@@ -35,9 +35,23 @@ require_once( dirname(__FILE__).'/src/icwp-optionshandler-wptb.php' );
 if ( !class_exists('HLT_BootstrapCss') ):
 
 class HLT_BootstrapCss extends ICWP_WTB_Base_Plugin {
-	
-	const PluginVersion				= '3.0.2-1';  //SHOULD BE UPDATED UPON EACH NEW RELEASE
+
+	/**
+	 * Should be updated each new release.
+	 * @var string
+	 */
+	const PluginVersion				= '3.1.1-1';  //SHOULD BE UPDATED UPON EACH NEW RELEASE
+	/**
+	 * @var string
+	 */
+	const PluginTextDomain			= 'wordpress-bootstrap-css';
+	/**
+	 * @var string
+	 */
 	const InputPrefix				= 'hlt_bootstrap_';
+	/**
+	 * @var string
+	 */
 	const OptionPrefix				= 'hlt_bootstrapcss_'; //ALL database options use this as the prefix.
 
 	/**
@@ -103,12 +117,13 @@ class HLT_BootstrapCss extends ICWP_WTB_Base_Plugin {
 		$this->m_sPluginRootFile = __FILE__; //ensure all relative paths etc. are setup.
 		parent::__construct();
 		
-		$this->m_sVersion			= self::PluginVersion;
-		$this->m_sPluginHumanName	= "WordPress Twitter Bootstrap";
-		$this->m_sPluginMenuTitle	= "Twitter Bootstrap";
-		$this->m_sOptionPrefix		= self::OptionPrefix;
-
-		$this->m_sParentMenuIdSuffix = 'wtb';
+		$this->m_sVersion				= self::PluginVersion;
+		$this->m_sPluginHumanName		= "WordPress Twitter Bootstrap";
+		$this->m_sPluginTextDomain		= self::PluginTextDomain;
+		$this->m_sPluginMenuTitle		= "Twitter Bootstrap";
+		$this->m_sOptionPrefix			= self::OptionPrefix;
+		$this->m_sParentMenuIdSuffix	= 'wtb';
+		
 		$this->loadWptbOptions();
 
 		self::$BOOSTRAP_DIR			= $this->m_sPluginDir.'resources'.ICWP_DS.'bootstrap-'.$this->m_oWptbOptions->getTwitterBootstrapVersion().ICWP_DS;
@@ -231,9 +246,6 @@ class HLT_BootstrapCss extends ICWP_WTB_Base_Plugin {
 		if ( is_admin() && $this->m_oWptbOptions->getOpt( 'inc_bootstrap_css_in_editor' ) == 'Y' ) {
 			add_filter( 'mce_css', array( $this, 'filter_include_bootstrap_in_editor' ) );
 		}
-		
-		//Multilingual support.
-		load_plugin_textdomain( 'hlt-wordpress-bootstrap-css', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 	
 	protected function createPluginSubMenuItems(){
@@ -255,7 +267,7 @@ class HLT_BootstrapCss extends ICWP_WTB_Base_Plugin {
 		
 		// Forces a rebuild for the list of CSS includes
 		if ( $sCurrentPluginVersion !== $this->m_sVersion ) {
-			$this->m_oWptbOptions->setOpt( 'includes_list', false );
+			$this->m_oWptbOptions->maybeClearIncludesCache( true );
 		}
 		
 		// ensure only valid users attempt this.
@@ -420,7 +432,7 @@ class HLT_BootstrapCss extends ICWP_WTB_Base_Plugin {
 			'aAllOptions'				=> $aAvailableOptions,
 			'compiler_enabled'			=> $this->m_oWptbOptions->getOpt( 'use_compiled_css' ) === 'Y',
 
-			'less_prefix'				=> $this->m_oBsLess->LessOptionsPrefix,
+			'less_prefix'				=> HLT_BootstrapLess::LessOptionsPrefix,
 			'less_file_location'		=> array( self::$BOOSTRAP_DIR.'css'.ICWP_DS.'bootstrap.less.css', self::$BOOSTRAP_URL.'css/bootstrap.less.css' ),
 			'page_link_options'			=> $this->getSubmenuId('bootstrap-css'),
 			
@@ -451,7 +463,7 @@ class HLT_BootstrapCss extends ICWP_WTB_Base_Plugin {
 			}
 		}
 		$this->loadWptbProcessor();
-		$this->m_oWptbProcessor->updateIncludesCache(); //clear it
+		$this->m_oWptbOptions->maybeClearIncludesCache( true );
 		$this->flushCaches();
 		
 		if ( !self::$m_fUpdateSuccessTracker ) {

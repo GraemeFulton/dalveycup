@@ -28,9 +28,6 @@ if ( !class_exists('HLT_BootstrapLess') ):
 
 class HLT_BootstrapLess extends HLT_BootstrapLess_Base {
 	
-	const LessOptionsPrefix = 'less_';
-	
-	static public $LESS_PREFIX;
 	static public $LESS_OPTIONS_DB_KEY = 'all_less_options';
 
 	protected function initPluginOptions() {
@@ -148,7 +145,7 @@ class HLT_BootstrapLess extends HLT_BootstrapLess_Base {
 			return false;
 		}
 		
-		$sFilePathToLess = $this->m_sBsDir.'less'.ICWP_DS.$insCompileTarget.'.less';
+		$sFilePathToLess = $this->m_sLessSourceDir.$insCompileTarget.'.less';
 		
 		//parse LESS
 		$this->includeLess();
@@ -174,13 +171,13 @@ class HLT_BootstrapLess extends HLT_BootstrapLess_Base {
 			 */
 			
 			if ( $insCompileTarget == 'responsive' ) {
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap-responsive.less';
+				$sLessFile = $this->m_sCssBaseDir.'bootstrap-responsive.less';
 			}
 			else if ($insCompileTarget == 'bootstrap') {
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap.less';
+				$sLessFile = $this->m_sCssBaseDir.'bootstrap.less';
 			}
 			else { //Are there others?
-				$sLessFile = $this->m_sBsDir.'css'.ICWP_DS.'bootstrap.less';
+				$sLessFile = $this->m_sCssBaseDir.'bootstrap.less';
 			}
 			
 			// Write normal CSS
@@ -224,7 +221,11 @@ class HLT_BootstrapLess extends HLT_BootstrapLess_Base {
 		}
 	}
 
-	
+	protected function includeLess() {
+		if ( !class_exists( 'lessc' ) ) {
+			include_once( dirname(__FILE__).'/../inc/lessc/lessc.inc.php' );
+		}
+	}
 }
 
 endif;

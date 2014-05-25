@@ -32,17 +32,7 @@ class BpfbBinder {
 		global $bp;
 		$ret = array();
 
-		$thumb_w = get_option('thumbnail_size_w');
-		$thumb_w = $thumb_w ? $thumb_w : 100;
-		$thumb_h = get_option('thumbnail_size_h');
-		$thumb_h = $thumb_h ? $thumb_h : 100;
-
-		// Override thumbnail image size in wp-config.php
-		if (defined('BPFB_THUMBNAIL_IMAGE_SIZE')) {
-			list($tw,$th) = explode('x', BPFB_THUMBNAIL_IMAGE_SIZE);
-			$thumb_w = (int)$tw ? (int)$tw : $thumb_w;
-			$thumb_h = (int)$th ? (int)$th : $thumb_h;
-		}
+		list($thumb_w,$thumb_h) = Bpfb_Data::get_thumbnail_size();
 		
 		$processed = 0;
 		foreach ($imgs as $img) {
@@ -53,7 +43,7 @@ class BpfbBinder {
 				continue;
 			}
 			
-			$pfx = $bp->loggedin_user->id . '_' . preg_replace('/ /', '', microtime());
+			$pfx = $bp->loggedin_user->id . '_' . preg_replace('/[^0-9]/', '-', microtime());
 			$tmp_img = realpath(BPFB_TEMP_IMAGE_DIR . $img);
 			$new_img = BPFB_BASE_IMAGE_DIR . "{$pfx}_{$img}";
 			if (@rename($tmp_img, $new_img)) {
@@ -62,6 +52,15 @@ class BpfbBinder {
 					if (!is_wp_error($image)) {
 						$thumb_filename  = $image->generate_filename('bpfbt');
 						$image->resize($thumb_w, $thumb_h, false);
+						
+						// Alright, now let's rotate if we can
+						if (function_exists('exif_read_data')) {
+							$exif = exif_read_data($new_img); // Okay, we now have the data
+							if (!empty($exif['Orientation']) && 3 === (int)$exif['Orientation']) $image->rotate(180);
+							else if (!empty($exif['Orientation']) && 6 === (int)$exif['Orientation']) $image->rotate(-90);
+							else if (!empty($exif['Orientation']) && 8 === (int)$exif['Orientation']) $image->rotate(90);
+						}
+
 						$image->save($thumb_filename);
 					}
 				} else { // Old school fallback
@@ -92,16 +91,34 @@ class BpfbBinder {
 	 * Introduces `plugins_url()` and other significant URLs as root variables (global).
 	 */
 	function js_plugin_url () {
-		printf(
-			'<script type="text/javascript">' .
-				'var _bpfbRootUrl="%s";' .
-				'var _bpfbTempImageUrl="%s";' .
-				'var _bpfbBaseImageUrl="%s";' .
-			'</script>',
-			BPFB_PLUGIN_URL,
-			BPFB_TEMP_IMAGE_URL,
-			BPFB_BASE_IMAGE_URL
+		$data = apply_filters(
+			'bpfb_js_data_object',
+			array(
+				'root_url' => BPFB_PLUGIN_URL,
+				'temp_img_url' => BPFB_TEMP_IMAGE_URL,
+				'base_img_url' => BPFB_BASE_IMAGE_URL,
+				'theme' => Bpfb_Data::get('theme', 'default'),
+				'alignment' => Bpfb_Data::get('alignment', 'left'),
+			)
 		);
+		printf('<script type="text/javascript">var _bpfb_data=%s;</script>', json_encode($data));
+		if ('default' != $data['theme'] && !current_theme_supports('bpfb_toolbar_icons')) {
+			$url = BPFB_PLUGIN_URL;
+			echo <<<EOFontIconCSS
+<style type="text/css">
+@font-face {
+	font-family: 'bpfb';
+	src:url('{$url}/css/external/font/bpfb.eot');
+	src:url('{$url}/css/external/font/bpfb.eot?#iefix') format('embedded-opentype'),
+		url('{$url}/css/external/font/bpfb.woff') format('woff'),
+		url('{$url}/css/external/font/bpfb.ttf') format('truetype'),
+		url('{$url}/css/external/font/bpfb.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+</style>
+EOFontIconCSS;
+		}
 	}
 
 	/**
@@ -181,7 +198,7 @@ class BpfbBinder {
 		$text = $warning;
 
 		$page = $this->get_page_contents($url);
-		require_once(BPFB_PLUGIN_BASE_DIR . '/lib/external/simple_html_dom.php');
+		if (!function_exists('str_get_html')) require_once(BPFB_PLUGIN_BASE_DIR . '/lib/external/simple_html_dom.php');
 		$html = str_get_html($page);
 		$str = $html->find('text');
 
@@ -197,8 +214,15 @@ class BpfbBinder {
 			$title = $html->find('title', 0);
 			$title = $title ? $title->plaintext: $url;
 
-			$text = $html->find('p', 0);
-			$text = $text->plaintext ? $text->plaintext : $title;
+			$meta_description = $html->find('meta[name=description]', 0);
+			$og_description = $html->find('meta[property=og:description]', 0);
+			$first_paragraph = $html->find('p', 0);
+			if ($og_description && $og_description->content) $text = $og_description->content;
+			else if ($meta_description && $meta_description->content) $text = $meta_description->content;
+			else if ($first_paragraph && $first_paragraph->plaintext) $text = $first_paragraph->plaintext;
+			else $text = $title;
+			
+			$images = array_filter($images);
 		} else {
 			$url = '';
 		}
@@ -323,8 +347,8 @@ class BpfbBinder {
 			(defined('BP_GROUPS_SLUG') && bp_is_groups_component() && 'home' == $bp->current_action)
 		) {
 			// Step1: Load JS/CSS requirements
+			add_action('wp_enqueue_scripts', array($this, 'js_load_scripts'));
 			add_action('wp_print_scripts', array($this, 'js_plugin_url'));
-			add_action('wp_print_scripts', array($this, 'js_load_scripts'));
 			add_action('wp_print_styles', array($this, 'css_load_styles'));
 
 			do_action('bpfb_add_cssjs_hooks');

@@ -29,10 +29,7 @@ class HLT_DashboardRssWidget {
 
 	public function __construct() {
 		$this->m_aFeeds = array();
-		
-		$this->addFeed( 'hlt', 'http://feeds.feedburner.com/hostliketoast/' );
 		$this->addFeed( 'icontrolwp', 'http://feeds.feedburner.com/icontrolwp/' );
-		
 		add_action( 'wp_dashboard_setup', array( $this, 'addNewsWidget' ) );
 	}
 

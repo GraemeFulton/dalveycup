@@ -20,8 +20,12 @@ class BpfbCodec {
 			'image' => false,
 		), $atts));
 		if (!$url) return '';
+
+		$template = locate_template(array('link_tag_template.php'));
+		if (empty($template)) $template = BPFB_PLUGIN_BASE_DIR . '/lib/forms/link_tag_template.php';
+
 		ob_start();
-		@include(BPFB_PLUGIN_BASE_DIR . '/lib/forms/link_tag_template.php');
+		@include $template;
 		$out = ob_get_clean();
 		return $out;
 	}
@@ -40,7 +44,7 @@ class BpfbCodec {
 	 * Relies on `wp_oembed_get()` for markup rendering.
 	 */
 	function process_video_tag ($atts, $content) {
-		return wp_oembed_get($content, array('width' => BPFB_OEMBED_WIDTH));
+		return wp_oembed_get($content, array('width' => Bpfb_Data::get('oembed_width', 450)));
 	}
 
 	/**
@@ -66,8 +70,12 @@ class BpfbCodec {
 		if ($activity_id) {
 			$activity_blog_id = bp_activity_get_meta($activity_id, 'bpfb_blog_id');
 		}
+
+		$template = locate_template(array('images_tag_template.php'));
+		if (empty($template)) $template = BPFB_PLUGIN_BASE_DIR . '/lib/forms/images_tag_template.php';
+
 		ob_start();
-		@include(BPFB_PLUGIN_BASE_DIR . '/lib/forms/images_tag_template.php');
+		@include $template;
 		$out = ob_get_clean();
 		return $out;
 	}

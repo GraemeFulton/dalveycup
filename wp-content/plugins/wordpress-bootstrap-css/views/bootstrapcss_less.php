@@ -113,10 +113,7 @@ include_once( dirname(__FILE__).ICWP_DS.'widgets'.ICWP_DS.'bootstrapcss_widgets.
 	</script>
 	
 	<div class="bootstrap-wpadmin">
-		<div class="page-header">
-			<a href="http://www.icontrolwp.com/"><div class="icon32" id="icontrolwp-icon">&nbsp;</div></a>
-			<h2><?php _hlt_e( 'LESS Compiler :: Twitter Bootstrap Plugin (from iControlWP)' ); ?></h2>
-		</div>
+		<?php echo printOptionsPageHeader( 'LESS Compiler' ); ?>
 
 		<div class="row">
 			<div class="span12">

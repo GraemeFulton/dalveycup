@@ -1,10 +1,54 @@
 <?php
+
+/* ADMIN ONLY AB TESTING FUNCTIONS */
 if (is_admin())
 {
-	include_once(LANDINGPAGES_PATH.'modules/module.metaboxes-ab-testing.php');
+	include_once(LANDINGPAGES_PATH.'modules/module.ab-testing.metaboxes.php');
+
+	/**
+	 * [lp_ab_unset_variation description]
+	 * @param  [type] $variations [description]
+	 * @param  [type] $vid        [description]
+	 * @return [type]             [description]
+	 */
+	function lp_ab_unset_variation($variations,$vid)
+	{
+			if(($key = array_search($vid, $variations)) !== false) {
+					unset($variations[$key]);
+			}
+
+			return $variations;
+	}
+
+	/**
+	 * [lp_ab_get_lp_active_status returns if landing page is in rotation or not]
+	 * @param  [OBJ] $post [description]
+	 * @param  [INT] $vid  [description]
+	 * @return [INT]
+	 */
+	function lp_ab_get_lp_active_status($post,$vid=null)
+	{
+		if ($vid==0)
+		{
+				$variation_status = get_post_meta( $post->ID , 'lp_ab_variation_status' , true);
+		}
+		else
+		{
+				$variation_status = get_post_meta( $post->ID , 'lp_ab_variation_status-'.$vid , true);
+		}
+
+		if (!is_numeric($variation_status))
+		{
+				return 1;
+		}
+		else
+		{
+				return $variation_status;
+		}
+	}
+
 
 	add_action('init','lp_ab_testing_admin_init');
-
 	function lp_ab_testing_admin_init($hook)
 	{
 		if (!is_admin()||!isset($_GET['post']))
@@ -19,7 +63,6 @@ if (is_admin())
 			//echo $current_variation_id;
 			$variations = get_post_meta($post->ID,'lp-ab-variations', true);
 
-			//echo $variations;exit;
 			//remove landing page's main save_post action
 			if ($current_variation_id>0)
 			{
@@ -31,12 +74,23 @@ if (is_admin())
 			{
 				$array_variations = explode(',',$variations);
 				$array_variations = lp_ab_unset_variation($array_variations,$_GET['lp-variation-id']);
+				
+				/* set next variation to be open */
+				$current_variation_id = current($array_variations);				
+				$_SESSION['lp_ab_test_open_variation'] = $current_variation_id;
+				
 				$variations = implode(',' , $array_variations);
 				update_post_meta($post->ID,'lp-ab-variations', $variations);
-
-				$suffix = '-'.$_GET['lp-variation-id'];
-				$len = strlen($suffix);
-
+				
+				
+				if (isset($_GET['lp-variation-id']) && $_GET['lp-variation-id'] > 0 ) {
+					$suffix = '-'.$_GET['lp-variation-id'];
+					$len = strlen($suffix);
+				} else {
+					$suffix = '';
+					$len = strlen($suffix);
+				}
+				
 				//delete each meta value associated with variation
 				global $wpdb;
 				$data   =   array();
@@ -57,9 +111,8 @@ if (is_admin())
 						delete_post_meta($_GET['post'], $key, $value);
 					}
 				}
-
-				$current_variation_id = 0;
-				$_SESSION['lp_ab_test_open_variation'] = 0;
+				
+				$_GET['lp-variation-id'] = $current_variation_id;
 			}
 
 			//check for pause command
@@ -89,7 +142,6 @@ if (is_admin())
 			}
 
 			//return;
-			//echo $current_variation_id;;
 
 			(isset($_GET['new-variation'])&&$_GET['new-variation']==1) ? $new_variation = 1 : $new_variation = 0;
 
@@ -163,7 +215,6 @@ if (is_admin())
 
 		if (!$main_headline&&isset($_REQUEST['post']))
 		{
-			//echo 1;exit;
 			get_post_meta($_REQUEST['post'],'lp-main-headline', true);
 		}
 
@@ -198,8 +249,8 @@ if (is_admin())
 	}
 
 
-	add_filter('lp_edit_varaition_notes','lp_ab_testing_admin_prepare_notes');
-	function lp_ab_testing_admin_prepare_notes($varaition_notes)
+	add_filter('lp_edit_variation_notes','lp_ab_testing_admin_prepare_notes');
+	function lp_ab_testing_admin_prepare_notes($variation_notes)
 	{
 		$current_variation_id = lp_ab_testing_get_current_variation_id();
 
@@ -216,20 +267,19 @@ if (is_admin())
 
 		if ($current_variation_id>0&&!isset($_REQUEST['new-variation'])&&!isset($_REQUEST['clone']))
 		{
-			$varaition_notes = get_post_meta($post_id,'lp-variation-notes-'.$current_variation_id, true);
+			$variation_notes = get_post_meta($post_id,'lp-variation-notes-'.$current_variation_id, true);
 		}
 		else if (isset($_GET['clone'])&&$_GET['clone']>0)
 		{
-			$varaition_notes = get_post_meta($post_id,'lp-variation-notes-'.$_GET['clone'], true);
+			$variation_notes = get_post_meta($post_id,'lp-variation-notes-'.$_GET['clone'], true);
 		}
 
-		if (!$varaition_notes&&isset($_REQUEST['post']))
+		if (!$variation_notes&&isset($_REQUEST['post']))
 		{
-			//echo 1;exit;
 			get_post_meta($_REQUEST['post'],'lp-variation-notes', true);
 		}
 
-		return $varaition_notes;
+		return $variation_notes;
 	}
 
 	add_filter('lp_selected_template_id','lp_ab_testing_prepare_id');//prepare name id for hidden selected template input
@@ -286,8 +336,9 @@ if (is_admin())
 
 		$current_variation_id = lp_ab_testing_get_current_variation_id();
 
-		if (isset($_GET['clone']))
+		if (isset($_GET['clone'])) {
 			$current_variation_id = $_GET['clone'];
+		}
 
 		if ($current_variation_id>0)
 		{
@@ -295,12 +346,14 @@ if (is_admin())
 			foreach ($lp_custom_fields as $key=>$field)
 			{
 				$default = get_post_meta($post_id, $field['id'], true);
-				//echo $post_id.'-'.$field['id'].":".$default;
-				//echo "<br>";
+				
 				$id = $field['id'];
 				$field['id'] = $id.'-'.$current_variation_id ;
-				$field['default'] = $default;
-
+				
+				if ($default) {
+					$field['default'] = $default;
+				}
+				
 				$lp_custom_fields[$key] = $field;
 			}
 			return $lp_custom_fields;
@@ -498,29 +551,9 @@ if (is_admin())
 		}
 	}
 
-	//not sure if this is needed
-	add_filter('lp_content_area','lp_ab_testing_alter_content_area_admin', 10, 2);
-	function lp_ab_testing_alter_content_area_admin($content)
-	{
-		global $post;
-
-		$variation_id = lp_ab_testing_get_current_variation_id();
-
-		if ($variation_id>0)
-		{
-			$content = get_post_meta($post->ID,'content-'.$variation_id, true);
-			if ( !is_admin() )
-			{
-				$content = wpautop($content);
-				$content = do_shortcode($content);
-			}
-		}
-
-		return $content;
-	}
 }
 
-//PERFORM FRONT-END ONLY ACTIONS
+/* PERFORM FRONT-END ONLY ACTIONS */
 else
 {
 
@@ -532,7 +565,7 @@ else
 		{
 			(isset($_REQUEST['lp-variation-id'])) ? $variation_id = $_REQUEST['lp-variation-id'] : $variation_id = $_COOKIE['lp-variation-id'];
 			if ($variation_id>0)
-					return get_post_meta($post->ID, $key.'-'.$id. '-' .$variation_id , true);
+					return do_shortcode(get_post_meta($post->ID, $key.'-'.$id. '-' .$variation_id , true));
 			else
 				return $return;
 		}
@@ -560,7 +593,81 @@ else
 
 }
 
-//PERFORM ACTIONS REQUIRED ON BOTH FRONT AND BACKEND
+/*PERFORM ACTIONS REQUIRED ON BOTH FRONT AND BACKEND */
+
+add_filter('lp_content_area','lp_ab_testing_alter_content_area_admin', 10, 2);
+function lp_ab_testing_alter_content_area_admin($content)
+{
+	global $post;
+
+	$variation_id = lp_ab_testing_get_current_variation_id();
+
+	if ($variation_id>0)
+	{
+		$content = get_post_meta($post->ID,'content-'.$variation_id, true);
+		if ( !is_admin() )
+		{
+			$content = wpautop($content);
+			$content = do_shortcode($content);
+		}
+	}
+
+	return $content;
+}
+
+/* RETURN LETTER FROM ARRAY KEY */
+function lp_ab_key_to_letter($key) {
+    $alphabet = array( 'A', 'B', 'C', 'D', 'E',
+                       'F', 'G', 'H', 'I', 'J',
+                       'K', 'L', 'M', 'N', 'O',
+                       'P', 'Q', 'R', 'S', 'T',
+                       'U', 'V', 'W', 'X', 'Y',
+                       'Z'
+                       );
+
+	if (isset($alphabet[$key])) {
+		return $alphabet[$key];
+	}
+}
+
+/* GET CURRENT VARIATION ID */
+function lp_ab_testing_get_current_variation_id()
+{
+	if ( isset($_GET['ab-action']) &&is_admin())
+	{
+		return $_SESSION['lp_ab_test_open_variation'];
+	}
+
+	if (!isset($_SESSION['lp_ab_test_open_variation'])&&!isset($_REQUEST['lp-variation-id']))
+	{
+		$current_variation_id = 0;
+	}
+	//echo $_REQUEST['lp-variation-id'];
+	if (isset($_REQUEST['lp-variation-id']))
+	{
+		$_SESSION['lp_ab_test_open_variation'] = $_REQUEST['lp-variation-id'];
+		$current_variation_id = $_REQUEST['lp-variation-id'];
+		//echo "setting session $current_variation_id";
+	}
+
+	if (isset($_GET['message'])&&$_GET['message']==1&&isset( $_SESSION['lp_ab_test_open_variation'] ))
+	{
+		$current_variation_id = $_SESSION['lp_ab_test_open_variation'];
+
+		//echo "here:".$_SESSION['lp_ab_test_open_variation'];
+	}
+
+	if (isset($_GET['ab-action'])&&$_GET['ab-action']=='delete-variation')
+	{
+		$current_variation_id = 0;
+		$_SESSION['lp_ab_test_open_variation'] = 0;
+	}
+
+	if (!isset($current_variation_id))
+		$current_variation_id = 0 ;
+
+	return $current_variation_id;
+}
 
 //ready conversion area for displaying ab variations
 add_filter('lp_conversion_area_pre_standardize','lp_ab_testing_prepare_conversion_area' , 10 , 2 );
@@ -747,42 +854,38 @@ add_action('wp_ajax_nopriv_lp_ab_testing_prepare_variation', 'lp_ab_testing_prep
 
 function lp_ab_testing_prepare_variation_callback()
 {
-	if (!lp_determine_spider())
+
+	$page_id = lp_url_to_postid( trim($_POST['current_url']) );
+
+	$variations = get_post_meta($page_id,'lp-ab-variations', true);
+	$marker = get_post_meta($page_id,'lp-ab-variations-marker', true);
+	if (!is_numeric($marker)) {
+		$marker = 0;
+	}
+
+	if ($variations)
 	{
-		//echo "hello";
-		//PRINT trim($_POST['current_url']);
-		$page_id = lp_url_to_postid( trim($_POST['current_url']) );
-		//echo $page_id;
-		$variations = get_post_meta($page_id,'lp-ab-variations', true);
-		$marker = get_post_meta($page_id,'lp-ab-variations-marker', true);
-		if (!is_numeric($marker))
-			$marker = 0;
+		//echo $variations;
+		$variations = explode(',',$variations);
+		//print_r($variations);
 
-		//echo "marker$marker";
+		$variation_id = $variations[$marker];
 
-		if ($variations)
+		$marker++;
+
+		if ($marker>=count($variations))
 		{
-			//echo $variations;
-			$variations = explode(',',$variations);
-			//print_r($variations);
-
-			$variation_id = $variations[$marker];
-
-			$marker++;
-
-			if ($marker>=count($variations))
-			{
-				//echo "here";
-				$marker = 0;
-			}
-
-			update_post_meta($page_id, 'lp-ab-variations-marker', $marker);
-
-			echo $variation_id;
-			die();
+			//echo "here";
+			$marker = 0;
 		}
 
+		update_post_meta($page_id, 'lp-ab-variations-marker', $marker);
+
+		echo $variation_id;
+		die();
 	}
+
+	
 }
 
 
@@ -792,6 +895,10 @@ function lp_ab_testing_alter_content_area($content)
 {
 	global $post;
 
+	if ( $post->post_type != 'landing-page' ) {
+		return $content;
+	}
+	
 	$variation_id = lp_ab_testing_get_current_variation_id();
 
 	if ($variation_id>0)
@@ -808,24 +915,38 @@ add_filter('get_the_title','lp_ab_testing_alter_title_area', 10, 2);
 function lp_ab_testing_alter_title_area( $content , $id = null)
 {
 	global $post;
+
 	if (!isset($post))
-		return;
+		return $content;
+
 	if ( ( $post->post_type!='landing-page'||is_admin()) || $id != $post->ID)
 		return $content;
 
 	return lp_main_headline($post, null, true);
 }
 
-add_action('lp_record_impression','lp_ab_testing_record_impression', 10, 2);
-function lp_ab_testing_record_impression($page_id, $variation_id=0)
+add_action('lp_record_impression','lp_ab_testing_record_impression', 10, 3 );
+function lp_ab_testing_record_impression($post_id, $post_type = 'landing-page' , $variation_id = 0 )
 {
-	$impressions = get_post_meta($page_id,'lp-ab-variation-impressions-'.$variation_id, true);
-	if (!is_numeric($impressions))
-		$impressions = 1;
-	else
-		$impressions++;
 
-	update_post_meta($page_id,'lp-ab-variation-impressions-'.$variation_id, $impressions);
+	/* If Landing Page Post Type */
+	if ( $post_type == 'landing-page' ) {
+		$meta_key = 'lp-ab-variation-impressions-'.$variation_id;
+	} 	
+	/* If Non Landing Page Post Type */
+	else  {
+		$meta_key = '_inbound_impressions_count';
+	}
+	
+	$impressions = get_post_meta($post_id, $meta_key , true);
+		
+	if (!is_numeric($impressions)) {
+		$impressions = 1;
+	} else {
+		$impressions++;
+	}
+
+	update_post_meta($post_id, $meta_key , $impressions);
 }
 
 
@@ -840,25 +961,3 @@ function lp_ab_testing_customizer_enqueue($post)
 	wp_localize_script( 'lp_ab_testing_customizer_js', 'ab_customizer', array( 'lp_id' => $post->ID ,'permalink' => $permalink , 'randomstring' => $randomstring));
 	wp_enqueue_style('lp_ab_testing_customizer_css', LANDINGPAGES_URLPATH . 'css/customizer-ab-testing.css');
 }
-
-add_action('lp_frontend_editor_screen_pre','ab_testing_frontend_editor_screen_pre');
-function ab_testing_frontend_editor_screen_pre($post)
-{
-	$lp_variation = (isset($_GET['lp-variation-id'])) ? $_GET['lp-variation-id'] : '0';
-	$letter = lp_ab_key_to_letter($lp_variation);
-	echo '<div id="current_variation_id">'.$lp_variation.'</div>';
-	?>
-	<script type='text/javascript'>
-	jQuery(document).ready(function ($) {
-		//append letter
-		var letterexists = jQuery(".variation-letter-top").length;
-		console.log(letterexists);
-		if (letterexists === 0){
-		jQuery('#lp-frontend-options-container h1:first').prepend('<span class="variation-letter-top"><?php echo $letter; ?></span>');
-		}
-	});
-	</script>
-	<?php
-}
-
-?>

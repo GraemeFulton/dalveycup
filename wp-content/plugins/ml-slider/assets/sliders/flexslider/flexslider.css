@@ -9,7 +9,7 @@
  * Contributing author: Tyler Smith (@mbmufffin)
  */
 
- 
+
 /* Browser Resets */
 .flex-container a:active,
 .flexslider a:active,
@@ -17,18 +17,18 @@
 .flexslider a:focus  {outline: none;}
 .slides,
 .flex-control-nav,
-.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;}
 
 /* FlexSlider Necessary Styles
-*********************************/ 
+*********************************/
 .flexslider {margin: 0; padding: 0;}
-.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+/*.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
 .flexslider .slides img {width: 100%; display: block;}
 .flex-pauseplay span {text-transform: capitalize;}
 
 /* Clearfix for the .slides element */
-.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
-html[xmlns] .slides {display: block;} 
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] .slides {display: block;}
 * html .slides {height: 1%;}
 
 /* No JavaScript Fallback */
@@ -55,7 +55,7 @@ html[xmlns] .slides {display: block;}
 .flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
 .flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
 .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
-.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+.flex-direction-nav .flex-disabled {cursor: default; pointer-events: none;}
 
 /* Control Nav */
 .flex-control-nav {width: 100%; position: absolute; bottom: -40px; text-align: center;}
@@ -76,7 +76,7 @@ html[xmlns] .slides {display: block;}
 }
 
 /** Custom Meta Slider CSS **/
-.flexslider {
+.metaslider .flexslider {
     background: none;
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -84,6 +84,8 @@ html[xmlns] .slides {display: block;}
     -o-box-shadow: none;
     border: 0;
     margin: 0 0 40px 0;
+    max-width: none;
+    max-height: none;
 }
 
 .flex-control-nav {
@@ -91,11 +93,11 @@ html[xmlns] .slides {display: block;}
 	line-height: 11px;
 }
 
-
 /** move margin from list items to anchors */
 .flex-control-nav li {
 	margin: 0;
 }
+
 .flex-control-nav li a {
 	margin: 0 6px;
 	padding: 0;
@@ -103,6 +105,7 @@ html[xmlns] .slides {display: block;}
 
 .flexslider .slides li {
     position: relative;
+    height: auto;
 }
 
 /** fix for users with RTL languages */
@@ -122,4 +125,37 @@ html[xmlns] .slides {display: block;}
 
 .flex-control-nav {
 	margin: auto;
+}
+
+.metaslider .flexslider.filmstrip {
+	margin-top: 10px;
+}
+
+.metaslider .flexslider.filmstrip .slides li {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.metaslider .flexslider.filmstrip .slides li.flex-active-slide,
+.metaslider .flexslider.filmstrip .slides li:hover,
+.metaslider .flexslider.filmstrip .slides li:focus {
+    opacity: 1.0 !important;
+}
+
+.metaslider .flex-control-thumbs li {
+    width: auto;
+}
+
+.metaslider ol.flex-control-thumbs img,
+#content .metaslider ol.flex-control-thumbs img {
+    margin: 10px 5px 0;
+    width: auto;
+}
+
+.metaslider.nav-hidden .flexslider {
+    margin-bottom: 0;
+}
+
+.metaslider.nav-hidden.add-margin .flexslider {
+    margin-bottom: 40px;
 }

@@ -3,41 +3,47 @@
 add_action('init', 'inbound_create_default_post_type');
 function inbound_create_default_post_type(){
     // NEED to insert custom meta as well
-    $option_name = "lp_settings_generalxxx";
-    $option_key = "default_landing_pagexxx";
+
+    $option_name = "lp_settings_general";
+    $option_key = "default_landing_page";
     $current_user = wp_get_current_user();
     add_option( $option_name, '' );
+
     //update_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', 0 ); // Clean dismiss settings
     //delete_option( 'lp_settings_general' );
     $lp_default_options = get_option($option_name);
     // Create Default if it doesn't exist
-    if ( ! isset( $lp_default_options[$option_key] ) ) {
+    if ( ! isset( $lp_default_options[$option_key] ) ) 
+	{
         $default_lander = wp_insert_post(
                 array(
-                    'post_title'     => 'A/B Testing Landing Page Example',
-                    'post_content'   => '<p>This is the first paragraph of your landing page where you want to draw the viewer in and quickly explain your value proposition.</p><p><strong>Use Bullet Points to:</strong><ul><li>Explain why they should fill out the form</li><li>What they will learn if they download</li><li>A problem this form will solve for them</li></ul></p><p>Short ending paragraph reiterating the value behind the form</p>',
+                    'post_title'     => __( 'A/B Testing Landing Page Example' , 'landing-pages'),
+                    'post_content'   => __( '<p>This is the first paragraph of your landing page where you want to draw the viewer in and quickly explain your value proposition.</p><p><strong>Use Bullet Points to:</strong><ul><li>Explain why they should fill out the form</li><li>What they will learn if they download</li><li>A problem this form will solve for them</li></ul></p><p>Short ending paragraph reiterating the value behind the form</p>' , 'landing-pages'),
                     'post_status'    => 'publish',
                     'post_author'    => $current_user->ID,
                     'post_type'      => 'landing-page',
                     'comment_status' => 'closed'
                 )
-            ); 
+            );
+			
         // Variation A
-        add_post_meta($default_lander, 'lp-main-headline', 'Main Catchy Headline (A)');
+        add_post_meta($default_lander, 'lp-main-headline', __( 'Main Catchy Headline (A)' , 'landing-pages') );
         add_post_meta($default_lander, 'lp-selected-template', 'svtle');
-        add_post_meta($default_lander, 'lp-conversion-area', '<h2>Form A</h2><form action="" method="post">First Name: <input name="first-name" type="text" /><br>Last Name: <input name="last-name" type="text" /><br>Email:<input name="email" type="text" /><br><input name="submit" type="submit" value="Submit" /></form>');
-        // Varaition B
-        add_post_meta($default_lander, 'lp-main-headline-1', 'Main Catchy Headline Two (B)');
+        add_post_meta($default_lander, 'lp-conversion-area', '<h2>'.__( 'Form a' , 'landing-pages') .'</h2><form action="" method="post">'. __( 'First Name' , 'landing-pages') .': <input name="first-name" type="text" /><br>'. __('Last Name' , 'landing-pages') .': <input name="last-name" type="text" /><br>'.__('Email' , 'landing-pages') .':<input name="email" type="text" /><br><input name="submit" type="submit" value="'.__('Submit' , 'landing-pages').'" /></form>' );
+       
+		// variation B
+        add_post_meta($default_lander, 'lp-main-headline-1', __('Main Catchy Headline Two (B)' , 'landing-pages') );
         add_post_meta($default_lander, 'lp-selected-template-1', 'svtle');
-        add_post_meta($default_lander, 'landing-page-myeditor-1', '<h2>Form B</h2><form action="" method="post">First Name: <input name="first-name" type="text" /><br>Last Name: <input name="last-name" type="text" /><br>Email:<input name="email" type="text" /><br><input name="submit" type="submit" value="Submit" /></form>');
+        add_post_meta($default_lander, 'landing-page-myeditor-1', '<h2>'.__( 'Form B' , 'landing-pages') .'</h2><form action="" method="post">'. __( 'First Name' , 'landing-pages') .': <input name="first-name" type="text" /><br>'. __('Last Name' , 'landing-pages') .': <input name="last-name" type="text" /><br>'.__('Email' , 'landing-pages') .':<input name="email" type="text" /><br><input name="submit" type="submit" value="'.__('Submit' , 'landing-pages').'" /></form>' , 'landing-pages');
         add_post_meta($default_lander, 'content-1', '<p>(Version B) This is the first paragraph of your landing page where you want to draw the viewer in and quickly explain your value proposition.</p><p><strong>Use Bullet Points to:</strong><ul><li>Explain why they should fill out the form</li><li>What they will learn if they download</li><li>A problem this form will solve for them</li></ul></p><p>Short ending paragraph reiterating the value behind the form</p>');
-        
+
         // Add A/B Testing meta
         add_post_meta($default_lander, 'lp-ab-variations', '0,1');
         add_post_meta($default_lander, 'lp-ab-variation-impressions-0', 30);
         add_post_meta($default_lander, 'lp-ab-variation-impressions-1', 35);
         add_post_meta($default_lander, 'lp-ab-variation-conversions-0', 10);
         add_post_meta($default_lander, 'lp-ab-variation-conversions-1', 15);
+		
         // Add template meta A
         add_post_meta($default_lander, 'svtle-submit-button-color', '5baa1e');
         add_post_meta($default_lander, 'svtle-display-social', '0');
@@ -48,6 +54,7 @@ function inbound_create_default_post_type(){
         add_post_meta($default_lander, 'svtle-sidebar-color', 'ffffff');
         add_post_meta($default_lander, 'svtle-sidebar-text-color', '000000');
         add_post_meta($default_lander, 'svtle-header-color', 'ffffff');
+		
         // Add template meta B
         add_post_meta($default_lander, 'svtle-submit-button-color-1', 'ff0c00');
         add_post_meta($default_lander, 'svtle-display-social-1', '0');
@@ -58,13 +65,15 @@ function inbound_create_default_post_type(){
         add_post_meta($default_lander, 'svtle-sidebar-color-1', '51b0ef');
         add_post_meta($default_lander, 'svtle-sidebar-text-color-1', '000000');
         add_post_meta($default_lander, 'svtle-header-color-1', '51b0ef');
+		
 
         // Store our page IDs
         $options = array(
             $option_key => $default_lander
         );
 
-        update_option( $option_name, $options );        
+        update_option( $option_name, $options );
+
     }
 }
 
@@ -98,13 +107,14 @@ add_action( 'tgmpa_register', 'lp_install_register_required_plugins' );
  * TGM_Plugin_Activation class constructor.
  */
 function lp_install_register_required_plugins() {
- 
+    //
+
     /**
      * Array of plugin arrays. Required keys are name, slug and required.
      * If the source is NOT from the .org repo, then source is also required.
      */
     $plugins = array(
- 
+
         // This is an example of how to include a plugin pre-packaged with a theme
       /*  array(
             'name'                  => 'TGM Example Plugin', // The plugin name
@@ -116,24 +126,24 @@ function lp_install_register_required_plugins() {
             'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         ), */
- 
+
         // This is an example of how to include a plugin from the WordPress Plugin Repository
         array(
-            'name'      => 'WordPress Leads <span style=\'color:red !important; display:block;\'>This free landing page addon will give you the ability to track and manage incoming web leads. Gather Lead Intelligence on all Leads and Close more deals. <a href=\'http://wordpress.org/plugins/leads/\'> Learn more about WordPress Leads.</a></span>',
+            'name'      => __('WordPress Leads' , 'landing-pages') .' <span class=\'inbound-install-notice\'> - '. __('This <b>free</b> landing page addon will give you the ability to track and manage incoming web leads. Gather advanced Lead Intelligence and close more deals.' , 'landing-pages') .' <a class=\'inbound-install-notice-links\' href=\'http://wordpress.org/plugins/leads/\'> '. __('Learn more about WordPress Leads' , 'landing-pages') .'</a></span>',
             'slug'      => 'leads',
             'required'  => false,
         ),
-       /* array(
-            'name'      => 'WordPress Leads <span style=\'color:red !important; display:block;\'>This free landing page addon will give you the ability to manage leads, see the pages viewed by the lead before converting, geolocation data, and much more. <a href=\'http://wordpress.org/plugins/leads/\'> Learn more about WordPress Leads.</a></span>',
-            'slug'      => 'title-split-testing-for-wordpress',
-            'required'  => false,
-        ),*/
- 
+       array(
+           'name'      => __('WordPress Calls to Action' , 'landing-pages') .' <span class=\'inbound-install-notice\'> - '. __('This <b>free</b> landing page addon will drive more traffic into your Landing Pages with Targeted Calls to Action in your sites sidebars & content. Create popups to capture visitor attention and convert more leads.' , 'landing-pages') . ' <a class=\'inbound-install-notice-links\' href=\'http://wordpress.org/plugins/cta/\'> ' . __('Learn more about WordPress Calls to Action' , 'landing-pages') . '</a></span>',
+           'slug'      => 'cta',
+           'required'  => false,
+       ),
+
     );
- 
+
     // Change this to your theme text domain, used for internationalising strings
-    $theme_text_domain = 'tgmpa';
- 
+    $theme_text_domain = 'landing-pages';
+
     /**
      * Array of configuration settings. Amend each line as needed.
      * If you want the default strings to be available under your own theme domain,
@@ -146,7 +156,7 @@ function lp_install_register_required_plugins() {
         'default_path'      => '',                           // Default absolute path to pre-packaged plugins
         'parent_menu_slug'  => 'themes.php',         // Default parent menu slug
         'parent_url_slug'   => 'themes.php',         // Default parent URL slug
-        'menu'              => 'install-required-plugins',   // Menu slug
+        'menu'              => 'install-inbound-plugins',   // Menu slug
         'has_notices'       => true,                         // Show admin notices or not
         'is_automatic'      => false,            // Automatically activate plugins after installation or not
         'message'           => '',               // Message to output right before the plugins table
@@ -156,7 +166,7 @@ function lp_install_register_required_plugins() {
             'installing'                                => __( 'Installing Plugin: %s', $theme_text_domain ), // %1$s = plugin name
             'oops'                                      => __( 'Something went wrong with the plugin API.', $theme_text_domain ),
             'notice_can_install_required'               => _n_noop( 'WordPress Landing Pages requires the following plugin: %1$s', 'WordPress Landing Pages highly requires the following plugins: %1$s.' ), // %1$s = plugin name(s)
-            'notice_can_install_recommended'            => _n_noop( 'WordPress Landing Pages highly recommends the following plugin: %1$s', 'WordPress Landing Pages highly recommends the following plugins: %1$s.' ), // %1$s = plugin name(s)
+            'notice_can_install_recommended'            => _n_noop( 'WordPress Landing Pages highly recommends the following complimentary plugin: %1$s', 'WordPress Landing Pages highly recommends the following complimentary plugins: %1$s.' ), // %1$s = plugin name(s)
             'notice_cannot_install'                     => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ), // %1$s = plugin name(s)
             'notice_can_activate_required'              => _n_noop( 'The following required plugin is currently inactive: %1$s', 'The following required plugins are currently inactive: %1$s' ), // %1$s = plugin name(s)
             'notice_can_activate_recommended'           => _n_noop( 'The following recommended plugin is currently inactive: %1$s', 'The following recommended plugins are currently inactive: %1$s' ), // %1$s = plugin name(s)
@@ -171,7 +181,7 @@ function lp_install_register_required_plugins() {
              // %1$s = dashboard link
         )
     );
- 
+
     tgmpa( $plugins, $config );
- 
+
 }

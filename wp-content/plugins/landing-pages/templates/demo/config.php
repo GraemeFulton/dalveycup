@@ -3,24 +3,23 @@
 * WordPress Landing Page Config File
 * Template Name:  Demo Template
 * @package  WordPress Landing Pages
-* @author 	InboundNow
+* @author 	Inbound Now
 *
 * This is a demo template for developers and designers to use as a reference for building landing page templates
-* For a boilerplate without all the markup visit: XYZ
-* 
+* for Wordpress Landing Pages Plugin http://wordpress.org/plugins/landing-pages/
+*
 */
 
 do_action('lp_global_config'); // The lp_global_config function is for global code added by 3rd party extensions
 
 //gets template directory name to use as identifier - do not edit - include in all template files
-$key = lp_get_parent_directory(dirname(__FILE__)); 
+$key = lp_get_parent_directory(dirname(__FILE__));
+$path = (preg_match("/uploads/", dirname(__FILE__))) ? LANDINGPAGES_UPLOADS_URLPATH . $key .'/' : LANDINGPAGES_URLPATH.'templates/'.$key.'/'; // This defines the path to your template folder. /wp-content/uploads/landing-pages/templates by default
 
 /**
- * $lp_data[$key]['info'] 
- * Configures Template Information
- */
-
-/* $lp_data[$key]['settings'] Parameters
+ * Landing Page Main Setup Params
+ *
+   $lp_data[$key]['info'] Parameters
 
     'version' => (string) (required)
     - Version Number. default = "1.0"
@@ -38,29 +37,29 @@ $key = lp_get_parent_directory(dirname(__FILE__));
     - Link to demo url.
 */
 
-$lp_data[$key]['info'] = 
+/* DEMO TEMPLATE INFO SETUP */
+$lp_data[$key]['info'] =
 array(
 	'data_type' => "template", // Template
 	'version' => "2.0.0", // Version Number
 	'label' => "Demo", // Nice Name
-	'category' => 'Miscellaneous', // Template Category
+	'category' => 'Demo', // Template Category
 	'demo' => 'http://demo.inboundnow.com/go/demo-template-preview/', // Demo Link
 	'description'  => 'The Demo theme is here to help developers and designs implment thier own designs into the landing page plugin. Study this template to learn about Landing Page Plugin\'s templating system and to assist in building new templates.' // template description
 );
 
 
 /**
- * $lp_data[$key]['settings'] 
- * Adds metabox options to landing page template
- * http://plugins.inboundnow.com/docs/dev/creating-templates/template-config/
- */
+ * $lp_data[$key]['settings']
+ * Landing Page Main Setting Params
+ * - Creates template metaboxes
+    $lp_data[$key]['settings'] Parameters
 
-/* Parameters
     'label' => (string) (required)
     - Label for Meta Fields.
 
     'description' => (string) (required)
-    - Description for meta Field 
+    - Description for meta Field
 
     'id' => (string) (required)
     - unprefixed-meta-key. The $key (template file path name) is appended in the loop this array is used in.
@@ -77,15 +76,15 @@ array(
 
     'context' => (string) (optional)
     - where this box will go, will be used for advanced placement/styling.  default = normal
- 
+
 */
- 
-// Define Meta Options for template
-// These values are returned in the template's index.php file with lp_get_value($post, $key, 'text-box-id') function
-$lp_data[$key]['settings'] = 
+
+/* DEMO TEMPLATE Metabox SETUP */
+// These values are returned in the template's index.php file with the lp_get_value($post, $key, 'text-box-id')
+$lp_data[$key]['settings'] =
 array(
 	/* Text field Example */
-    array(  
+    array(
         'label' => 'Text Field Label', // Label of field
         'description' => "Text field Description", // field description
         'id' => 'text-box-id', // metakey. The $key Prefix is appended making the meta value demo-text-box-id
@@ -128,7 +127,7 @@ array(
         'id'  => 'checkbox-id-here', // called in template's index.php file with lp_get_value($post, $key, 'checkbox-id-here');
         'type'  => 'checkbox',
         'default'  => 'on',
-        'options' => array('option_on' => 'on','option_off'=>'off'),	
+        'options' => array('option_on' => 'on','option_off'=>'off'),
         'context'  => 'normal'
         ),
     /* Dropdown Example */
@@ -137,7 +136,7 @@ array(
         'description' => "Dropdown option description",
         'id'  => 'dropdown-id-here', // called in template's index.php file with lp_get_value($post, $key, 'dropdown-id-here');
         'type'  => 'dropdown',
-        'default'  => 'default',		
+        'default'  => 'default',
 		'options' => array('right'=>'Float right','left'=>'Float left', 'default'=>'Default option'),
         'context'  => 'normal'
         ),
@@ -156,7 +155,7 @@ array(
         'description' => "wysiwyg description",
         'id'  => 'wysiwyg-id', // called in template's index.php file with lp_get_value($post, $key, 'wysiwyg-id');
         'type'  => 'wysiwyg',
-        'default'  => 'Default WYSIWYG content',				
+        'default'  => 'Default WYSIWYG content',
         'context'  => 'normal'
         ),
      /* Media Uploaded Example */
