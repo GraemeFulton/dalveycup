@@ -38,7 +38,7 @@ class secret_passcode {
 
 
 	function __construct() {
-		add_action( 'bp_signup_usermeta', array( &$this, 'add_secret_passcode' ) );
+		add_action( 'bp_signup_profile_fields', array( &$this, 'add_secret_passcode' ) );
 		add_filter( 'bp_core_validate_user_signup', array( &$this, 'check_secret_passcode' ) );
 	}
 
@@ -75,6 +75,7 @@ class secret_passcode {
 		if(($_POST['secret_reg_code']) != 'est1897'){
 			$result['errors']->add( 'secret_reg_code', apply_filters( 'secret_passcode_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
 			$bp->signup->errors['secret_reg_code'] = __( 'The Dalvey Cup Secret Passcode you entered is incorrect.', 'buddypress' );
+			do_action( 'bp_secret_reg_code_errors' );
 		}
 		
 		return $result;
