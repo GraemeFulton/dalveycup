@@ -30,8 +30,7 @@ Author URI: http://gfulton.me.uk
  * **********************************************************************
  */
 
-// INTERNATIONALIZATION
-	define('SECRET_PASSCODE', 'est1897');
+
 
 class secret_passcode {
 
@@ -73,9 +72,9 @@ class secret_passcode {
 	function check_secret_passcode( $result = array() ) {
 		global $bp;
 
-		if( defined('SECRET_PASSCODE') && trim($_POST['secret_reg_code']) != SECRET_PASSCODE ){
+		if(trim($_POST['secret_reg_code']) != 'est1897'){
 
-			$result['errors']->add( 'pjbp_honeypot', apply_filters( 'bppj_honeypot_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
+			$result['errors']->add( 'secret_passcode', apply_filters( 'secret_passcode_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
 
 		}
 		
