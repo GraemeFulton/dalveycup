@@ -839,35 +839,6 @@ function url_shortcode()
 }
 add_shortcode('url','url_shortcode');
 
-
-/*****
-THIS IS THE SECRET PASSWORD
-*****/
-define('SECRET_PASSCODE', 'est1897');
-
-function check_for_reg_secret_code($errors, $sanitized_user_login, $user_email) {
-  if (
-    defined('SECRET_PASSCODE') &&
-    trim($_POST['secret_reg_code']) != SECRET_PASSCODE
-  ) {
-    $errors->add(
-      'secret_code_error',
-      __('<strong>ERROR</strong>: Enter a valid code postal code.', 'your_text_domain')
-    );
-  }
-  return $errors;
-}
-add_filter('registration_errors', 'check_for_reg_secret_code', 10, 3);
-
-function add_secret_code_registration_field() {
-    ?>
-    <p>
-    <label for="secret_reg_code">Secret Code<br />
-    <input type="text" name="secret_reg_code" id="secret_reg_code" class="input" value="" size="25" /></label>
-    </p>
-    <?php
-}
-add_action('register_form','add_secret_code_registration_field');
 ?>
 
 
