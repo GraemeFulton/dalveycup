@@ -63,7 +63,7 @@ class secret_passcode {
 		if(($_POST['secret_reg_code'])!="")$secret=($_POST['secret_reg_code']);
     
      ?>    
-    <input type="text" name="secret_reg_code" id="secret_reg_code" class="input" value="$secret" size="15" />
+    <input type="text" name="secret_reg_code" id="secret_reg_code" class="input" value="<?php echo $secret;?>" size="15" />
 
     </div>
     <?php
