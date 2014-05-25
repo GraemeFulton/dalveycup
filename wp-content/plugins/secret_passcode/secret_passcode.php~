@@ -50,6 +50,7 @@ class secret_passcode {
 	 */
 	function add_secret_passcode() {
 		?>
+		<hr>
 		<div style="float:left">
 		<h2>Enter Dalvey Cup Secret Code</h2>
 		<p>What's the secret answer? If you don't know it, ask an existing Dalvey Cup Member</p>
