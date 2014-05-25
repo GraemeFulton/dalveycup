@@ -2610,7 +2610,7 @@ br + br { display: none; }
 
 #login-widget{
 	float:left;
-	background:#eaeaea;
+background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.5);
 	color:#222;
 	padding:20px;
 	border-radius:5px;
@@ -2634,7 +2634,7 @@ br + br { display: none; }
     margin-bottom:5px;
     
 }
-.button.profile-button{margin-bottom:10px;float:left}
+.button.profile-button{margin-bottom:8x;float:left}
 #provatar{
     position:relative;
     float:left;
@@ -3035,6 +3035,11 @@ border-left: 30px solid rgba(20, 20, 20, 0.5);
 .sp-widget-login-div, .sp-widget-register-div, .sp-widget-lost_pass-div{color:#fff}
 #lost{margin-left:6px}
 #logout_btn a{color:#666}
+
+.page#register-page{
+padding:15px;
+background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.5);
+color:#ccc;}
 
 /****events page*********/
 .page_feed{width:100% !important;padding:0; margin-left:-8px;}
