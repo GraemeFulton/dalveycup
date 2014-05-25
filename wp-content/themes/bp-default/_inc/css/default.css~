@@ -754,6 +754,12 @@ margin-left: 16%;
 #second-nav{
     float:left;
 }
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #FFF;
+background-color: rgba(0, 220, 110, 0.6);
+}
+
 /*--------------------------------------------------------------
 4.1 - Pagination
 --------------------------------------------------------------*/
@@ -2464,7 +2470,7 @@ div.item-list-tabs ul li.feed a {
 	background: url( ../images/rss.png ) center left no-repeat;
 	padding-left: 20px;
 }
-.members-loop #members-list li {
+.members-loop#members-list li {
 	overflow: auto;
 	width:25% !important;
 
@@ -2628,6 +2634,7 @@ br + br { display: none; }
     margin-bottom:5px;
     
 }
+.button.profile-button{margin-bottom:10px;float:left}
 #provatar{
     position:relative;
     float:left;
@@ -2857,13 +2864,7 @@ and (min-width : 1224px) and (max-width:1815px), (height:768px) {
     
 .members-loop li {
 	width:30% !important;}
-	
-#admins-list li,
-#mods-list li,
-#members-list li {
-	overflow: auto;
-	width:25% !important;
-}	
+
 	
 }
 
