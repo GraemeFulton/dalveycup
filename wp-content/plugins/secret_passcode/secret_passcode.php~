@@ -31,12 +31,12 @@ Author URI: http://gfulton.me.uk
  */
 
 // INTERNATIONALIZATION
-load_plugin_textdomain( 'pj-buddypress-honeypot', null, basename( dirname( __FILE__ ) ) );
+	define('SECRET_PASSCODE', 'est1897');
 
 class secret_passcode {
 
 	
-	define('SECRET_PASSCODE', 'est1897');
+
 
 	function __construct() {
 		add_action( 'bp_after_signup_profile_fields', array( &$this, 'add_secret_passcode' ) );

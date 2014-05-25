@@ -73,8 +73,6 @@ class secret_passcode {
 	function check_secret_passcode( $result = array() ) {
 		global $bp;
 
-		$bppj_honeypot_name = apply_filters( 'bppj_honeypot_name', self::BPPJ_HONEYPOT_NAME );
-
 		if( defined('SECRET_PASSCODE') && trim($_POST['secret_reg_code']) != SECRET_PASSCODE ){
 
 			$result['errors']->add( 'pjbp_honeypot', apply_filters( 'bppj_honeypot_fail_message', __( "You're totally a spammer. Go somewhere else with your spammy ways." ) ) );
