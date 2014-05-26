@@ -842,7 +842,7 @@ msgid "Start upload"
 msgstr ""
 
 #: app/main/controllers/upload/RTMediaUploadView.php:86
-msgid "Upload Pictures"
+msgid "Attach Files"
 msgstr ""
 
 #: app/main/controllers/upload/RTMediaUploadView.php:86
