@@ -3217,4 +3217,17 @@ button#rtmedia-add-media-button-post-update:hover {
 }
 
 .mfp-content #buddypress .rtm-lightbox-container .rtmedia-single-meta .rtm-media-single-comments .rt_media_comment_submit{
-color:#222222;}
+color:#222222!important;}
+
+#sidebar-login-form{
+background: #333333;
+padding: 8px;
+color: #eaeaea;
+border-radius: 10px;}
+
+#login-text{
+color:#969696
+background: #1D1711;
+padding: 7px;
+border-radius: 10px;
+}
