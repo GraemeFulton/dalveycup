@@ -816,28 +816,51 @@ add_action( 'wp_enqueue_scripts', 'wpt_register_css' );
 ?>
 <?php // Register custom navigation walker
     require_once('wp_bootstrap_navwalker.php');
-    
 ?>
 <?php 
-/*
- * SPLASH PAGE
- * 
- */
-function checkAccessed(){
-	if ( !isset($_COOKIE['accessed']) ) {
-		setcookie('accessed', 'yes', time() + 3600*24*30);
-		define("ACCESSED", false);
-	}else{
-		define("ACCESSED", true);
-	}
-}
-add_action("init", "checkAccessed");
-
 function url_shortcode()
 {
   return get_bloginfo('url');
 }
 add_shortcode('url','url_shortcode');
+
+
+/**
+UNIQUE MEMBERSHIP NUMBER
+the custom field id for membership nubmers is 7, so we check this post data.
+(it was the quickest way to do this)
+**/
+function validate_field($data)
+{
+	global $post,$wpdb,$bp;
+   $field = $_POST['field_7'];
+
+//get all taken membership numbers
+$query = "SELECT value FROM wp_bp_xprofile_data WHERE field_id=7 ORDER BY value DESC";
+$membership_numbers= $wpdb->get_results($query);
+
+//get displayed user's membership number
+$displayed_user_id = $bp->displayed_user->userdata->ID;
+$query = "SELECT value FROM wp_bp_xprofile_data WHERE field_id=7 AND user_id=$displayed_user_id";
+$displayed_user_membership_number= $wpdb->get_var($query);
+
+//check if membership number chosen already exists
+foreach($membership_numbers as $membership_number){
+	
+	if($membership_number->value==$displayed_user_membership_number){
+		//if number already assigned to this, no problem
+	}
+	elseif ($membership_number->value == $field){
+      bp_core_add_message( __( 'The Dalvey Cup Membership Number you entered is already taken', 'buddypress' ), 'error' );
+	   wp_redirect( $bp->loggedin_user->domain . 'profile/edit/group/1/' );
+      exit();
+  }
+ }
+
+return $data;
+
+}
+add_action( 'xprofile_data_before_save', 'validate_field' );
 
 
 ?>

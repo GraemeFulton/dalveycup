@@ -2075,6 +2075,21 @@ table.profile-fields:last-child {
 table.profile-fields p {
 	margin-top: 15px;
 }
+
+.field_type_radio .label{
+	display: inline;
+padding: 5px;
+font-size: 100%;
+font-weight: bold;
+line-height: 1;
+color: #222;
+text-align: inherit;
+white-space: inherit;
+vertical-align: inherit;
+border-radius: inherit;
+margin-left:-20px !important;
+}
+
 table.profile-fields p:last-child {
 	margin-top: 0;
 }
@@ -2611,7 +2626,7 @@ br + br { display: none; }
 #login-widget{
 	float:left;
 background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.5);
-	color:#222;
+	color:#ccc;
 	padding:20px;
 	border-radius:5px;
 	margin-bottom:8px;

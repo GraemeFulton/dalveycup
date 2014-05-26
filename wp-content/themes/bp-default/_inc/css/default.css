@@ -2075,6 +2075,21 @@ table.profile-fields:last-child {
 table.profile-fields p {
 	margin-top: 15px;
 }
+
+.field_type_radio .label{
+	display: inline;
+padding: 5px;
+font-size: 100%;
+font-weight: bold;
+line-height: 1;
+color: #222;
+text-align: inherit;
+white-space: inherit;
+vertical-align: inherit;
+border-radius: inherit;
+margin-left:-25px !important;
+}
+
 table.profile-fields p:last-child {
 	margin-top: 0;
 }
