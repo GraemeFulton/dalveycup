@@ -1249,10 +1249,7 @@ form#whats-new-form #whats-new-submit {
 	float: right;
 	margin-top: 12px;
 }
-#whats-new-options {
-	overflow: auto;
-	height: 0;
-}
+
 body.no-js #whats-new-options {
 	height: auto;
 }
