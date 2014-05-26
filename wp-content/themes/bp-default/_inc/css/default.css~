@@ -3226,7 +3226,7 @@ color: #eaeaea;
 border-radius: 10px;}
 
 #login-text{
-color:#969696
+color:#969696;
 background: #1D1711;
 padding: 7px;
 border-radius: 10px;
