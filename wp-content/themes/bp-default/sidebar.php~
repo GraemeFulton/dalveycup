@@ -23,8 +23,8 @@
                <br>    <?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'activity">My Activity</a>' ?>
                <br>	<?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'profile/edit">Edit Profile</a>' ?>
                 <br>	<?php echo '<a class="button profile-button" href="'.bp_loggedin_user_domain().'invite-anyone">Invite Friends</a>' ?>
-               <br>  <?php echo '<a class="button profile-button" style="background:rgba(0, 97, 48, 1); color:#ffffff;border-color:rgb(20, 136, 43)" href="'.bp_loggedin_user_domain().'media">My Gallery</a>' ?>
-                <br>  <?php echo '<a class="button profile-button" style="background:rgba(0, 97, 48, 1); color:#ffffff;border-color:rgb(20, 136, 43)" href="'.bp_loggedin_user_domain().'profile/change-avatar">Profile Picture</a>' ?>
+               <br>  <?php echo '<a class="button profile-button" style="background:rgb(20, 136, 43); color:#ffffff;border-color:rgb(53, 156, 74)" href="'.bp_loggedin_user_domain().'media">My Gallery</a>' ?>
+                <br>  <?php echo '<a class="button profile-button" style="background:rgb(20, 136, 43); color:#ffffff;border-color:rgb(53, 156, 74)" href="'.bp_loggedin_user_domain().'profile/change-avatar">Profile Picture</a>' ?>
 
                    
                    <br>     <a class="button profile-button" style="background:#222222;color:#ffffff;border-color:#666666" href="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e( 'Log Out', 'buddypress' ); ?></a>

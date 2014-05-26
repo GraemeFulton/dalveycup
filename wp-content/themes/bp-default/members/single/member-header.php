@@ -31,6 +31,10 @@
 
 	<?php do_action( 'bp_before_member_header_meta' ); ?>
 
+<h3>
+		<a style="background:rgba(0, 97, 48, 1); padding:5px;border-radius:8px;color:#eaeaea; border:1px solid #555555;"href="<?php bp_displayed_user_link(); ?>media"><?php bp_displayed_user_fullname(); ?>'s Gallery</a>
+	</h3>
+
 	<div id="item-meta">
 
 		<?php if ( bp_is_active( 'activity' ) ) : ?>

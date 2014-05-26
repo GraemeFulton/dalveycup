@@ -351,6 +351,9 @@ right: 6%;
 div#sidebar div#sidebar-me {
 	margin-bottom: 15px;
 padding: 20px;
+float: left;
+background:#444444;
+width:100%;
 border-radius: 10px
 }
 div#sidebar div#sidebar-me img.avatar {
@@ -3206,7 +3209,7 @@ button#rtmedia-add-media-button-post-update{
 		background:rgba(0,60,200,0.7) !important;
 }
 #aw-whats-new-submit{
-	text-shadow:1px 1px 0px #cccccc;
+	text-shadow:0px 0px 0px #cccccc;
 			color:#666666;
 }
 

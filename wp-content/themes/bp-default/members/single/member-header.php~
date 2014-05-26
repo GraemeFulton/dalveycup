@@ -25,12 +25,15 @@
 		<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>
 	</h2>
 
-                <?php global $bp;$the_user_id = $bp->displayed_user->userdata->ID;?>
-                  <h4 class="header-membernumber">Membership Number: <?php echo $the_user_id?></h4>
+              <h4 class="header-membernumber">Membership Number: <?php do_action('print_user_membership_number')?></h4>
 
 	<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
 	<?php do_action( 'bp_before_member_header_meta' ); ?>
+
+<h3>
+		<a style="background:rgba(0, 97, 48, 1); padding:5px;border-radius:8px;color:#cccccc; border:1px solid #555555;"href="<?php bp_displayed_user_link(); ?>media"><?php bp_displayed_user_fullname(); ?>'s Gallery</a>
+	</h3>
 
 	<div id="item-meta">
 
