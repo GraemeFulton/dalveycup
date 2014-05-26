@@ -35,7 +35,7 @@
 
 	<?php do_action( 'bp_before_directory_members_list' ); ?>
 
-	<ul id="members-list" class="" role="main">
+	<ul id="members-list" class="members-loop item-list" role="main">
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
@@ -58,7 +58,7 @@
 				</div>
 				<div class="member-meta meta-member-id">
 				Membership Number: 
-				<?php echo  bp_get_member_user_id()  ?>
+				<?php do_action('print_user_membership_number') ?>
 				</div>
 				<?php do_action( 'bp_directory_members_item' ); ?>
 

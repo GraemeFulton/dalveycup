@@ -25,7 +25,8 @@
 		<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>
 	</h2>
 
-              <h4 class="header-membernumber">Membership Number: <?php do_action('print_user_membership_number')?></h4>
+                <?php global $bp;$the_user_id = $bp->displayed_user->userdata->ID;?>
+                  <h4 class="header-membernumber">Membership Number: <?php echo $the_user_id?></h4>
 
 	<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 

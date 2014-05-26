@@ -863,6 +863,26 @@ return $data;
 add_action( 'xprofile_data_before_save', 'validate_field' );
 
 
+/***
+GET USER MEMBERSHIP NUMBER
+***/
+function print_membership_number($user_id){
+		global $post,$wpdb,$bp;
+		
+		if($user_id){
+				$displayed_user_id = $user_id;
+		}
+		else{	$displayed_user_id = $bp->displayed_user->userdata->ID;}
+
+	$query = "SELECT value FROM wp_bp_xprofile_data WHERE field_id=7 AND user_id=$displayed_user_id";
+	$displayed_user_membership_number= $wpdb->get_var($query);
+	if($displayed_user_membership_number){
+	echo $displayed_user_membership_number;
+	}
+	else{echo 'Not Assigned';}
+}
+add_action( 'print_user_membership_number', 'print_membership_number' );
+
 ?>
 
 

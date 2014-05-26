@@ -58,7 +58,8 @@
 				</div>
 				<div class="member-meta meta-member-id">
 				Membership Number: 
-				<?php echo  bp_get_member_user_id()  ?>
+				<?php $user_id= bp_get_member_user_id();
+						do_action('print_user_membership_number', $user_id);?>
 				</div>
 				<?php do_action( 'bp_directory_members_item' ); ?>
 

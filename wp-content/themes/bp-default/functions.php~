@@ -851,7 +851,7 @@ foreach($membership_numbers as $membership_number){
 		//if number already assigned to this, no problem
 	}
 	elseif ($membership_number->value == $field){
-      bp_core_add_message( __( 'The Dalvey Cup Membership Number you entered is already taken. must be higher than:  ', 'buddypress' ), 'error' );
+      bp_core_add_message( __( 'The Dalvey Cup Membership Number you entered is already taken', 'buddypress' ), 'error' );
 	   wp_redirect( $bp->loggedin_user->domain . 'profile/edit/group/1/' );
       exit();
   }
@@ -862,6 +862,22 @@ return $data;
 }
 add_action( 'xprofile_data_before_save', 'validate_field' );
 
+
+/***
+GET USER MEMBERSHIP NUMBER
+***/
+function print_membership_number(){
+		global $post,$wpdb,$bp;
+		
+	$displayed_user_id = $bp->displayed_user->userdata->ID;
+	$query = "SELECT value FROM wp_bp_xprofile_data WHERE field_id=7 AND user_id=$displayed_user_id";
+	$displayed_user_membership_number= $wpdb->get_var($query);
+	if($displayed_user_membership_number){
+	echo $displayed_user_membership_number;
+	}
+	else{echo 'Not Assigned';}
+}
+add_action( 'print_user_membership_number', 'print_membership_number' );
 
 ?>
 
